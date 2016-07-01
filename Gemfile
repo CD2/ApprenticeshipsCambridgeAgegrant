@@ -13,6 +13,10 @@ gem 'turbolinks', '~> 5.x'
 gem 'jbuilder', '~> 2.5'
 
 gem 'carrierwave'
+gem 'haml-rails'
+
+gem 'bcrypt'
+gem 'friendly_id'
 
 group :development, :test do
   gem 'byebug', platform: :mri

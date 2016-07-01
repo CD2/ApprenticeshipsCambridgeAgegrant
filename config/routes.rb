@@ -1,3 +1,7 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+ 
+  resource :grant_details, only: [:new, :create], path: 'age-grant', path_names: {new: '/'}
+  get '/:id', to: 'pages#show', as: :page
+  root 'pages#show' 
+
 end
