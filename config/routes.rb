@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get '/complete_application', to: 'pages#complete_application'
 
   namespace :admin do
+    root :to => redirect('/admin/grant_details')
     resources :grant_details, only: [:index, :show, :destroy]
   end
 
