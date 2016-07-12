@@ -2,15 +2,15 @@
   
   .panel.current_panel
     %h3 Contact Details
-    .field{data: {required: true}}
+    .field{data: {required: true, summary: :title}}
       = f.label :title
       = f.select :title, options_for_select(GrantDetail.titles), prompt: 'Please Select'
       = errors_for @grant_detail, :title
 
     .field{data: {required: true}}
-      = f.label :forname
+      = f.label :forename
       = f.text_field :forename
-      = errors_for @grant_detail, :forname
+      = errors_for @grant_detail, :forename
 
     .field{data: {required: true}}
       = f.label :surname
@@ -90,19 +90,16 @@
       = f.date_field :learner_dob
       = errors_for @grant_detail, :learner_dob
 
-      %p What date did the leaner start their Appreniceship?
     .field{data: {required: true}}
-      = f.label :apprentice_start_date
+      = f.label :apprentice_start_date, 'What date did the leaner start their Appreniceship?'
       = f.date_field :apprentice_start_date
       = errors_for @grant_detail, :apprentice_start_date
 
-      %p Please tick here to confirm that you have discussed this application with the learner and you have gained their consent to share the information above with us. 
     .field{data: {required: true}}
-      = f.label :share_info_checkbox
-      = f.check_box :share_info_checkbox 
+      = f.label :share_info_checkbox, 'Please tick here to confirm that you have discussed this application with the learner and you have gained their consent to share the information above with us. '
+      = f.check_box :share_info_checkbox
       = errors_for @grant_detail, :share_info_checkbox
 
-      %p Please select the training provider that you are with from the list below.
     .field{data: {required: true}}
       = f.label :training_provider
       = f.select :training_provider, options_for_select(GrantDetail.training_providers), prompt: 'Please Select'
@@ -137,9 +134,8 @@
       = f.label :signature
       = f.text_field :signature
       = errors_for @grant_detail, :signature
-
-      %p I agree to the terms and conditions above and declare that my organisation is eligible to receive this grant based on the criteria specified 
-      = f.label :terms_conditions
+    .field{data: {required: true}}
+      = f.label :terms_conditions, 'I agree to the terms and conditions above and declare that my organisation is eligible to receive this grant based on the criteria specified '
       = f.check_box :terms_conditions
       = errors_for @grant_detail, :terms_conditions
 
@@ -163,9 +159,10 @@
   .panel
     #button
 
-    %p Please review all your details entered below.  Once you are happy everything is correct, please click submit once
+    %p Please review all your details entered below.  Once you are happy everything is correct, please click submit
 
-    %p Submit Button
+    %table.summary_table
+
 
     = link_to 'Next >', 'javascript: void 0;', data: {next_panel: true}
   .panel
