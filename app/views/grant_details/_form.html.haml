@@ -169,13 +169,9 @@
     %table.summary_table
 
 
-    = link_to '< Back', 'javascript: void 0;', data: {prev_panel: true}
-    = link_to 'Next >', 'javascript: void 0;', data: {next_panel: true}
-  .panel
-
-    %p Thank you for your application. 
-    %p Please remember to log back in after 10 weeks to upload a copy of your learners review document. 
-    %p We will email you to remind you and your selected training provider shortly before the first review is due. 
-
     .actions
+      = link_to '< Back', 'javascript: void 0;', data: {prev_panel: true}
       = f.submit 'Submit'
+
+
+

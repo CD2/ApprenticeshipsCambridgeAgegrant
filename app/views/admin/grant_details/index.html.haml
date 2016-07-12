@@ -1,6 +1,7 @@
 = provide :title, 'Grant Detail Applicants'
 
-
+= content_for :actions do
+  = link_to 'Export CSV', '#'
 %table.index_table
 
   %thead
