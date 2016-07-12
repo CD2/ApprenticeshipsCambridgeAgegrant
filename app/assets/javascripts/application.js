@@ -64,7 +64,7 @@ function generateSummary() {
   $summary_table.empty();
   $('[data-summary]').each(function(){
     var key = $(this).data('summary')
-    var value = $(this).find('input').val()
+    var value = $(this).find('input,select').val()
     $row = $(summary_row_template);
     $('th', $row).html(key)
     $('td', $row).html(value)
