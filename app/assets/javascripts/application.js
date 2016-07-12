@@ -41,7 +41,7 @@ $(function(){
   $('form').on('submit', function(e){
     if (hasNextPanel()) {
       $('.current_panel [data-next-panel]').trigger('click')
-      //return false;
+      return false;
     }
   });
 
