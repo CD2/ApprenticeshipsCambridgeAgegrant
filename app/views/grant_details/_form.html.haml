@@ -2,33 +2,33 @@
   
   .panel.current_panel
     %h3 Contact Details
-    .field{data: {required: true, summary: :title}}
+    .field{data: {required: true, summary: 'Title'}}
       = f.label :title
       = f.select :title, options_for_select(GrantDetail.titles), prompt: 'Please Select'
       = errors_for @grant_detail, :title
 
-    .field{data: {required: true, summary: :forname}}
+    .field{data: {required: true, summary: 'Forename'}}
       = f.label :forename
       = f.text_field :forename
       = errors_for @grant_detail, :forename
 
-    .field{data: {required: true, summary: :surname}}
+    .field{data: {required: true, summary: 'Surname'}}
       = f.label :surname
       = f.text_field :surname
       = errors_for @grant_detail, :surname
 
-    .field{data: {required: true, summary: :email}}
+    .field{data: {required: true, summary: 'Email'}}
       = f.label :email
       = f.email_field :email
       = errors_for @grant_detail, :email
 
-    .field{data: {required: true, summary: :work_number}}
+    .field{data: {required: true, summary: 'Work Number'}}
       = f.label :work_number
       = f.telephone_field :work_number
       = errors_for @grant_detail, :work_number
       %p e.g. 01603 123456
 
-    .field
+    .field{data: {summary: 'Mobile Number'}}
       = f.label :mobile_number 
       = f.telephone_field :mobile_number 
       = errors_for @grant_detail, :number_number
@@ -36,12 +36,12 @@
 
     %h3 Company Address
 
-    .field{data: {required: true, summary: :company_name}}
+    .field{data: {required: true, summary: 'Company Name'}}
       = f.label :company_name
       = f.text_field :company_name
       = errors_for @grant_detail, :company_name
 
-    .field{data: {required: true, summary: :address_line_one}}
+    .field{data: {required: true, summary: 'Address One'}}
       = f.label :address_line_one, 'Address Line 1'
       = f.text_field :address_line_one
       = errors_for @grant_detail, :address_line_one
@@ -57,7 +57,7 @@
       = f.text_field :address_line_three
       = errors_for @grant_detail, :address_line_three
 
-    .field{data: {required: true, summary: :town_name}}
+    .field{data: {required: true, summary: 'Town'}}
       = f.label :town_name, 'Town/City Name'
       = f.text_field :town_name
       = errors_for @grant_detail, :town_name
@@ -68,7 +68,7 @@
       = f.text_field :county
       = errors_for @grant_detail, :county
 
-    .field{data: {required: true, summary: :postcode}}
+    .field{data: {required: true, summary: 'Postcode'}}
       = f.label :postcode, 'Postcode'
       = f.text_field :postcode
       = errors_for @grant_detail, :postcode
@@ -81,69 +81,69 @@
 
 
   .panel
-    .field{data: {required: true, summary: :learner_name}}
+    .field{data: {required: true, summary: 'Learner Name'}}
       = f.label :learner_name
       = f.text_field :learner_name
       = errors_for @grant_detail, :learner_name
 
-    .field{data: {required: true, summary: :learner_dob}}
+    .field{data: {required: true, summary: 'Learner DOB'}}
       = f.label :learner_dob, 'Learner Date of Birth dd/mm/yyyy'
       = f.date_field :learner_dob
       = errors_for @grant_detail, :learner_dob
 
-    .field{data: {required: true, summary: :apprentice_start_date}}
+    .field{data: {required: true, summary: 'Start Date'}}
       = f.label :apprentice_start_date, 'What date did the leaner start their Appreniceship?'
       = f.date_field :apprentice_start_date
       = errors_for @grant_detail, :apprentice_start_date
 
-    .field{data: {required: true, summary: :share_info_checkbox}}
+    .field{data: {required: true}}
       = f.label :share_info_checkbox, 'Please tick here to confirm that you have discussed this application with the learner and you have gained their consent to share the information above with us. '
       = f.check_box :share_info_checkbox
       = errors_for @grant_detail, :share_info_checkbox
 
-    .field{data: {required: true, summary: :training_provider}}
+    .field{data: {required: true, summary: 'Training Provider'}}
       = f.label :training_provider
       = f.select :training_provider, options_for_select(GrantDetail.training_providers), prompt: 'Please Select'
       = errors_for @grant_detail, :training_provider
 
-    = link_to '< Back', 'javascript: void 0;', data: {prev_panel: true}
     = link_to 'Next >', 'javascript: void 0;', data: {next_panel: true}
+    = link_to '< Back', 'javascript: void 0;', data: {prev_panel: true}
   .panel
 
     %p In order for us to process your payment, we need to know the details of the bank account you would like us to pay the money into.  Please provide this information below. 
 
     %p The payment will be processed by Norfolk County Council
-    .field{data: {required: true, summary: :bank_name}}
+    .field{data: {required: true, summary: 'Bank Name'}}
       = f.label :bank_name, 'Name of bank or building society'
       = f.number_field :bank_name
       = errors_for @grant_detail, :bank_name
 
-    .field{data: {required: true, summary: :account_number}}
+    .field{data: {required: true, summary: 'Account Provider'}}
       = f.label :account_number
       = f.number_field :account_number
       = errors_for @grant_detail, :account_number
 
-    .field{data: {required: true, summary: :sort_code}}
+    .field{data: {required: true, summary: 'Sort Code'}}
       = f.label :sort_code
       = f.number_field :sort_code
       = errors_for @grant_detail, :sort_code
 
-    = link_to '< Back', 'javascript: void 0;', data: {prev_panel: true}
     = link_to 'Next >', 'javascript: void 0;', data: {next_panel: true}
+    = link_to '< Back', 'javascript: void 0;', data: {prev_panel: true}
 
   .panel
     %p In order for this grant application to be successful, you are required to electronically sign the following declaration.
-    .field{data: {required: true, summary: :signature}}
+    .field{data: {required: true, summary: 'Signature'}}
       = f.label :signature
       = f.text_field :signature
       = errors_for @grant_detail, :signature
-    .field{data: {required: true, summary: :terms_conditions}}
+    .field{data: {required: true}}
       = f.label :terms_conditions, 'I agree to the terms and conditions above and declare that my organisation is eligible to receive this grant based on the criteria specified '
       = f.check_box :terms_conditions
       = errors_for @grant_detail, :terms_conditions
 
-    = link_to '< Back', 'javascript: void 0;', data: {prev_panel: true}
     = link_to 'Next >', 'javascript: void 0;', data: {next_panel: true}
+    = link_to '< Back', 'javascript: void 0;', data: {prev_panel: true}
   .panel
     %p In order to process your claim, you need to provide evidence after 10 weeks that the learner is still on an Apprenticeship.  To do this, you will need to log back into this system and upload a copy of the first review.  This will be provided for you by the training provider.  Your username will be your email address as provided. 
 
@@ -159,8 +159,8 @@
       = f.password_field :password_confirmation
       = errors_for @grant_detail, :password_confirmation
   
-    = link_to '< Back', 'javascript: void 0;', data: {prev_panel: true}
     = link_to 'Next >', 'javascript: void 0;', data: {next_panel: true}
+    = link_to '< Back', 'javascript: void 0;', data: {prev_panel: true}
   .panel.summary_panel
     #button
 
