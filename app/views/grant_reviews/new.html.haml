@@ -1,0 +1,20 @@
+#pre_content
+  %h1 UPLOAD REVIEW
+  %p
+    Please complete the following steps below to register and complete an application for funding.
+    %br
+    For answers to any questions you may have, please see links to the left of the screen.
+  %h2
+    %strong 1. Please complete the following details.
+
+= form_for @grant_review do |f|
+  .panel.current_panel
+    %p Thank you. Please browse to the review document signed by the learner, training provider and employer on your system and click upload
+
+    %p Please check this box to confirm you have the learners consent to share this review
+
+    .field
+      = f.label :file
+      = f.file_field :file
+    .actions
+      = f.submit 'Upload'

@@ -1,7 +1,10 @@
 class PagesController < ApplicationController
-  
-  def show
-    @page = Page.friendly.find(params[:id] || 'home')
+
+
+  def complete_application
+  end
+
+  def home
   end
 
 end

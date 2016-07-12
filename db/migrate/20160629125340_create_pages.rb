@@ -5,6 +5,7 @@ class CreatePages < ActiveRecord::Migration[5.0]
       t.string :body
       t.string :name
       t.string :url_alias
+      t.boolean :home
       t.timestamps
     end
   end

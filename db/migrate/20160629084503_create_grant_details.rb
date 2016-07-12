@@ -29,6 +29,7 @@ class CreateGrantDetails < ActiveRecord::Migration[5.0]
 
       t.string :password_digest
 
+      t.integer :user_id
 
       t.integer :title
 

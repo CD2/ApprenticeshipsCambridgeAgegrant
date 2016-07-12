@@ -22,23 +22,7 @@ class GrantDetail < ApplicationRecord
   has_secure_password
   validates :password, presence: true, length: {minimum:5}, allow_nil: true
 
-  validates_presence_of 
-    :title,
-    :forename,
-    :surname,
-    :email,
-    :work_number,
-    :postcode,
-    :town_name
-    :company_name,
-    :address_line_one,
-    :address_line_two,
-    :learner_name,
-    :learner_dob,
-    :apprentice_start_date,
-    :bank_name,
-    :account_number,
-    :sort_code
+  validates :title, :forename, :surname, :email, :work_number, :postcode, :town_name, :company_name, :address_line_one, :address_line_two, :learner_name, :learner_dob, :apprentice_start_date, :bank_name, :account_number, :sort_code, presence: true
 
 
   validates :forename, :surname, format: {with: /\A[-a-z]+\z/}

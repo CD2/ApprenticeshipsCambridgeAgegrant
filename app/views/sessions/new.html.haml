@@ -1,0 +1,25 @@
+- provide :title, "Sign in"
+- provide :classes, "focus_page"
+
+#pre_content
+
+  %h1 PLEASE LOGIN TO THE SYSTEM USING THE PASSWORD YOU CREATED
+  %p
+    Please complete the following steps below to register and complete an application for funding.
+    %br
+    For answers to any questions you may have, please see links to the left of the screen.
+
+  %h2
+    %strong 1. Please complete the following details.
+
+= form_for :session, url: login_path do |f|
+  .panel.current_panel
+    .field
+      = f.label :email
+      = f.email_field :email, placeholder: "Email"
+    .field
+      = f.label :password
+      = f.password_field :password, placeholder: "Password"
+    .actions
+      = link_to "Forgot password?", new_password_reset_path, class: "minor_form_link"
+      = f.submit "Log in"
