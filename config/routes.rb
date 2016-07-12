@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
  
   resources :grant_reviews
-  resource :grant_details, only: [:new, :create], path: 'age-grant', path_names: {new: '/'}
+  resource :grant_details, only: [:new, :create, :show], path: 'age-grant', path_names: {new: '/'}
 
   resources :sessions, only: [:new, :create, :destroy]
   resources :password_resets, only: [:new, :create, :edit, :update]
@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   delete 'logout'  => 'sessions#destroy'
 
   get '/complete_application', to: 'pages#complete_application'
+  get '/application_pending', to: 'pages#application_pending'
 
   namespace :admin do
     root :to => redirect('/admin/grant_details')
