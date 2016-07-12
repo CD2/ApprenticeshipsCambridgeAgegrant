@@ -207,132 +207,147 @@ body
             color: #000
 
 
-    #new_grant_detail
-      background-color: #dbdbd6
-      padding: 40px
-      margin-bottom: 0px
+form
+  background-color: #dbdbd6
+  padding: 40px
+  margin-bottom: 0px
 
-      p
-        font-size: 0.875em
-        margin: 0 0 1.2em
+  p
+    font-size: 0.875em
+    margin: 0 0 1.2em
 
-      a
+  a
+    background-color: #f16e22
+    padding: 3px 15px
+    color: white
+    float: right
+    border: 0
+    font-weight: 500
+    font-size: 1.125em
+    text-align: right
+    text-decoration: none
+    &.minor_form_link
+      background-color: initial
+      color: black
+      text-decoration: underline
+      font-size: 0.875rem
+      float: none
+      padding: 0
+      &:hover
+        background-color: initial
+
+    &:hover
+      background-color: #d3560d
+
+
+
+    .actions
+
+      input
         background-color: #f16e22
-        padding: 3px 15px
+        padding: 10px 40px
         color: white
-        float: right
         border: 0
         font-weight: 500
         font-size: 1.125em
         text-align: right
         text-decoration: none
+        clear: both
+        display: block
+        margin-top: 16px
+        float: right
+
 
         &:hover
           background-color: #d3560d
 
-      .panel
-        margin-bottom: 30px
-        display: none
-        width: 756px
+    .field
+      width: 100%
+      display: table
+      margin-bottom: 10px
 
-        &.current_panel
-          display: block
+      &[data-required] label:after
+        content: '*'
 
-        .actions
-          display: inline-block
-          margin: 0 auto
-          text-align: center
+      &.field_with_errors
+        input, select
+          border: 1px solid red
 
-          input
-            background-color: #f16e22
-            padding: 6px 30px
-            color: white
-            float: right
-            border: 0
-            font-weight: 500
-            font-size: 1.125em
-            text-align: right
-            text-decoration: none
+      .field_with_errors
+        display: inline-block
 
-            &:hover
-              background-color: #d3560d
+      p
+        display: inline-block
+        padding-left: 10px
+        margin: 0
+        color: #5b5b5b
 
-        .field 
-          width: 100%
-          display: table
-          margin-bottom: 10px
+      h3
+        margin-top: 10px
+        margin-bottom: 1.2em
+        font-size: 110%
 
-          &[data-required] label:after
-            content: '*'
-
-          &.field_with_errors
-            input, select
-              border: 1px solid red
-
-          .field_with_errors
-            display: inline-block
-
-          p
-            display: inline-block
-            padding-left: 10px
-            margin: 0
-            color: #5b5b5b
-
-          h3
-            margin-top: 10px
-            margin-bottom: 1.2em
-            font-size: 110%
-
-          label
-            display: table-cell
-            font-size: 0.875em
-            width: 32%
-            height: 25px
-            padding-right: 10px
+      label
+        display: table-cell
+        font-size: 0.875em
+        width: 32%
+        height: 25px
+        padding-right: 10px
 
 
-          input, select
-            display: table-cell
-            border: none
-            width: 340px
-            height: 30px
+      input, select
+        display: table-cell
+        border: 1px solid #bbb
+        width: 340px
+        padding: 8px 10px
+        font-size: 0.875rem
 
-          select
-            overflow: hidden
-            text-overflow: ellipsis
-            white-space: nowrap
-            border: 1px solid #aaa
-            border-radius: 5px
+      select
+        overflow: hidden
+        text-overflow: ellipsis
+        white-space: nowrap
+        border: 1px solid #aaa
+        border-radius: 5px
           
 
 
-    #page_wrapper_menu
-      width: 100%
-      margin-bottom: 20px
+#page_wrapper_menu
+  width: 100%
+  margin-bottom: 20px
 
-      ul
-        list-style: none
-        padding: 0
-        margin: 0
+  ul
+    list-style: none
+    padding: 0
+    margin: 0
 
-      li
-        display: inline-block
-        border-right: 2px solid #fbaf17
+  li
+    display: inline-block
+    border-right: 2px solid #fbaf17
 
-        &:last-child
-          border-right: none
+    &:last-child
+      border-right: none
 
-      a
-        color: black
-        text-decoration: none
-        padding: 1px 10px 1px 5px
-        font-size: 0.750em
+  a
+    color: black
+    text-decoration: none
+    padding: 1px 10px 1px 5px
+    font-size: 0.750em
 
-        &.current_page
-          font-weight: bold
-
-
-      
+    &.current_page
+      font-weight: bold
 
 
 
+
+
+
+.panel
+  margin-bottom: 30px
+  display: none
+  width: 756px
+  &.grey_panel
+    background-color: #dbdbd6
+    padding: 30px
+
+  &.current_panel
+    display: block

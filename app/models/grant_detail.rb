@@ -18,30 +18,13 @@ class GrantDetail < ApplicationRecord
   end
 
   attr_accessor :terms_conditions
+  attr_accessor :share_info_checkbox
 
   has_secure_password
   validates :password, presence: true, length: {minimum:5}, allow_nil: true
 
-  validates_presence_of 
-    :title,
-    :forename,
-    :surname,
-    :email,
-    :work_number,
-    :postcode,
-    :town_name
-    :company_name,
-    :address_line_one,
-    :address_line_two,
-    :learner_name,
-    :learner_dob,
-    :apprentice_start_date,
-    :bank_name,
-    :account_number,
-    :sort_code
+  validates :title, :forename, :surname, :email, :work_number, :postcode, :town_name, :company_name, :address_line_one, :address_line_two, :learner_name, :learner_dob, :apprentice_start_date, :bank_name, :account_number, :sort_code, presence: true
 
-
-  validates :forename, :surname, format: {with: /\A[-a-z]+\z/}
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, length: {maximum: 255}, format: {with:  VALID_EMAIL_REGEX}, uniqueness: { case_sensitive: false}

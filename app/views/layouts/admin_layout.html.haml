@@ -1,0 +1,15 @@
+%head
+  %title ApprenticeshipsNorfolk
+  = csrf_meta_tags
+  = stylesheet_link_tag    'admin_application', media: 'all'
+  = javascript_include_tag 'application'
+  
+%body
+  
+  = render 'admin_header'
+  - if content_for? :actions
+    #actions_container
+      #actions_container_inner
+        = yield :actions
+  #admin_page_wrapper
+    = yield

@@ -18,7 +18,6 @@ class CreateGrantDetails < ActiveRecord::Migration[5.0]
       t.string :learner_name
       t.string :learner_dob
       t.string :apprentice_start_date
-      t.boolean :share_info_checkbox
       t.integer :training_provider
 
       t.string :bank_name
@@ -29,6 +28,7 @@ class CreateGrantDetails < ActiveRecord::Migration[5.0]
 
       t.string :password_digest
 
+      t.integer :user_id
 
       t.integer :title
 

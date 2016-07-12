@@ -1,0 +1,17 @@
+- provide :title, "Sign in"
+- provide :classes, "focus_page"
+
+#pre_content
+
+  %h1 Enter your email below
+  %p
+    Reset instructions will be sent to you shortly
+
+
+= form_for(:password_reset, url: password_resets_path) do |f|
+  .panel.current_panel
+    .field
+      = f.label :email
+      = f.email_field :email, placeholder: "Email"
+    .actions
+      = f.submit "Submit"

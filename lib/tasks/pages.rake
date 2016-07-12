@@ -19,18 +19,9 @@ task seed_pages: :environment do
   )
 
   Page.create!(
-    name: 'I Have Already Applied For A Grant And Need To Upload Evidence To Claim',
-    body: '<p>Go to the Apprenticeships Norfolk Network for help in selecting a training provider. The training provider will contact you to discuss Apprenticeships in detail.</p><p>The training provider will be able to advertise the Apprenticeship vacancy on your behalf on Jobs24 and at GOV.UK .  This service is provided free of charge by members of the Apprenticeships Norfolk Network</p><p>If you have a young person already identified inform the Provider, if not a vacancy can be advertised for free online with the National Apprenticeship Service.</p><p>Initial sifting of applications can be undertaken by the Provider before you carry out final interviews and appoint an apprentice.</p>',
-    url_alias: 'i-have-already-applied-for-a-grant-and-need-to-upload-evidence-to-claim'
-  )
-  Page.create!(
-    name: 'Search For An Apprentice',
-    body: 'test',
-    url_alias: 'search-for-an-apprentice'
+      name: 'How quickly will I receive the money?',
+      body: '<p>You will have a Training Provider who will be your main point of contact and provide guidance and support throughout the Apprenticeship programme to you and your apprentice and ensure they are meeting all targets.</p><p>When an apprentice has been enrolled on their programme, they will be allocated an assessor (from the Training Provider) who will explain the framework in detail; they will meet with you regularly to provide support and feedback.</p>',
+      url_alias: 'ive-already-applied-once-can-i-clssaim-again/'
   )
 
-  Page.create!(
-  name: 'Apply For An AGE Grant',
-  url_alias: 'age-grant'
-)
 end

@@ -1,0 +1,21 @@
+= provide :title, 'Grant Detail Applicants'
+
+
+%table.index_table
+
+  %thead
+    %tr
+      %td Forename
+      %td Surname
+      %td Email
+      %td Applied
+
+      %td{colspan: 1}
+  %tbody
+    - GrantDetail.all.each do |grant_detail|
+      %tr
+        %td= grant_detail.forename
+        %td= grant_detail.surname
+        %td= grant_detail.email
+        %td= "#{time_ago_in_words(grant_detail.created_at)} ago"
+        %td= link_to 'View Details', [:admin, grant_detail]
