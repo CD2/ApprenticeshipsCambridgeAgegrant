@@ -1,16 +1,21 @@
-#pre_content
-  %h1 Apply For An Age Grant
-  %h2 Our simple 5 stage search process does not take long and will provide you with details of relevant Apprenticeship providers.
+= provide :breadcrumbs, 'Apply for an AGE grant'
+.pre-content
+  .typography
+    %h1 Apply For An Age Grant
 
-  %h2
-    %strong 1. Please complete the following details.
-    
-  #form_steps
-    %ul
-      %li.current_stage 1. Your details
-      %li 2. Select job role
-      %li 3. Select training providers
-      %li 4. Your Result
+    %h2 Our simple 4 stage search process does not take long and will provide you with details of relevant Apprenticeship providers.
 
-= render 'form'
+    %h2
+      %strong 1. Please complete the following details.
+.searchform    
+  %ul.searchform__steps
+    %li.searchform__step.searchform__step--current 1. Your details  
+    %li.searchform__step  2. Select job role
+    %li.searchform__step  3. Select training providers
+    %li.searchform__step  4. Signature
+    %li.searchform__step  5. Password
+    %li.searchform__step  6. Your Result
+  
+  .typography
+    = render 'form'
 

@@ -4,68 +4,15 @@
   = stylesheet_link_tag    'application', media: 'all'
   = javascript_include_tag 'application'
 %body
-  #header
-
-    #header_extras
-
-      - if signed_in?
-        = link_to 'Sign out', logout_path, method: :delete
-      #social_icons
-        %ul
-          %li
-            = link_to '', 'https://twitter.com/AppsNorfolk'
-          %li
-            = link_to '', 'https://www.facebook.com/Apprenticeships-Norfolk-Network-1449750935329671/'
-          %li
-            = link_to '', 'https://www.youtube.com/user/NorfolkEmployability'
-          %li
-            = link_to '', 'https://www.flickr.com/photos/apprenticeships'
-
-    = image_tag 'https://www.apprenticeshipsnorfolk.org/themes/an/images/logo-720.png'
-
-    #header_navigation      
-      %ul
-        %li 
-          = link_to 'Employ An Apprentice', 'https://www.apprenticeshipsnorfolk.org/employ-an-apprentice/search-for-an-apprentice/' 
-        %li 
-          = link_to 'Become An Apprentice', 'https://www.apprenticeshipsnorfolk.org/become-an-apprentice/search-for-an-apprenticeship/'
-        %li 
-          = link_to 'Contact Us', 'https://www.apprenticeshipsnorfolk.org/contact-us/'
-        %li 
-          = link_to 'Apprentice Blog', 'https://www.apprenticeshipsnorfolk.org/blog/'
-        %li
-          = link_to 'AGE Grant', new_grant_details_path
-          
-  #content
-    #sidebar_wrapper
-      #sidebar_inner
-        #sidebar_links
-          %ul
-            - Page.where(home: nil).each do |page|
-              %li= link_to page.name, page, class: @page == page  ? 'active' : ''
-            %li= link_to 'I have already applied for a grant and need to upload evidence to claim', login_path
-            %li= link_to 'Apply For An AGE Grant', root_path
-
-             
-
-      #sidebar_contact
-        #sidebar_orange_box
-          %h1 Don't see what you want?
-          %h2 Call 0344 800 8024
-          = link_to 'Enquiry Form >', '#'
-
-        = image_tag 'https://www.apprenticeshipsnorfolk.org/assets/aside/_resampled/CroppedFocusedImage280210-aside-1.jpg'
-
-    #page_wrapper
-      #page_wrapper_menu
-        %ul
-          %li
-            = link_to 'Home', 'https://www.apprenticeshipsnorfolk.org/'
-          %li
-            = link_to 'Employ An Apprentice', 'https://www.apprenticeshipsnorfolk.org/employ-an-apprentice/search-for-an-apprentice/'
-          %li
-            = link_to 'Search For An Apprentice', 'https://www.apprenticeshipsnorfolk.org/employ-an-apprentice/search-for-an-apprentice/'
-          %li
-            = link_to 'AGE Grant', root_path
-
-      = yield
+  
+  .viewport  
+    = render 'header'
+    .main.main--hasborder
+      = render 'sidebar'
+      .main__cell
+        .content
+          - if content_for? :breadcrumbs
+            = breadcrumbs(yield :breadcrumbs)
+          = yield
+    = render 'footer'    
+  

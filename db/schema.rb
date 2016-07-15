@@ -33,7 +33,6 @@ ActiveRecord::Schema.define(version: 20160712105907) do
     t.string   "account_number"
     t.string   "sort_code"
     t.string   "signature"
-    t.string   "password_digest"
     t.integer  "user_id"
     t.integer  "title"
     t.datetime "created_at",            null: false
@@ -42,8 +41,9 @@ ActiveRecord::Schema.define(version: 20160712105907) do
 
   create_table "grant_reviews", force: :cascade do |t|
     t.string   "file"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "grant_detail_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "pages", force: :cascade do |t|
@@ -56,6 +56,8 @@ ActiveRecord::Schema.define(version: 20160712105907) do
   end
 
   create_table "users", force: :cascade do |t|
+    t.string   "forename"
+    t.string   "surname"
     t.string   "email"
     t.string   "password_digest"
     t.string   "remember_digest"

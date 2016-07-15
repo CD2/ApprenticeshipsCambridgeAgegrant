@@ -1,5 +1,7 @@
 class SessionsController < ApplicationController
 
+  before_action :not_logged_in, only: [:new, :create]
+
   def new
   end
 
@@ -19,6 +21,12 @@ class SessionsController < ApplicationController
   def destroy
     log_out if signed_in?
     redirect_to root_url(subdomain: false)
+  end
+
+  private
+
+  def not_logged_in
+    redirect_to root_url if signed_in?
   end
 
 end

@@ -9,4 +9,14 @@ module ApplicationHelper
     end
   end
 
+  def breadcrumbs current
+    content_tag :div, class: 'breadcrumbs' do
+      link_to('Home', 'https://www.apprenticeshipsnorfolk.org/').html_safe +
+      content_tag(:div, '|', class: 'breadcrumbs__separator') +
+      link_to('AGE Grant', root_url).html_safe +
+      content_tag(:div, '|', class: 'breadcrumbs__separator') +
+      content_tag(:strong, current)
+    end
+  end
+
 end
