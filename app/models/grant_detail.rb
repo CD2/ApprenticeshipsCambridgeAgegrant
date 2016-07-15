@@ -1,5 +1,8 @@
 class GrantDetail < ApplicationRecord
 
+  scope :young, -> {where('learner_dob > ?', 18.years.ago)}
+  scope :old, -> {where('learner_dob < ?', 18.years.ago)}
+
   def self.training_providers
     [
       'training prov 1',
@@ -12,6 +15,10 @@ class GrantDetail < ApplicationRecord
     [
       "Mr", "Mrs", "Miss", "Ms", "Dr", "Prof", "Sir", "Dame", "Lord", "Lady"
     ]
+  end
+
+  def less_than_18
+    learner_dob.to_datetime > 18.years.ago
   end
 
 
