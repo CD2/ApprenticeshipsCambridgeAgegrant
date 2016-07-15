@@ -76,10 +76,7 @@ $(function(){
 
 $('.summary_panel').on('current_panel', generateSummary);
 
-var summary_row_template = `<tr>
-  <th></th>
-  <td></td>
-</tr>`;
+var summary_row_template = '<tr><th></th><td></td></tr>';
 
 function generateSummary() {
   $summary_table = $('table.summary_table');
