@@ -1,5 +1,17 @@
-%header#header
-  #header_inner
-    = link_to 'Logout', admin_logout_path
-    - if content_for? :title
-      %h1= yield :title
+%header.header
+  .group
+    %a.header__logo.replace{:href => "/"} Apprenticeships Norfolk
+
+  - if signed_in_as_admin?
+    %nav.nav
+      %ul.js-superfish
+        %li.n1.js-superfish-open
+          = link_to 'Front Site', root_url
+          .nav__separator
+            |
+        %li.n2
+          = link_to 'Grant Details', admin_grant_details_path
+          .nav__separator
+            |
+        %li.n3
+          = link_to 'Logout', admin_logout_path
