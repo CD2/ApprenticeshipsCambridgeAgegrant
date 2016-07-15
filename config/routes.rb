@@ -1,25 +1,45 @@
 Rails.application.routes.draw do
  
-  resources :grant_reviews
   resource :grant_details, only: [:new, :create, :show], path: 'age-grant', path_names: {new: '/'}
 
   resources :sessions, only: [:new, :create, :destroy]
   resources :password_resets, only: [:new, :create, :edit, :update]
 
-  get    'login'   => 'sessions#new'
-  post   'login'   => 'sessions#create'
-  delete 'logout'  => 'sessions#destroy'
-
-  get '/complete_application', to: 'pages#complete_application'
   get '/application_pending', to: 'pages#application_pending'
+  get '/complete_application', to: 'pages#complete_application'
+  
+
+  get '/do-i-qualify', to: 'pages#do_i_qualify'
+  get '/how-much-funding-is-available', to: 'pages#how_much_funding'
+  get '/how-quickly-will-i-receive-the-money', to: 'pages#how_quickly_will_i_receive_the_money'
+  get '/what-do-i-need-to-do-to-claim', to: 'pages#what_do_i_need_to_do_to_claim'
+  get '/ive-already-applied-once-can-i-claim-again', to: 'pages#ive_already_applied_once_can_i_claim_again'
+
+  
+  get '/apply', to: 'grant_details#new'
+
+  get '/login', to: 'sessions#new', as: :login
+  post '/login', to: 'sessions#create'
+  get '/logout', to: 'sessions#destroy', as: :logout
+
+  get '/i-have-already-applied-for-a-grant-and-need-to-upload-evidence-to-claim', to: 'grant_reviews#new', as: :new_grant_review
+  post '/i-have-already-applied-for-a-grant-and-need-to-upload-evidence-to-claim', to: 'grant_reviews#create', as: :grant_reviews
 
   namespace :admin do
     root :to => redirect('/admin/grant_details')
     resources :grant_details, only: [:index, :show, :destroy]
   end
 
-  get '/:id', to: 'pages#show', as: :page
 
-  root 'pages#home'
+  root to: redirect('apply')
 
 end
+
+
+
+'/do-i-qualify'
+'/how-much-funding-is-available'
+'/what-do-i-need-to-do-to-claim'
+'/ive-already-applied-once-can-i-claim-again'
+'/how-quickly-will-i-receive-the-money'
+'/i-have-already-applied-for-a-grant-and-need-to-upload-evidence-to-claim'

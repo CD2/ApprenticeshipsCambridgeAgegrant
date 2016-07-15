@@ -12,42 +12,65 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
 //= require_tree .
+
 $(function(){
 
-  $('[data-next-panel]').on('click', function(){
-    var $panel = $(this).closest('.panel');
-    var errors_found = false;
+  formsubmitted = false;
 
-    $('[data-required]', $panel).find('input, select').each(function(){
-
-      if (this.value=='') {
-        $(this).closest('.field').addClass('field_with_errors')
-        errors_found = true;
-        console.log('errors', this)
-      } else {
-       $(this).closest('.field').removeClass('field_with_errors')
-      }
-    });
-    if (errors_found) {
-     // alert('Fill in the fields')
-   } else {
-    $panel.removeClass('current_panel').next('.panel').addClass('current_panel');
-    $('.current_panel').trigger('current_panel').find('input,select,textarea').first().trigger('focus')
-  }
-});
-
-  $('form').on('submit', function(e){
+  $('form.grant_form').on('submit', function(e){
     if (hasNextPanel()) {
-      $('.current_panel [data-next-panel]').trigger('click')
+      nextPanel();
       return false;
     }
+    formsubmitted = true;
   });
-
 
   function hasNextPanel() {
     return !$('.panel').last().hasClass('current_panel');
   }
+
+  function nextPanel(){
+    var $panel = $('.current_panel').closest('.panel');
+    var errors_found = false;
+
+    $('[data-required]', $panel).find('input[name], select').each(function(){
+
+      if (this.value=='' || (this.type == 'checkbox' && !$(this).is(':checked'))) {
+        $(this).closest('.field').addClass('field_with_errors')
+        errors_found = true;
+        console.error(this)
+      } else {
+       $(this).closest('.field').removeClass('field_with_errors')
+          .find('span.has_errors').removeClass('has_errors')
+          .end().find('span.error_explanation').remove()
+      }
+    });
+
+    $pass = $('input[type=password]#grant_detail_password_digest', $panel);
+    $pass_conf = $('input[type=password]#grant_detail_password_confirmation', $panel);
+
+    if ($pass.length>0) {
+      console.log($pass.val(), $pass_conf.val())
+      if ($pass.val() != $pass_conf.val()) {
+        errors_found = true
+        $pass_conf.closest('.field').addClass('field_with_errors')
+      } else if ($pass.val().length > 0) {
+        $pass_conf.closest('.field').removeClass('field_with_errors')
+          .find('span.has_errors').removeClass('has_errors')
+          .end().find('span.error_explanation').remove()
+      }
+    }
+
+    if (errors_found == false) {
+      $panel.removeClass('current_panel').next('.panel').addClass('current_panel');
+      $('.current_panel').trigger('current_panel').find('input,select,textarea').first().trigger('focus')
+      
+      var index = $('.panel').index($panel) + 1;
+      $('.searchform__step').removeClass('searchform__step--current').eq(index).addClass('searchform__step--current');
+    }
+  };
 
 
 
@@ -79,6 +102,19 @@ function generateSummary() {
       $('.current_panel').removeClass('current_panel')
       $prev.addClass('current_panel')
     }
-  })
+  });
+
+
+  if ($('form.grant_form').length > 0) {
+    $(window).on('beforeunload', function(e){
+      if (formsubmitted) return undefined;
+      var message = 'Leaving this page will reset the form and all infomation will be lost.';
+      (e || window.event).returnValue = message; //Gecko + IE
+      return message;
+    });
+  }
+
+
+  $('.date_field').datepicker();
 
 });

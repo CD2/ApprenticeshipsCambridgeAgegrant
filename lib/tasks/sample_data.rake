@@ -25,7 +25,6 @@ task sample_data: :environment do
       account_number: Faker::Business.credit_card_number,
       sort_code: Faker::Number.number(3) ,
       signature: Faker::Name.name,
-      password_digest: Faker::Internet.password,
       user_id: Faker::Number.between(1,10),
       title: Faker::Number.between(0,3)
       })
