@@ -2,16 +2,22 @@
 - provide :classes, "focus_page"
 
 #pre_content
+  .typography
 
-  %h1 Enter your email below
-  %p
-    Reset instructions will be sent to you shortly
+    %h1 Enter your email below
+    %p
+      Reset instructions will be sent to you shortly
 
-
-= form_for(:password_reset, url: password_resets_path) do |f|
-  .panel.current_panel
-    .field
-      = f.label :email
-      = f.email_field :email, placeholder: "Email"
-    .actions
-      = f.submit "Submit"
+.searchform
+  .typography
+    = form_for(:password_reset, url: password_resets_path) do |f|
+      - if flash.any?
+        %p#MemberLoginForm_LoginForm_error.message.bad
+          - flash.each do |k, v|
+            = v
+      .panel.current_panel
+        .field
+          = f.label :email
+          = f.email_field :email, placeholder: "Email"
+        .actions
+          = f.submit "Submit"

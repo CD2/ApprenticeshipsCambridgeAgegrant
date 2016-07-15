@@ -15,6 +15,10 @@
 .searchform    
   .typography
     = form_for :session, url: login_path do |f|
+      - if flash.any?
+        %p#MemberLoginForm_LoginForm_error.message.bad
+          - flash.each do |k, v|
+            = v
       .field
         = f.label :email
         = f.email_field :email, placeholder: "Email"

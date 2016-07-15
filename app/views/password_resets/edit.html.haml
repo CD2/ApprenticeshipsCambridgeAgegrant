@@ -2,16 +2,26 @@
 - provide :classes, "focus_page"
 
 #pre_content
+  .typography
+    %h1 Enter your new password
 
-  %h1 Enter your new password
+.searchform
+  .typography
+    = form_for(@user, url: password_reset_path(params[:id])) do |f|
+      - if flash.any?
+        %p#MemberLoginForm_LoginForm_error.message.bad
+          - flash.each do |k, v|
+            = v
+      - if @user.errors.any?
 
-= form_for(@user, url: password_reset_path(params[:id])) do |f|
-  .panel.current_panel
-    = render 'layouts/errors', object: f.object
-    = hidden_field_tag :email, @user.email
-    .field
-      = f.password_field :password, placeholder: "Password"
-    .field
-      = f.password_field :password_confirmation, placeholder: "Confirm Password"
-    .actions
-      = f.submit "Update password"
+        %ul#MemberLoginForm_LoginForm_error.message.bad
+          - @user.errors.full_messages.each do |er|
+            %li= er
+      .panel.current_panel
+        = hidden_field_tag :email, @user.email
+        .field
+          = f.password_field :password, placeholder: "Password"
+        .field
+          = f.password_field :password_confirmation, placeholder: "Confirm Password"
+        .actions
+          = f.submit "Update password"

@@ -7,8 +7,6 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 6 }, allow_nil: true
   has_secure_password
 
-  validates_presence_of :forename, :surname, :email
-
   has_one :grant_detail
   has_one :grant_review, through: :grant_detail
 
@@ -79,7 +77,7 @@ class User < ActiveRecord::Base
   end
 
   def fullname
-    forename + surname
+    grant_detail.forename + grant_detail.surname
   end
 
 

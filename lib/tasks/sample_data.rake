@@ -5,8 +5,6 @@ task sample_data: :environment do
   30.times do |i|
 
     User.create!({
-      forename: Faker::Name.first_name  ,
-      surname: Faker::Name.last_name ,
       email: Faker::Internet.email ,
       password: 'password'
     })
@@ -14,6 +12,8 @@ task sample_data: :environment do
 
     puts "#{i+1}/30"
     GrantDetail.create!({
+      forename: Faker::Name.first_name  ,
+      surname: Faker::Name.last_name ,
       work_number: Faker::PhoneNumber.phone_number ,
       mobile_number: Faker::PhoneNumber.cell_phone,
       company_name: Faker::Company.name,

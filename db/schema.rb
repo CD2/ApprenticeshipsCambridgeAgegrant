@@ -16,6 +16,8 @@ ActiveRecord::Schema.define(version: 20160712105907) do
   enable_extension "plpgsql"
 
   create_table "grant_details", force: :cascade do |t|
+    t.string   "forename"
+    t.string   "surname"
     t.string   "work_number"
     t.string   "mobile_number"
     t.string   "company_name"
@@ -56,8 +58,6 @@ ActiveRecord::Schema.define(version: 20160712105907) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "forename"
-    t.string   "surname"
     t.string   "email"
     t.string   "password_digest"
     t.string   "remember_digest"
