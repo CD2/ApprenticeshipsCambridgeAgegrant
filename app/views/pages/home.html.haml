@@ -1,6 +1,9 @@
-%p New Anglia now has devolved responsibility for the AGE grant from central Government.
-%p Please see the FAQs to the left for more information on eligibility in Norfolk and Suffolk.
-%p Grants are on a first come first served basis and availability depends upon the age of the apprentice
-%p Currently we have 965 grants available for 16 to 18 year olds and 547 for 19 to 24 year olds.
-%p This scheme runs initially until the 31 December 2016
-= link_to 'Apply Now', new_grant_details_path
+= provide :breadcrumbs, 'AGE Grant'
+.typography
+  %p New Anglia now has devolved responsibility for the AGE grant from central Government.
+  %p Please see the FAQs to the left for more information on eligibility in Norfolk and Suffolk.
+  %p Grants are on a first come first served basis and availability depends upon the age of the apprentice
+  %p= "Currently we have #{1000 - GrantDetail.young.count} grants available for 16 to 18 year olds and #{1000 - GrantDetail.old.count} for 19 to 24 year olds."
+  %p This scheme runs initially until the 31 December 2016
+  .actions
+    = link_to 'Apply Now', '/apply'

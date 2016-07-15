@@ -1,5 +1,8 @@
 class GrantDetail < ApplicationRecord
 
+  scope :young, -> {where('learner_dob > ?', 18.years.ago)}
+  scope :old, -> {where('learner_dob < ?', 18.years.ago)}
+
   def self.training_providers
     [
       'training prov 1',
@@ -16,6 +19,11 @@ class GrantDetail < ApplicationRecord
 
   enum title: titles
   enum training_provider: training_providers
+
+  def less_than_18
+    learner_dob.to_datetime > 18.years.ago
+  end
+
 
   attr_accessor :terms_conditions
   attr_accessor :share_info_checkbox

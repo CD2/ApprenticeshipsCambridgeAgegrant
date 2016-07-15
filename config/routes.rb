@@ -31,7 +31,7 @@ Rails.application.routes.draw do
   end
 
 
-  root to: redirect('apply')
+  root to: 'pages#home'
 
 end
 
