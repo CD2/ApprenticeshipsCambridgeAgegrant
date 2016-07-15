@@ -1,7 +1,7 @@
 = provide :title, 'Grant Detail Applicants'
 
 = content_for :actions do
-  = link_to 'Export CSV', '#'
+  = link_to 'Export CSV', url_for(format: 'csv')
 %table.index_table
 
   %thead
@@ -13,10 +13,10 @@
 
       %td{colspan: 1}
   %tbody
-    - GrantDetail.all.each do |grant_detail|
+    - GrantDetail.includes(:user).all.each do |grant_detail|
       %tr
-        %td= grant_detail.forename
-        %td= grant_detail.surname
-        %td= grant_detail.email
+        %td= grant_detail.user.forename
+        %td= grant_detail.user.surname
+        %td= grant_detail.user.email
         %td= "#{time_ago_in_words(grant_detail.created_at)} ago"
         %td= link_to 'View Details', [:admin, grant_detail]

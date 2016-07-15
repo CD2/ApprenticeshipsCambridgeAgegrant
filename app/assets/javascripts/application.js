@@ -47,8 +47,16 @@ $(function(){
           .end().find('span.error_explanation').remove()
       }
     });
+    $('[data-min-length]', $panel).each(function(){
+      if ($(this).find('input').val().length < 6) {
+        errors_found = true
+        $(this).addClass('field_with_errors')
+      } else {
+        $(this).removeClass('field_with_errors')
+      }
+    });
 
-    $pass = $('input[type=password]#grant_detail_password_digest', $panel);
+    $pass = $('input[type=password]#grant_detail_password', $panel);
     $pass_conf = $('input[type=password]#grant_detail_password_confirmation', $panel);
 
     if ($pass.length>0) {

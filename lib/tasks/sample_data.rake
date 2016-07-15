@@ -3,11 +3,17 @@ task sample_data: :environment do
   Faker::Config.locale = 'en'
 
   30.times do |i|
-    puts "#{i}/30"
-    GrantDetail.create!({
+
+    User.create!({
       forename: Faker::Name.first_name  ,
       surname: Faker::Name.last_name ,
       email: Faker::Internet.email ,
+      password: 'password'
+    })
+
+
+    puts "#{i+1}/30"
+    GrantDetail.create!({
       work_number: Faker::PhoneNumber.phone_number ,
       mobile_number: Faker::PhoneNumber.cell_phone,
       company_name: Faker::Company.name,
@@ -25,7 +31,7 @@ task sample_data: :environment do
       account_number: Faker::Business.credit_card_number,
       sort_code: Faker::Number.number(3) ,
       signature: Faker::Name.name,
-      user_id: Faker::Number.between(1,10),
+      user_id: i+1,
       title: Faker::Number.between(0,3)
       })
 

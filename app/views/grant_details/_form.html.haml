@@ -154,7 +154,7 @@
 
     %p Please create a password using at least one letter, number and upper case letter and enter this below.
 
-    .field{data: {required: true}}
+    .field{data: {required: true, min_length: 6}}
       = f.label :password, 'Password'
       = f.password_field :password
       = errors_for @grant_detail, :password

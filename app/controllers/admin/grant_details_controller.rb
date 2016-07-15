@@ -5,6 +5,11 @@ class Admin::GrantDetailsController < ApplicationController
   before_action :set_grant_detail, only: [:show, :destroy]
 
   def index
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data GrantDetail.to_csv, filename: "grant-details-#{Date.today}.csv" }
+    end
   end
 
   def show
