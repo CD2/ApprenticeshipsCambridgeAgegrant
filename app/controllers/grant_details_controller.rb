@@ -26,6 +26,6 @@ class GrantDetailsController < ApplicationController
     end
 
     def user_params
-      params.require(:grant_detail).permit(:forename, :surname, :email, :password, :password_confirmation)
+      params.require(:grant_detail).permit(:email, :password, :password_confirmation)
     end
 end

@@ -76,8 +76,11 @@ class User < ActiveRecord::Base
     self.activation_digest = User.digest(activation_token)
   end
 
+  delegate :forename, to: :grant_detail
+  delegate :surname, to: :grant_detail
+
   def fullname
-    grant_detail.forename + grant_detail.surname
+    forename + surname
   end
 
 
