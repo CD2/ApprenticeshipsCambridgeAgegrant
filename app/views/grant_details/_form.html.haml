@@ -115,7 +115,7 @@
     %p The payment will be processed by Norfolk County Council
     .field{data: {required: true, summary: 'Bank Name'}}
       = f.label :bank_name, 'Name of bank or building society'
-      = f.number_field :bank_name
+      = f.text_field :bank_name
       = errors_for @grant_detail, :bank_name
 
     .field{data: {required: true, summary: 'Account Provider'}}
