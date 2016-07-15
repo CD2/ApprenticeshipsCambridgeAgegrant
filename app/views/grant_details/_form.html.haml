@@ -4,7 +4,7 @@
     %h3 Contact Details
     .field{data: {required: true, summary: 'Title'}}
       = f.label :title
-      = f.select :title, options_for_select(GrantDetail.titles), {prompt: 'Please Select'}
+      = f.select :title, GrantDetail.titles.map{|k, v| [k.humanize , k]}, prompt: '-- Select --'
       = errors_for @grant_detail, :title
 
     .field{data: {required: true, summary: 'Forename'}}
@@ -103,7 +103,7 @@
 
     .field{data: {required: true, summary: 'Training Provider'}}
       = f.label :training_provider
-      = f.select :training_provider, options_for_select(GrantDetail.training_providers), prompt: 'Please Select'
+      = f.select :training_provider, GrantDetail.training_providers.map{|k, v| [k.humanize , k]}, prompt: '-- Select --'
       = errors_for @grant_detail, :training_provider
 
     .actions
