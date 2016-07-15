@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
  
-  resource :grant_details, only: [:new, :create, :show], path: 'age-grant', path_names: {new: '/'}
+  resource :grant_details, only: [:new, :create], path: 'age-grant', path_names: {new: '/'}
 
   resources :sessions, only: [:new, :create, :destroy]
   resources :password_resets, only: [:new, :create, :edit, :update]
@@ -27,7 +27,13 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root :to => redirect('/admin/grant_details')
-    resources :grant_details, only: [:index, :show, :destroy]
+    get '/login', to: 'sessions#new', as: :login
+    post '/login', to: 'sessions#create'
+    get '/logout', to: 'sessions#destroy', as: :logout
+
+    resources :grant_details, only: [:index, :show, :destroy] do
+      get 'download-evidence', as: :download_evidence, on: :member
+    end
   end
 
 

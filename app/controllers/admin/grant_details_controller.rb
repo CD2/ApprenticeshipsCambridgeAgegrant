@@ -1,8 +1,6 @@
-class Admin::GrantDetailsController < ApplicationController
+class Admin::GrantDetailsController < AdminController
   
-  layout 'admin_layout'
-
-  before_action :set_grant_detail, only: [:show, :destroy]
+  before_action :set_grant_detail, except: :index
 
   def index
 
@@ -18,6 +16,10 @@ class Admin::GrantDetailsController < ApplicationController
   def destroy
     @grant_detail.destroy
     redirect_to admin_grant_details_path
+  end
+
+  def download_evidence
+    send_data @grant_detail.grant_review.file, filename: @grant_detail.grant_review.file.file.filename
   end
 
 
