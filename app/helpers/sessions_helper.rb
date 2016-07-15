@@ -43,6 +43,10 @@ module SessionsHelper
     !current_user.nil?
   end
 
+  def signed_in_as_admin?
+    current_user.present? && current_user.admin
+  end
+
   def redirect_back_or(default)
     redirect_to(session[:return_to] || default)
     session.delete(:return_to)

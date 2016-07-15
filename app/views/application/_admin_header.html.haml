@@ -1,4 +1,5 @@
 %header#header
   #header_inner
+    = link_to 'Logout', admin_logout_path
     - if content_for? :title
       %h1= yield :title

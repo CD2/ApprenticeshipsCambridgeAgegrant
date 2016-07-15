@@ -21,12 +21,17 @@ body
     margin: 0
     color: white
 
+  a
+    color: white
+    float: right
+    background: rgba(43, 3, 3, 0.43)
+    padding: 0 15px
+    
 #actions_container
   background: #ddd
   #actions_container_inner
     max-width: 1200px
     margin: 0 auto
-    text-align: right
 
     a
       color: white
@@ -35,6 +40,9 @@ body
       display: inline-block
       margin: 10px 15px
       text-decoration: none
+
+      &:not(.left_action)
+        float: right
 
 table
   border: 1px solid black
@@ -59,3 +67,4 @@ table
 
 fieldset
   display: inline-block
+  margin-top: 20px
