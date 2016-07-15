@@ -17,6 +17,7 @@ gem 'haml-rails'
 gem 'bcrypt'
 gem 'friendly_id'
 
+gem 'rails_12factor'
 gem 'faker'
 
 group :development, :test do
