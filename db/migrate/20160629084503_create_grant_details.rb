@@ -6,6 +6,7 @@ class CreateGrantDetails < ActiveRecord::Migration[5.0]
       t.string :surname
       t.string :work_number
       t.string :mobile_number
+      t.integer :employment_sector
 
       t.string :company_name
       t.string :address_line_one
@@ -29,6 +30,9 @@ class CreateGrantDetails < ActiveRecord::Migration[5.0]
       t.integer :user_id
 
       t.integer :title
+
+      t.boolean :reminder_email_sent, default: false
+      t.boolean :no_review_15_weeks_email, default: false
 
       t.timestamps
     end

@@ -80,7 +80,7 @@ class User < ActiveRecord::Base
   delegate :surname, to: :grant_detail
 
   def fullname
-    forename + surname
+    "#{forename} #{surname}"
   end
 
 

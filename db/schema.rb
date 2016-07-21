@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20160712105907) do
     t.string   "surname"
     t.string   "work_number"
     t.string   "mobile_number"
+    t.integer  "employment_sector"
     t.string   "company_name"
     t.string   "address_line_one"
     t.string   "address_line_two"
@@ -37,8 +38,10 @@ ActiveRecord::Schema.define(version: 20160712105907) do
     t.string   "signature"
     t.integer  "user_id"
     t.integer  "title"
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+    t.boolean  "reminder_email_sent",      default: false
+    t.boolean  "no_review_15_weeks_email", default: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
   end
 
   create_table "grant_reviews", force: :cascade do |t|

@@ -1,5 +1,12 @@
 = form_for @grant_detail, html: {class: 'grant_form'} do |f|
-  
+  - if @grant_detail.errors.any?
+    - @grant_detail.errors.full_messages.each do |m|
+      %p#MemberLoginForm_LoginForm_error.message.bad
+        = m
+  - if @grant_detail.user && @grant_detail.user.errors.any?
+    - @grant_detail.user.errors.full_messages.each do |m|
+      %p#MemberLoginForm_LoginForm_error.message.bad
+        = m
   .panel.current_panel
     %h3 Contact Details
     .field{data: {required: true, summary: 'Title'}}
@@ -33,6 +40,11 @@
       = f.telephone_field :mobile_number 
       = errors_for @grant_detail, :number_number
       %p e.g. 01603 123456
+
+    .field{data: {required: true, summary: 'Employment Sector'}}
+      = f.label :employment_sector
+      = f.select :employment_sector, GrantDetail.employment_sectors.map{|k, v| [k.humanize , k]}, prompt: '-- Select --'
+      = errors_for @grant_detail, :employment_sector
 
     %h3 Company Address
 
@@ -74,7 +86,7 @@
       = errors_for @grant_detail, :postcode
       %p e.g. NR1 1DJ
 
-    %p* Manditroy infomation
+    %p* Mandatory infomation
 
     .actions
       = f.submit 'Next >'
@@ -141,7 +153,7 @@
       = f.text_field :signature
       = errors_for @grant_detail, :signature
     .field{data: {required: true}}
-      = f.label :terms_conditions, 'I agree to the terms and conditions above and declare that my organisation is eligible to receive this grant based on the criteria specified '
+      = f.label :terms_conditions, 'I declare that my organisation is eligible to receive this grant based on the criteria specified'
       = f.check_box :terms_conditions
       = errors_for @grant_detail, :terms_conditions
 

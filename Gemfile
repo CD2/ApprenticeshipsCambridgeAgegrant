@@ -20,6 +20,7 @@ gem 'friendly_id'
 gem 'rails_12factor'
 gem 'faker'
 
+
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'better_errors'

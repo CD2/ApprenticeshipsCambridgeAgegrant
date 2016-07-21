@@ -14,7 +14,10 @@ Rails.application.routes.draw do
   get '/how-quickly-will-i-receive-the-money', to: 'pages#how_quickly_will_i_receive_the_money'
   get '/what-do-i-need-to-do-to-claim', to: 'pages#what_do_i_need_to_do_to_claim'
   get '/ive-already-applied-once-can-i-claim-again', to: 'pages#ive_already_applied_once_can_i_claim_again'
+  get '/complaints-process', to: 'pages#complaints_process'
 
+
+  get '/check_if_emails_need_to_go_out_to_people_who_registered_10_weeks_ago', to: 'pages#email_10_weeks_ago'
   
   get '/apply', to: 'grant_details#new'
 

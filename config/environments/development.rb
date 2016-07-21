@@ -57,4 +57,7 @@ Rails.application.configure do
     html_tag = "<span class='has_errors label_error'>#{html_tag}</span>" if html_tag =~ /<label/
     html_tag.html_safe
   end
+
+  config.action_mailer.delivery_method = :smtp
+config.action_mailer.smtp_settings = { :address => "localhost", :port => 1025 }
 end

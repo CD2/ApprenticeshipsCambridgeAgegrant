@@ -123,3 +123,16 @@ function generateSummary() {
   $('.date_field').datepicker();
 
 });
+
+
+
+$(function(){
+  if (!Cookies.get('cookie_policy_acceptance')) {
+    cookie_html = '<div id="cookie_policy_popup"><div id="cookie_policy_popup_close">&#10005;</div>This site uses cookies to enhance user experience.</div>';
+    $("body").append($(cookie_html));
+    $('#cookie_policy_popup_close').on('click', function(){
+      $('#cookie_policy_popup').remove();
+      Cookies.set('cookie_policy_acceptance', 1);
+    });
+  }
+});

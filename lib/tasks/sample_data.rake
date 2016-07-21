@@ -17,6 +17,7 @@ task sample_data: :environment do
       work_number: Faker::PhoneNumber.phone_number ,
       mobile_number: Faker::PhoneNumber.cell_phone,
       company_name: Faker::Company.name,
+      employment_sector: Faker::Number.between(0, 13),
       address_line_one: Faker::Address.street_address,
       address_line_two: Faker::Address.secondary_address,
       town_name: Faker::Address.city,
