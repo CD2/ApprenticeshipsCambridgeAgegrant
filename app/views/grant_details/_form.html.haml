@@ -184,13 +184,11 @@
     #button
 
     %p Please review all your details entered below.  Once you are happy everything is correct, please click submit
-
     %table.summary_table
 
 
     .actions
       = link_to '< Back', 'javascript: void 0;', data: {prev_panel: true}
       = f.submit 'Submit'
-
-
-
+    .security_policy_link_plz
+      = link_to 'Security Policy', "#", target: '_blank'

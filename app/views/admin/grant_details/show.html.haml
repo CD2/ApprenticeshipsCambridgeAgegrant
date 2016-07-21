@@ -3,7 +3,6 @@
   - if @grant_detail.review_submitted
     = link_to 'Download Evidence', download_evidence_admin_grant_detail_path
 
-  = link_to 'Delete', [:admin, @grant_detail], method: :delete, data: {confirm: 'Are you sure you want to delete this record?'}, class: 'delete'
 
 .typography
   = field_set_tag 'User Details' do
