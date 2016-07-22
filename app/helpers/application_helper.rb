@@ -31,4 +31,12 @@ module ApplicationHelper
     request.host == "localhost" || request.host == 'apprenticeship-norfolk.herokuapp.com'
   end
 
+  def site_url
+    if norfolk_site?
+      'https://apprenticeship-norfolk.herokuapp.com'
+    else
+      'https://apprenticeshipscambridgeshire.org'
+    end
+  end
+
 end

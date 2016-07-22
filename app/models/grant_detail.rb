@@ -13,7 +13,7 @@ class GrantDetail < ApplicationRecord
 
   after_create :training_provider_not_listed_email
 
-  scope :young, -> {where('learner_dob > ?', 18.years.ago)}
+  scope :young, -> {where('learner_dob >= ?', 18.years.ago)}
   scope :old, -> {where('learner_dob < ?', 18.years.ago)}
 
   belongs_to :training_provider

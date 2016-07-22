@@ -10,8 +10,9 @@ class AdminMailer < ApplicationMailer
     mail to: "to@example.org"
   end
 
-  def send_reminder grant_detail
+  def send_reminder grant_detail, url
     @grant_detail = grant_detail
+    @url = url
     mail to: grant_detail.user.email
   end
 
