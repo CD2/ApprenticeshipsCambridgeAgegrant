@@ -71,7 +71,7 @@ class GrantDetail < ApplicationRecord
   end
 
   def training_provider= val
-    super TrainingProvider.find(val) unless val == -1
+    super TrainingProvider.find(val) unless val.to_i == -1
   end
 
   private

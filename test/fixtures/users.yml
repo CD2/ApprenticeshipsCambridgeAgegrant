@@ -1,11 +1,11 @@
 non_admin:
   email: joe@blog.gs
-  password_digest: password_digest
+  password_digest: <%= User.digest('pass123') %>
   activated: false
   admin: false
 
 admin:
   email: web@cd2s.co.uk
-  password_digest: password_digest
+  password_digest: <%= User.digest('pass123') %>
   activated: true
   admin: true
