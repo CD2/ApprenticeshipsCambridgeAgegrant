@@ -1,11 +1,148 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+grant_detail_17_years_old:
+  forename: 18_years_old
+  surname: surname
+  work_number: 0123456789
+  mobile_number: 0123456789
+  employment_sector: 1
+  company_name: company_name
+  address_line_one: address_line_one
+  address_line_two: address_line_two
+  address_line_three: address_line_three
+  town_name: town_name
+  county: county
+  postcode: postcode
+  learner_name: learner_name
+  learner_dob: <%= 17.years.ago.to_s(:db) %>
+  apprentice_start_date: <%= 1.week.ago.to_s(:db) %>
+  training_provider_id: 1
+  bank_name: bank_name
+  account_number: account_number
+  sort_code: sort_code
+  signature: signature
+  user: non_admin
+  title: title
 
-# This model initially had no columns defined. If you add columns to the
-# model remove the '{}' from the fixture names and add the columns immediately
-# below each fixture, per the syntax in the comments below
-#
-one: {}
-# column: value
-#
-two: {}
-# column: value
+grant_detail_50_years_old:
+  forename: 50_years_old
+  surname: surname
+  work_number: 0123456789
+  mobile_number: 0123456789
+  employment_sector: 1
+  company_name: company_name
+  address_line_one: address_line_one
+  address_line_two: address_line_two
+  address_line_three: address_line_three
+  town_name: town_name
+  county: county
+  postcode: postcode
+  learner_name: learner_name
+  learner_dob: <%= 50.years.ago.to_s(:db) %>
+  apprentice_start_date: <%= 1.week.ago.to_s(:db) %>
+  training_provider_id: 1
+  bank_name: bank_name
+  account_number: account_number
+  sort_code: sort_code
+  signature: signature
+  user: non_admin
+  title: title
+
+
+grant_detail_9_weeks_ago:
+  forename: 9 weeks
+  surname: surname
+  work_number: 0123456789
+  mobile_number: 0123456789
+  employment_sector: 1
+  company_name: company_name
+  address_line_one: address_line_one
+  address_line_two: address_line_two
+  address_line_three: address_line_three
+  town_name: town_name
+  county: county
+  postcode: postcode
+  learner_name: learner_name
+  learner_dob: <%= 20.years.ago.to_s(:db) %>
+  apprentice_start_date: <%= Date.today %>
+  training_provider_id: 1
+  bank_name: bank_name
+  account_number: account_number
+  sort_code: sort_code
+  signature: signature
+  user: non_admin
+  title: title
+  created_at: <%= 9.weeks.ago.to_s(:db) %>
+
+grant_detail_10_weeks_ago:
+  forename: 10 weeks
+  surname: surname
+  work_number: 0123456789
+  mobile_number: 0123456789
+  employment_sector: 1
+  company_name: company_name
+  address_line_one: address_line_one
+  address_line_two: address_line_two
+  address_line_three: address_line_three
+  town_name: town_name
+  county: county
+  postcode: postcode
+  learner_name: learner_name
+  learner_dob: <%= 20.years.ago.to_s(:db) %>
+  apprentice_start_date: <%= Date.today %>
+  training_provider_id: 1
+  bank_name: bank_name
+  account_number: account_number
+  sort_code: sort_code
+  signature: signature
+  user: non_admin
+  title: title
+  created_at: <%= 10.weeks.ago.to_s(:db) %>
+
+grant_detail_14_weeks_ago:
+  forename: 14 weeks
+  surname: surname
+  work_number: 0123456789
+  mobile_number: 0123456789
+  employment_sector: 1
+  company_name: company_name
+  address_line_one: address_line_one
+  address_line_two: address_line_two
+  address_line_three: address_line_three
+  town_name: town_name
+  county: county
+  postcode: postcode
+  learner_name: learner_name
+  learner_dob: <%= 20.years.ago.to_s(:db) %>
+  apprentice_start_date: <%= Date.today %>
+  training_provider_id: 1
+  bank_name: bank_name
+  account_number: account_number
+  sort_code: sort_code
+  signature: signature
+  user: non_admin
+  title: title
+  created_at: <%= 14.weeks.ago.to_s(:db) %>
+
+grant_detail_15_weeks_ago:
+  forename: 15 weeks
+  surname: surname
+  work_number: 0123456789
+  mobile_number: 0123456789
+  employment_sector: 1
+  company_name: company_name
+  address_line_one: address_line_one
+  address_line_two: address_line_two
+  address_line_three: address_line_three
+  town_name: town_name
+  county: county
+  postcode: postcode
+  learner_name: learner_name
+  learner_dob: <%= 20.years.ago.to_s(:db) %>
+  apprentice_start_date: <%= Date.today %>
+  training_provider_id: 1
+  bank_name: bank_name
+  account_number: account_number
+  sort_code: sort_code
+  signature: signature
+  user: non_admin
+  title: title
+  created_at: <%= 15.weeks.ago.to_s(:db) %>
