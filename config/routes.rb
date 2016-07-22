@@ -7,22 +7,10 @@ Rails.application.routes.draw do
 
   get '/application_pending', to: 'pages#application_pending'
   get '/complete_application', to: 'pages#complete_application'
-  
-
-  get '/do-i-qualify', to: 'pages#do_i_qualify'
-  get '/how-much-funding-is-available', to: 'pages#how_much_funding'
-  get '/how-quickly-will-i-receive-the-money', to: 'pages#how_quickly_will_i_receive_the_money'
-  get '/what-do-i-need-to-do-to-claim', to: 'pages#what_do_i_need_to_do_to_claim'
-  get '/ive-already-applied-once-can-i-claim-again', to: 'pages#ive_already_applied_once_can_i_claim_again'
-  get '/complaints-process', to: 'pages#complaints_process'
 
 
   get '/check_if_emails_need_to_go_out_to_people_who_registered_10_weeks_ago', to: 'pages#email_10_weeks_ago'
-  get '/what-will-you-accept-as-a-review-document', to: 'pages#what_will_you_accept_as_a_review_document'
-  get '/my-provider-has-not-completed-the-review-or-has-not-provided-me-with-a-copy--what-should-i-do', to: 'pages#my_provider_has_not_completed_the_review_or_has_not_provided_me_with_a_copy__what_should_i_do'
-  get '/your-system-does-not-work-on-my-computer-what-do-i-do-now', to: 'pages#your_system_does_not_work_on_my_computer_what_do_i_do_now'
-  get '/i-had-an-age-grant-from-government-in-the-last-year-can-i-still-claim-a-grant-from-you-if-i-take-on-another-apprentice', to: 'pages#i_had_an_age_grant_from_government_in_the_last_year_can_i_still_claim_a_grant_from_you_if_i_take_on_another_apprentice'
-  get '/my-company-is-based-outside-norfolk-or-suffolk-what-should-i-do', to: 'pages#my_company_is_based_outside_norfolk_or_suffolk_what_should_i_do'
+
   get '/apply', to: 'grant_details#new'
 
   get '/login', to: 'sessions#new', as: :login
@@ -44,7 +32,7 @@ Rails.application.routes.draw do
     end
   end
 
-
+  resources :pages, only: :show, path: ''
   root to: 'pages#home'
 
 end

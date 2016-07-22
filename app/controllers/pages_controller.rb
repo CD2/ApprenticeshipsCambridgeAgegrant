@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
 
+
   def home
   end
 
@@ -15,6 +16,10 @@ class PagesController < ApplicationController
     end
 
     render nothing: true
+  end
+
+  def show
+    @page = site_pages.find_by(url_alias: params[:id])
   end
 
 end

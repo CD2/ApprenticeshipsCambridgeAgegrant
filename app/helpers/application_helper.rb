@@ -19,4 +19,16 @@ module ApplicationHelper
     end
   end
 
+  def site_pages
+    if norfolk_site?
+      Page.norfolk
+    else
+      Page.cambridge
+    end
+  end
+
+  def norfolk_site?
+    request.host == "localhost" || request.host == 'apprenticeship-norfolk.herokuapp.com'
+  end
+
 end
