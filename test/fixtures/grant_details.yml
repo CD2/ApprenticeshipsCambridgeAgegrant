@@ -170,4 +170,3 @@ grant_detail_no_training_provider:
   signature: signature
   user: non_admin
   title: title
-  created_at: <%= 15.weeks.ago.to_s(:db) %>
