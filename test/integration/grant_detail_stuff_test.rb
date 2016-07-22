@@ -21,9 +21,46 @@ class GrantDetailStuffTest < ActionDispatch::IntegrationTest
     get '/apply'
     assert_select 'form', 1
 
-    # params = Hash[*JSON.load(grant_details(:grant_detail_50_years_old).to_json).map{ |k, v| [k.to_sym, v] }.flatten]
+    #gen params
+    gd_params = Hash[*JSON.load(grant_details(:grant_detail_50_years_old).to_json).map{ |k, v| [k.to_sym, v] }.flatten]
+    user_params = Hash[*JSON.load(users(:non_admin).to_json).map{ |k, v| [k.to_sym, v] }.flatten]
+    user_params[:email] = 'unique@email.com'
+    user_params[:password] = 'pass123'
+
+
+    assert_difference 'GrantDetail.count', 1 do
+      post '/age-grant', params: {grant_detail: gd_params.merge(user_params)}
+      assert_response 302
+    end
+
+    get '/admin/grant_details'
+    assert_response 302
+    login(users(:admin))
+    get '/admin/grant_details'
+    assert_response 200
+
+    assert_select 'td', text: user_params[:email]
+
+  end
+
+
+  test 'emails if no training provider' do
+
+   assert_difference 'ActionMailer::Base.deliveries.count', 1 do
+
+      gd_params = Hash[*JSON.load(grant_details(:grant_detail_50_years_old).to_json).map{ |k, v| [k.to_sym, v] }.flatten]
+      user_params = Hash[*JSON.load(users(:non_admin).to_json).map{ |k, v| [k.to_sym, v] }.flatten]
+      user_params[:email] = 'unique@email.com'
+      user_params[:password] = 'pass123'
+      gd_params[:training_provider] = -1
+
+      assert_difference 'GrantDetail.count', 1 do
+        post '/age-grant', params: {grant_detail: gd_params.merge(user_params)}
+        assert_response 302
+      end
+
+    end
     
-    # post '/age-grant', params: params
   end
 
 
