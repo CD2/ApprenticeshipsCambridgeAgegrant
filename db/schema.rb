@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160712105907) do
+ActiveRecord::Schema.define(version: 20160721213923) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20160712105907) do
     t.string   "learner_name"
     t.string   "learner_dob"
     t.string   "apprentice_start_date"
-    t.integer  "training_provider"
+    t.integer  "training_provider_id"
     t.string   "bank_name"
     t.string   "account_number"
     t.string   "sort_code"
@@ -56,6 +56,13 @@ ActiveRecord::Schema.define(version: 20160712105907) do
     t.string   "name"
     t.string   "url_alias"
     t.boolean  "home"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "training_providers", force: :cascade do |t|
+    t.string   "name"
+    t.string   "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

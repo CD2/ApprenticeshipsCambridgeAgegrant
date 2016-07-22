@@ -26,7 +26,7 @@ class SessionsController < ApplicationController
   private
 
   def not_logged_in
-    redirect_to root_url if signed_in?
+    redirect_to root_url if signed_in? || signed_in_as_admin?
   end
 
 end

@@ -115,7 +115,7 @@
 
     .field{data: {required: true, summary: 'Training Provider'}}
       = f.label :training_provider
-      = f.select :training_provider, GrantDetail.training_providers.map{|k, v| [k.humanize , k]}, prompt: '-- Select --'
+      = f.select :training_provider, [['My training provider is not listed', -1]] + TrainingProvider.pluck(:name, :id), prompt: '-- Select --'
       = errors_for @grant_detail, :training_provider
 
     .actions

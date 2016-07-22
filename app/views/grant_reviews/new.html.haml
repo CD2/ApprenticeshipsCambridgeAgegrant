@@ -11,14 +11,18 @@
 
 .searchform    
   .typography
-    = form_for @grant_review do |f|
-      .panel.current_panel
-        %p Thank you. Please browse to the review document signed by the learner, training provider and employer on your system and click upload
+    - if @grant_review
+      = form_for @grant_review do |f|
+        .panel.current_panel
+          %p Thank you. Please browse to the review document signed by the learner, training provider and employer on your system and click upload
 
-        %p Please check this box to confirm you have the learners consent to share this review
+          %p Please check this box to confirm you have the learners consent to share this review
 
-        .field
-          = f.label :file
-          = f.file_field :file
-        .actions
-          = f.submit 'Upload'
+          .field
+            = f.label :file
+            = f.file_field :file
+          .actions
+            = f.submit 'Upload'
+    - else
+      %p Admins cannot upload grant reviews
+      = link_to 'Logout', logout_path

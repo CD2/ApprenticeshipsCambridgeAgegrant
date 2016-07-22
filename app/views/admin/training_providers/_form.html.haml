@@ -1,0 +1,16 @@
+= form_for [:admin, @training_provider] do |f|
+  - if @training_provider.errors.any?
+    - @training_provider.errors.full_messages.each do |m|
+      %p#MemberLoginForm_LoginForm_error.message.bad
+        = m
+
+  .field
+    = f.label :name
+    = f.text_field :name
+
+  .field
+    = f.label :email
+    = f.text_field :email
+
+  .actions
+    = f.submit 'Save'

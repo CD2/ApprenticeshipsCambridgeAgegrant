@@ -1,0 +1,21 @@
+
+= content_for :actions do  
+  = link_to 'Add Training Provider', new_admin_training_provider_path
+
+.typography
+  %h1 Training Providers
+
+  %table.index_table
+    %thead
+      %tr
+        %td Name
+        %td Email
+        %td{colspan: 2}
+    %tbody
+      - @training_providers.each do |training_provider|
+        %tr
+          %td= training_provider.name
+          %td= training_provider.email
+          %td= link_to 'Edit', edit_admin_training_provider_path(training_provider)
+          %td= link_to 'Delete', [:admin, training_provider], :method => :delete, :data => { :confirm => 'Are you sure?' }
+

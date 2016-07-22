@@ -6,7 +6,7 @@ class GrantReviewsController < ApplicationController
 
 
   def new
-    @grant_review = @grant_detail.build_grant_review
+    @grant_review = @grant_detail.build_grant_review if @grant_detail
   end
 
   def create
@@ -35,6 +35,6 @@ class GrantReviewsController < ApplicationController
     end
 
     def not_uploaded
-      redirect_to complete_application_path if current_user.grant_detail.grant_review.present?
+      redirect_to complete_application_path if current_user.grant_detail && current_user.grant_detail.grant_review.present?
     end
 end

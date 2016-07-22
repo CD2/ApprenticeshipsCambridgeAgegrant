@@ -19,7 +19,7 @@ class CreateGrantDetails < ActiveRecord::Migration[5.0]
       t.string :learner_name
       t.string :learner_dob
       t.string :apprentice_start_date
-      t.integer :training_provider
+      t.integer :training_provider_id
 
       t.string :bank_name
       t.string :account_number

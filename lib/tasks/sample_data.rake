@@ -27,7 +27,7 @@ task sample_data: :environment do
       learner_dob: Faker::Date.between(50.years.ago, 20.years.ago),
       apprentice_start_date: Faker::Date.between(1.year.ago, 1.year.from_now),
       share_info_checkbox: true,
-      training_provider: Faker::Number.between(0, 2),
+      training_provider: TrainingProvider.find(Faker::Number.between(1, TrainingProvider.count)),
       bank_name:Faker::Company.name,
       account_number: Faker::Business.credit_card_number,
       sort_code: Faker::Number.number(3) ,

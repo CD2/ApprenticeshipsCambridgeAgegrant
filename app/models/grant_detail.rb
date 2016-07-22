@@ -4,15 +4,6 @@ class GrantDetail < ApplicationRecord
   scope :young, -> {where('learner_dob > ?', 18.years.ago)}
   scope :old, -> {where('learner_dob < ?', 18.years.ago)}
 
-  def self.training_providers
-    [
-      'training prov 1',
-      'training prov 2',
-      'training prov 3',
-      'My Training provider is not listed'
-    ]
-  end
-
   def self.titles
     [
       "Mr", "Mrs", "Miss", "Ms", "Dr", "Prof", "Sir", "Dame", "Lord", "Lady"
@@ -39,7 +30,6 @@ class GrantDetail < ApplicationRecord
   end
 
   enum title: titles
-  enum training_provider: training_providers
   enum employment_sector: employment_sector
 
   def less_than_18
@@ -60,6 +50,8 @@ class GrantDetail < ApplicationRecord
 
   after_create :training_provider_not_listed_email
 
+  belongs_to :training_provider
+
   def review_submitted
     grant_review.present?
   end
@@ -78,17 +70,18 @@ class GrantDetail < ApplicationRecord
 
   end
 
-
   def invoice_number
     "AGE#{id.to_s.rjust(4, padstr='0')}"
+  end
+
+  def training_provider= val
+    super TrainingProvider.find(val) unless val == -1
   end
 
   private
 
   def training_provider_not_listed_email
-    if training_provider == 'My Training provider is not listed'
-      AdminMailer.no_training_provider(self).deliver_now
-    end
+    AdminMailer.no_training_provider(self).deliver_now if training_provider.nil?
   end
 
 end

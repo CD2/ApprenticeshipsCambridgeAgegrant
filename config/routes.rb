@@ -34,6 +34,7 @@ Rails.application.routes.draw do
     post '/login', to: 'sessions#create'
     get '/logout', to: 'sessions#destroy', as: :logout
 
+    resources :training_providers
     resources :grant_details, only: [:index, :show, :destroy] do
       get 'download-evidence', as: :download_evidence, on: :member
     end
