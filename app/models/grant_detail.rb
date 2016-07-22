@@ -1,13 +1,25 @@
 class GrantDetail < ApplicationRecord
 
+  attr_accessor :terms_conditions
+  attr_accessor :share_info_checkbox
+  attr_accessor :email
+
+  validates :title, :work_number, :forename, :employment_sector, :surname, :postcode, :town_name, :company_name, :address_line_one, :address_line_two, :learner_name, :learner_dob, :apprentice_start_date, :bank_name, :account_number, :sort_code, presence: true
+
+  validates :share_info_checkbox, :terms_conditions, :acceptance => true
+
+  has_one :grant_review
+  belongs_to :user
+
+  after_create :training_provider_not_listed_email
 
   scope :young, -> {where('learner_dob > ?', 18.years.ago)}
   scope :old, -> {where('learner_dob < ?', 18.years.ago)}
 
+  belongs_to :training_provider
+
   def self.titles
-    [
-      "Mr", "Mrs", "Miss", "Ms", "Dr", "Prof", "Sir", "Dame", "Lord", "Lady"
-    ]
+    ["Mr", "Mrs", "Miss", "Ms", "Dr", "Prof", "Sir", "Dame", "Lord", "Lady"]
   end
 
   def self.employment_sector
@@ -35,22 +47,6 @@ class GrantDetail < ApplicationRecord
   def less_than_18
     learner_dob.to_datetime > 18.years.ago
   end
-
-
-  attr_accessor :terms_conditions
-  attr_accessor :share_info_checkbox
-  attr_accessor :email
-
-  validates :title, :work_number, :forename, :employment_sector, :surname, :postcode, :town_name, :company_name, :address_line_one, :address_line_two, :learner_name, :learner_dob, :apprentice_start_date, :bank_name, :account_number, :sort_code, presence: true
-
-  validates :share_info_checkbox, :terms_conditions, :acceptance => true
-
-  has_one :grant_review
-  belongs_to :user
-
-  after_create :training_provider_not_listed_email
-
-  belongs_to :training_provider
 
   def review_submitted
     grant_review.present?

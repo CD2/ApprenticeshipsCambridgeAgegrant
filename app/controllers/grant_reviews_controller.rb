@@ -31,7 +31,7 @@ class GrantReviewsController < ApplicationController
     end
 
     def logged_in
-      redirect_to login_path if !signed_in?
+      redirect_to login_path if !signed_in? || signed_in_as_admin?
     end
 
     def not_uploaded
