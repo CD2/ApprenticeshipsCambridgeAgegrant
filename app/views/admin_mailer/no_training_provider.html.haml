@@ -1,4 +1,8 @@
-= @grant_detail.user.fullname
-didn't have their training provider listed.
-
-= link_to @grant_detail.user.email, "mailto: #{@grant_detail.user.email}"
+%p This is an automated message from the Age Grant Application website.
+%p The following company has choosen 'no training provider' in their application.
+%hr
+%p
+  = @grant_detail.company_name
+  %br
+  = @grant_detail.user.email
+%hr
