@@ -55,9 +55,13 @@ ActiveRecord::Schema.define(version: 20160721213923) do
     t.string   "body"
     t.string   "name"
     t.string   "url_alias"
+    t.boolean  "norfolk"
+    t.boolean  "cambridge"
+    t.boolean  "peterborough"
     t.boolean  "home"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "order"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "training_providers", force: :cascade do |t|

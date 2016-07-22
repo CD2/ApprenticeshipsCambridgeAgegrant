@@ -1,17 +1,8 @@
 .main__cell.main__sec
   %nav.subnav.pre-content
     %ul
-      %li= link_to 'Do I qualify?', '/do-i-qualify', class: ('current' if request.path == '/do-i-qualify')
-      %li= link_to 'How much funding is available?', '/how-much-funding-is-available', class: ('current' if request.path == '/how-much-funding-is-available')
-      %li= link_to 'What do I need to do to claim?', '/what-do-i-need-to-do-to-claim', class: ('current' if request.path == '/what-do-i-need-to-do-to-claim')
-      %li= link_to 'I’ve already applied once. Can I claim again? ', '/ive-already-applied-once-can-i-claim-again', class: ('current' if request.path == '/ive-already-applied-once-can-i-claim-again')
-      %li= link_to 'How quickly will I receive the money?', '/how-quickly-will-i-receive-the-money', class: ('current' if request.path == '/how-quickly-will-i-receive-the-money')
-      %li= link_to 'What will you accept as a review document?', '/what-will-you-accept-as-a-review-document', class: ('current' if request.path == '/what-will-you-accept-as-a-review-document')
-      %li= link_to 'My Provider has not completed the review or has not provided me with a copy.  What should I do? ', '/my-provider-has-not-completed-the-review-or-has-not-provided-me-with-a-copy--what-should-i-do', class: ('current' if request.path == '/my-provider-has-not-completed-the-review-or-has-not-provided-me-with-a-copy--what-should-i-do')
-      %li= link_to 'Your system does not work on my computer, what do I do now? ', '/your-system-does-not-work-on-my-computer-what-do-i-do-now', class: ('current' if request.path == '/your-system-does-not-work-on-my-computer-what-do-i-do-now')
-      %li= link_to 'I had an AGE grant from Government in the last year, can I still claim a grant from you if I take on another apprentice? ', '/i-had-an-age-grant-from-government-in-the-last-year-can-i-still-claim-a-grant-from-you-if-i-take-on-another-apprentice', class: ('current' if request.path == '/i-had-an-age-grant-from-government-in-the-last-year-can-i-still-claim-a-grant-from-you-if-i-take-on-another-apprentice')
-      %li= link_to 'My company is based outside Norfolk or Suffolk. What should I do? ', '/my-company-is-based-outside-norfolk-or-suffolk-what-should-i-do', class: ('current' if request.path == '/my-company-is-based-outside-norfolk-or-suffolk-what-should-i-do')
-      %li= link_to 'What is your complaints process?', '/complaints-process', class: ('current' if request.path == '/complaints-process')
+      - site_pages.each do |page|
+        %li= link_to page.name, "/#{page.url_alias}", class: ('current' if request.path == "/#{page.url_alias}")
 
       %li= link_to 'I have already applied for a grant and need to upload evidence to claim', '/i-have-already-applied-for-a-grant-and-need-to-upload-evidence-to-claim', class: ('current' if request.path == '/i-have-already-applied-for-a-grant-and-need-to-upload-evidence-to-claim')
       %li= link_to 'Apply for an age grant', '/apply', class: ('current' if request.path == '/apply')

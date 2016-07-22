@@ -1,7 +1,12 @@
 %header.header
   .group
-    %a.header__logo.replace{:href => "https://www.apprenticeshipsnorfolk.org/"} Apprenticeships Norfolk
-    %a.header__logo.header__logo--suffolk.replace{:href => "https://www.apprenticeshipsnorfolk.org/"} Apprenticeships Suffolk
+    - if norfolk_site?
+      %a.header__logo.replace{:href => "https://www.apprenticeshipsnorfolk.org/"} Apprenticeships Norfolk
+      %a.header__logo.header__logo--suffolk.replace{:href => "https://www.apprenticeshipsnorfolk.org/"} Apprenticeships Suffolk
+    - else
+      %a.header__logo.replace.peterborough--logo{:href => "https://www.apprenticeshipsnorfolk.org/"} Apprenticeships Norfolk
+      %a.header__logo.header__logo--suffolk.replace.cambridge--logo{:href => "https://www.apprenticeshipsnorfolk.org/"} Apprenticeships Suffolk
+
     .header__extras.group
       %a.member__login.header__login{:href => "https://www.apprenticeshipsnorfolk.org/members"} Member Log In
       .header__social.group
