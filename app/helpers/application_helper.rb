@@ -28,7 +28,7 @@ module ApplicationHelper
   end
 
   def norfolk_site?
-    request.host == "localhost" || request.host == 'apprenticeship-norfolk.herokuapp.com'
+    ['localhost', 'lvh.me', 'apprenticeship-norfolk.herokuapp.com'].include? request.host
   end
 
   def site_url

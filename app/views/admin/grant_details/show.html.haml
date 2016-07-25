@@ -2,6 +2,7 @@
 = content_for :actions do  
   - if @grant_detail.review_submitted
     = link_to 'Download Evidence', download_evidence_admin_grant_detail_path
+  = link_to 'Delete', [:admin, @grant_detail], method: :delete, data: {confirm: 'Are you sure you want to delete this record?'}, class: 'delete'
 
 
 .typography
@@ -78,4 +79,4 @@
         %td= @grant_detail.review_submitted ? 'Yes'.html_safe : 'No'
       %tr
         %th Submitted On
-        %td= @grant_detail.created_at
+        %td= @grant_detail.created_at.in_time_zone("London")

@@ -42,8 +42,8 @@ task seed_pages: :environment do
   )
 
   Page.create!(
-    name: 'Ive Already Applied Once Can I Claim Again?',
-    body: '<p>You may only make one claim for each individual apprentice who starts with you. You may apply for grants for up to 4 apprentices in your organisation over the course of the year however we will make checks with the provider for any subsequent application you use to assure ourselves that previous apprentices that you have claimed for are still on an Apprenticeship with you, or have completed their Apprenticeship before we allow you to claim a further grant. If you have not retained your previous apprentice and are requesting a further grant, this will be declined.</p>',
+    name: 'I have applied once already, Can I Claim Again?',
+    body: '<p>You may only make one claim for each individual apprentice who starts with you. You may apply for grants for up to 5 apprentices in your organisation over the course of the year however we will make checks with the provider for any subsequent application you use to assure ourselves that previous apprentices that you have claimed for are still on an Apprenticeship with you, or have completed their Apprenticeship before we allow you to claim a further grant. If you have not retained your previous apprentice and are requesting a further grant, this will be declined.</p>',
     order: 4,
     norfolk: true,
     cambridge: true,
