@@ -33,13 +33,19 @@
       = f.label :work_number
       = f.telephone_field :work_number
       = errors_for @grant_detail, :work_number
-      %p e.g. 01603 123456
+      - if norfolk_site?
+        %p e.g. 01603 123456
+      - else
+        %p 01733 123456
 
     .field{data: {summary: 'Mobile Number'}}
       = f.label :mobile_number 
       = f.telephone_field :mobile_number 
       = errors_for @grant_detail, :number_number
-      %p e.g. 01603 123456
+      - if norfolk_site?
+        %p e.g. 01603 123456
+      - else
+        %p 01733 123456
 
     .field{data: {required: true, summary: 'Employment Sector'}}
       = f.label :employment_sector
@@ -57,7 +63,10 @@
       = f.label :address_line_one, 'Address Line 1'
       = f.text_field :address_line_one
       = errors_for @grant_detail, :address_line_one
-      %p e.g. 12 Norfolk Road
+      - if norfolk_site?
+        %p e.g. 12 Norfolk Road
+      - else
+        %p e.g. 12 Peterborough Road
 
     .field
       = f.label :address_line_two, 'Address Line 2'
@@ -73,7 +82,10 @@
       = f.label :town_name, 'Town/City Name'
       = f.text_field :town_name
       = errors_for @grant_detail, :town_name
-      %p e.g. Norwich
+      - if norfolk_site?
+        %p e.g. Norwich
+      - else
+        %p e.g. Peterborough
 
     .field
       = f.label :county, 'County'
@@ -84,7 +96,7 @@
       = f.label :postcode, 'Postcode'
       = f.text_field :postcode
       = errors_for @grant_detail, :postcode
-      %p e.g. NR1 1DJ
+
 
     %p* Mandatory infomation
 
