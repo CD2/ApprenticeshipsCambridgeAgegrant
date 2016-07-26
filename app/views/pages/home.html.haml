@@ -10,9 +10,17 @@
   
   %p
     Currently we have
-    %span.count_down.young= 999 - GrantDetail.young.count
+    - if norfolk_site?
+      %span.count_down.young= 720 - GrantDetail.young.count
+    - else
+      %span.count_down.young= 247 - GrantDetail.young.count
+    // p/c 247
     grants available for 16 to 18 year olds and
-    %span.count_down.old= 1000 - GrantDetail.old.count
+    - if norfolk_site?
+      %span.count_down.old= 325 - GrantDetail.old.count
+    - else
+      %span.count_down.young= 120 - GrantDetail.old.count
+    // p/c 120
     for 19 to 24 year olds.
   %p This scheme runs initially until the 31 December 2016
   .actions

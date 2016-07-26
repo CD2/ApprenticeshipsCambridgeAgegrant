@@ -10,18 +10,23 @@
   %aside.aside-feature.typography
     .aside-feature__content
       %h1 Don’t see what you want?
-      %h2 Call 0344 800 8024
-      %h2
-        %a{:href => "https://www.apprenticeshipsnorfolk.org/contact-us/"}
-          Enquiry Form
-          %strong &gt;
-    %span{"data-alt" => "aside 1", "data-picture" => ""}
-      %span{"data-media" => "(min-width: 720px)", "data-src" => "/assets/aside/_resampled/CroppedFocusedImage240180-aside-1.jpg"}
-      %span{"data-media" => "(min-width: 720px) and (-webkit-min-device-pixel-ratio: 1.5), (min-width: 720px) and (min--moz-device-pixel-ratio: 1.5), (min-width: 720px) and (-o-min-device-pixel-ratio: 1.5), (min-width: 720px) and (min-device-pixel-ratio: 1.5), (min-width: 720px) and (min-resolution: 144dpi), (min-width: 720px) and (min-resolution: 1.5dppx)", "data-src" => "/assets/aside/_resampled/CroppedFocusedImage480360-aside-1.jpg"}
-      %span{"data-media" => "(min-width: 1024px)", "data-src" => "/assets/aside/_resampled/CroppedFocusedImage280210-aside-1.jpg"}
-        = image_tag 'https://www.apprenticeshipsnorfolk.org/assets/aside/_resampled/CroppedFocusedImage280210-aside-1.jpg'
-      %span{"data-media" => "(min-width: 1024px) and (-webkit-min-device-pixel-ratio: 1.5), (min-width: 1024px) and (min--moz-device-pixel-ratio: 1.5), (min-width: 1024px) and (-o-min-device-pixel-ratio: 1.5), (min-width: 1024px) and (min-device-pixel-ratio: 1.5), (min-width: 1024px) and (min-resolution: 144dpi), (min-width: 1024px) and (min-resolution: 1.5dppx)", "data-src" => "/assets/aside/_resampled/CroppedFocusedImage560420-aside-1.jpg"}
-      /[if (lt IE 9) &amp; (!IEMobile)]
-        <span data-src="/assets/aside/_resampled/CroppedFocusedImage280210-aside-1.jpg"></span>
-      %noscript
-        \&lt;img src="/assets/aside/_resampled/CroppedFocusedImage280210-aside-1.jpg" alt="aside 1"&gt;
+      - if norfolk_site?
+        %h2 Call 0344 800 8024
+      - else
+        %h2 Call 01733 708 064
+      - if norfolk_site?
+        %h2
+          %a{:href => "https://www.apprenticeshipsnorfolk.org/contact-us/"}
+            Enquiry Form
+            %strong &gt;
+    - if norfolk_site?
+      %span{"data-alt" => "aside 1", "data-picture" => ""}
+        %span{"data-media" => "(min-width: 720px)", "data-src" => "/assets/aside/_resampled/CroppedFocusedImage240180-aside-1.jpg"}
+        %span{"data-media" => "(min-width: 720px) and (-webkit-min-device-pixel-ratio: 1.5), (min-width: 720px) and (min--moz-device-pixel-ratio: 1.5), (min-width: 720px) and (-o-min-device-pixel-ratio: 1.5), (min-width: 720px) and (min-device-pixel-ratio: 1.5), (min-width: 720px) and (min-resolution: 144dpi), (min-width: 720px) and (min-resolution: 1.5dppx)", "data-src" => "/assets/aside/_resampled/CroppedFocusedImage480360-aside-1.jpg"}
+        %span{"data-media" => "(min-width: 1024px)", "data-src" => "/assets/aside/_resampled/CroppedFocusedImage280210-aside-1.jpg"}
+          = image_tag 'https://www.apprenticeshipsnorfolk.org/assets/aside/_resampled/CroppedFocusedImage280210-aside-1.jpg'
+        %span{"data-media" => "(min-width: 1024px) and (-webkit-min-device-pixel-ratio: 1.5), (min-width: 1024px) and (min--moz-device-pixel-ratio: 1.5), (min-width: 1024px) and (-o-min-device-pixel-ratio: 1.5), (min-width: 1024px) and (min-device-pixel-ratio: 1.5), (min-width: 1024px) and (min-resolution: 144dpi), (min-width: 1024px) and (min-resolution: 1.5dppx)", "data-src" => "/assets/aside/_resampled/CroppedFocusedImage560420-aside-1.jpg"}
+        /[if (lt IE 9) &amp; (!IEMobile)]
+          <span data-src="/assets/aside/_resampled/CroppedFocusedImage280210-aside-1.jpg"></span>
+        %noscript
+          \&lt;img src="/assets/aside/_resampled/CroppedFocusedImage280210-aside-1.jpg" alt="aside 1"&gt;

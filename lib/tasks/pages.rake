@@ -27,7 +27,7 @@ task seed_pages: :environment do
   Page.create!(
     name: 'What do I need to do to claim?',
     body: '<p>To claim, you need a valid email address. Please complete the online registration form and create a password as soon as possible after your apprentice starts their Apprenticeship. You will need to select the training provider you are working with from the drop down list.</p>
-    <p>Once you have created your password, you will be asked to review the details you have entered and check a box to make a declaration that this information is correct and true. Once you save this information, the grant money is allocated to you. Once the apprentice has been on their Apprenticeship for 10 weeks or more, the training provider should contact you to arrange a review. Please ask the provider for an electronic copy of this once it has been completed and log back into the site using your email address and password. You will then be asked to upload the review (which should be signed by the apprentice, provider and yourself or your nominated employee as the employer. Once we have this, we will pay you your allocated grant by BACS.</p>',
+    <p>Once you have created your password, you will be asked to review the details you have entered and check a box to make a declaration that this information is correct and true. Once you save this information, the grant money is allocated to you. Once the apprentice has been on their Apprenticeship for 10 weeks or more, the training provider should contact you to arrange a review. Please ask the provider for an electronic copy of this once it has been completed and log back into the site using your email address and password. You will then be asked to upload the review which should be signed by the apprentice, provider and yourself or your nominated employee as the employer. Once we have this, we will pay you your allocated grant by BACS.</p>',
     order: 3,
     norfolk: true,
   )
@@ -35,7 +35,7 @@ task seed_pages: :environment do
   Page.create!(
     name: 'What do I need to do to claim?',
     body: '<p>Please complete the online registration form and create a password as soon as possible after your apprentice starts their Apprenticeship.  You will need to select the training provider you are working with from the drop down list.</p>
-    <p>Once you have created your password, you will be asked to review the details you have entered and check a box to make a declaration that this information is correct and true.  Once you save this information, the grant money is allocated to you.  Once the apprentice has been on their Apprenticeship for 10 weeks or more, the training provider should contact you to arrange a review.  Please ask the provider for an electronic copy of this once it has been completed and log back into the site using your email address and password.  You will then be asked to upload the review (which should be signed by the apprentice, provider and yourself or your nominated employee as the employer).  Once we have this, we will pay you your allocated grant by BACS.</p>',
+    <p>Once you have created your password, you will be asked to review the details you have entered and check a box to make a declaration that this information is correct and true.  Once you save this information, the grant money is allocated to you.  Once the apprentice has been on their Apprenticeship for 10 weeks or more, the training provider should contact you to arrange a review.  Please ask the provider for an electronic copy of this once it has been completed and log back into the site using your email address and password.  You will then be asked to upload the review which should be signed by the apprentice, provider and yourself or your nominated employee as the employer.  Once we have this, we will pay you your allocated grant by BACS.</p>',
     order: 3,
     cambridge: true,
     peterborough: true,
@@ -76,14 +76,14 @@ task seed_pages: :environment do
 
   Page.create!(
       name: 'My Provider has not completed the review or has not provided me with a copy. What should I do?',
-      body: '<p>Please contact us on 0344 8008024 if you are not able to provide the evidence required. Providers are contractually required to carry out a review by week 13.</p>',
+      body: '<p>Please contact us on 0344 8008024 if you are not able to provide the evidence required.</p>',
       order: 6,
       norfolk: true,
   )
 
   Page.create!(
       name: 'My Provider has not completed the review or has not provided me with a copy. What should I do?',
-      body: '<p>Please contact us on 01733 708064 or via email to AGE@peterborough.gov.uk  if you are not able to provide the evidence required.  Providers are contractually required to carry out a review by week 13.</p>',
+      body: '<p>Please contact us on 01733 708064 or via email to AGE@peterborough.gov.uk  if you are not able to provide the evidence required.</p>',
       order: 6,
       cambridge: true,
       peterborough: true,
@@ -91,13 +91,13 @@ task seed_pages: :environment do
 
   Page.create!(
       name: 'Your system does not work on my computer, what do I do now?',
-      body: '<p>If you are having trouble getting the online system to work or you have limited access to ICT, please contact us on 0344 8008024 so that we can investigate and correct the issue.</p>',
+      body: '<p>If you are having trouble getting the online system to work or you have limited access to ICT, please contact us on 0344 8008024 or email us at <a href="mailto:apprenticeships@norfolk.gov.uk">apprenticeships@norfolk.gov.uk</a> so that we can investigate and correct the issue.</p>',
       order: 7,
       norfolk: true,
   )
   Page.create!(
       name: 'Your system does not work on my computer, what do I do now?',
-      body: '<p>If you are having trouble getting the online system to work or you have limited access to ICT, please contact us on  01733 708064 or via email to AGE@peterborough.gov.uk  so that we can investigate and correct the issue. </p>',
+      body: '<p>If you are having trouble getting the online system to work or you have limited access to ICT, please contact us on  01733 708064 or via email to <a href="mailto:AGE@peterborough.gov.uk">AGE@peterborough.gov.uk</a> so that we can investigate and correct the issue. </p>',
       order: 7,
       cambridge: true,
       peterborough: true,

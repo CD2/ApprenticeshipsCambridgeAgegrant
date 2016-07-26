@@ -12,7 +12,6 @@ class GrantDetailsController < ApplicationController
       @user.save!
       redirect_to application_pending_path
     else
-      byebug
       render :new
     end
   end

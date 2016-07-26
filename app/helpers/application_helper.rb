@@ -28,11 +28,11 @@ module ApplicationHelper
   end
 
   def norfolk_site?
-    ['localhost', 'lvh.me', 'apprenticeship-norfolk.herokuapp.com'].include? request.host
+    !['localhost', 'lvh.me', 'apprenticeship-norfolk.herokuapp.com'].include? request.host
   end
 
   def site_url
-    if norfolk_site?
+    unless norfolk_site?
       'https://apprenticeship-norfolk.herokuapp.com'
     else
       'https://apprenticeshipscambridgeshire.org'
