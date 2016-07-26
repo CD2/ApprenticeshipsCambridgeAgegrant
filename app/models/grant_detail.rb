@@ -37,7 +37,8 @@ class GrantDetail < ApplicationRecord
       "Health and social care",
       "Hospitality",
       "Retail",
-      "Agritech"
+      "Agritech",
+      "Other"
     ]
   end
 

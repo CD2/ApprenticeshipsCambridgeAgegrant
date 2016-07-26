@@ -5,7 +5,7 @@
         %li= link_to page.name, "/#{page.url_alias}", class: ('current' if request.path == "/#{page.url_alias}")
 
       %li= link_to 'I have already applied for a grant and need to upload evidence to claim', '/i-have-already-applied-for-a-grant-and-need-to-upload-evidence-to-claim', class: ('current' if request.path == '/i-have-already-applied-for-a-grant-and-need-to-upload-evidence-to-claim')
-      %li= link_to 'Apply for an age grant', '/apply', class: ('current' if request.path == '/apply')
+      %li= link_to 'Apply for an AGE grant', '/apply', class: ('current' if request.path == '/apply')
 
   %aside.aside-feature.typography
     .aside-feature__content
