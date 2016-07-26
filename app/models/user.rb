@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
   has_one :grant_detail
   has_one :grant_review, through: :grant_detail
 
+  scope :admin_users, -> { where(admin: true) }
+
   def User.new_token
     SecureRandom.urlsafe_base64
   end

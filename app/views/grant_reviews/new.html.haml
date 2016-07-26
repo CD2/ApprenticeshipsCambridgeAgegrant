@@ -11,7 +11,10 @@
 
 .searchform    
   .typography
-    - if @grant_review
+    - if signed_in_as_admin?
+      %p Admins cannot upload grant reviews
+      = link_to 'Logout', logout_path
+    - else
       = form_for @grant_review do |f|
         .panel.current_panel
           %p Thank you. Please browse to the review document signed by the learner, training provider and employer on your system and click upload
@@ -23,6 +26,3 @@
             = f.file_field :file
           .actions
             = f.submit 'Upload'
-    - else
-      %p Admins cannot upload grant reviews
-      = link_to 'Logout', logout_path

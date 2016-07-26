@@ -37,4 +37,9 @@
           |
       %li.n5
         %a.section{:href => "/"} AGE Grant
+        .nav__separator
+          |
+      - if signed_in_as_admin?
+        %li.n6
+          %a.link{:href => admin_root_path} Admin
     %a.member__login.nav__login{:href => "/members"} Member Log In
