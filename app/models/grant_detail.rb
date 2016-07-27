@@ -4,7 +4,7 @@ class GrantDetail < ApplicationRecord
   attr_accessor :share_info_checkbox
   attr_accessor :email
 
-  validates :title, :work_number, :forename, :employment_sector, :surname, :postcode, :town_name, :company_name, :address_line_one, :address_line_two, :learner_name, :learner_dob, :apprentice_start_date, :bank_name, :account_number, :sort_code, presence: true
+  validates :title, :work_number, :forename, :employment_sector, :surname, :postcode, :town_name, :company_name, :address_line_one, :learner_name, :learner_dob, :apprentice_start_date, :bank_name, :account_number, :sort_code, presence: true
 
   validates :share_info_checkbox, :terms_conditions, :acceptance => true
 
@@ -24,10 +24,10 @@ class GrantDetail < ApplicationRecord
 
   def self.employment_sector
     [
-      "Advanced manufacturing and engineering",
-      "Building growth",
+      "Construction",
       "Culture",
       "Energy",
+      "Engineering",
       "Food, drink and agriculture",
       "Financial Services",
       "ICT and Digital Creative",

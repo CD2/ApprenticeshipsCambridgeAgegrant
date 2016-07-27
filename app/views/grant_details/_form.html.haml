@@ -52,7 +52,7 @@
       = f.select :employment_sector, GrantDetail.employment_sectors.map{|k, v| [k , k]}, prompt: '-- Select --'
       = errors_for @grant_detail, :employment_sector
 
-    %h3 Company Address
+    %h3 Company Details
 
     .field{data: {required: true, summary: 'Company Name'}}
       = f.label :company_name
@@ -112,12 +112,12 @@
 
     .field{data: {required: true, summary: 'Learner DOB'}}
       = f.label :learner_dob, 'Learner Date of Birth dd/mm/yyyy'
-      = f.text_field :learner_dob, class: 'date_field'
+      = f.text_field :learner_dob, class: 'date_field learner_dob'
       = errors_for @grant_detail, :learner_dob
 
     .field{data: {required: true, summary: 'Start Date'}}
       = f.label :apprentice_start_date, 'What date did the leaner start their Apprenticeship?'
-      = f.text_field :apprentice_start_date, class: 'date_field'
+      = f.text_field :apprentice_start_date, class: 'date_field start_date'
       = errors_for @grant_detail, :apprentice_start_date
 
     .field{data: {required: true}}

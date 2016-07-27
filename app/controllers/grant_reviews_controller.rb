@@ -12,6 +12,9 @@ class GrantReviewsController < ApplicationController
   def create
     @grant_review = @grant_detail.build_grant_review grant_review_params
     if @grant_review.save
+      params[:grant_review][:files].each do |file|
+        @grant_review.documents.create(document: file)
+      end
       redirect_to complete_application_path
     else
       render :new
@@ -25,9 +28,9 @@ class GrantReviewsController < ApplicationController
       @grant_detail = current_user.grant_detail
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
+    # Never trust parameters from the scary einternet, only allow the white list through.
     def grant_review_params
-      params.require(:grant_review).permit(:file)
+      params.require(:grant_review).permit(files: [])
     end
 
     def logged_in

@@ -22,7 +22,7 @@
           %p Please check this box to confirm you have the learners consent to share this review
 
           .field
-            = f.label :file
-            = f.file_field :file
+            = f.label :files
+            = f.file_field :files, multiple: true
           .actions
             = f.submit 'Upload'

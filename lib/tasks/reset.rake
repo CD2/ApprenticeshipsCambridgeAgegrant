@@ -10,7 +10,6 @@ task seed: :environment do
   
   Rake::Task['db:migrate'].invoke
   Rake::Task['seed_pages'].invoke
-  Rake::Task['seed_training_providers'].invoke
   #Rake::Task['sample_data'].invoke
 
 

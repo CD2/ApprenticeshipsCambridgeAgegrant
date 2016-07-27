@@ -1,22 +1,22 @@
 task seed_pages: :environment do
 
   Page.create!(
-    name: 'Do I Qualify?',
-    body: '<p>To qualify for this funding, your business has had to have a 16 to 24 year old who started an Apprenticeship Framework on or after the 1 August 2016. The apprentice has to be employed in a branch of the business with a postcode in Norfolk or Suffolk and the total number of employees in the business (including any subsidiary or parent companies) should be less than 250.</p>',
+    name: 'Do I qualify?',
+    body: '<p>To qualify for this funding, your business must have had a 16 to 24 year old who started an Apprenticeship Framework on or after the 1 August 2016. The apprentice has to be employed in a branch of the business with a postcode in Norfolk or Suffolk and the total number of employees in the business (including any subsidiary or parent companies) should be less than 250.</p>',
     order: 1,
     norfolk: true
   )
 
   Page.create!(
-    name: 'Do I Qualify?',
-    body: '<p>To qualify for this funding, your business needs to have a 16 to 24 year old who started an Apprenticeship Framework on or after the 1 August 2016. The apprentice has to be employed in a branch of the business with a postcode in Peterborough or Cambridgeshire and the total number of employees in the business (including any subsidiary or parent companies) must be less than 250.</p>',
+    name: 'Do I qualify?',
+    body: '<p>To qualify for this funding, your business must have had a 16 to 24 year old who started an Apprenticeship Framework on or after the 1 August 2016. The apprentice has to be employed in a branch of the business with a postcode in Peterborough or Cambridgeshire and the total number of employees in the business (including any subsidiary or parent companies) must be less than 250.</p>',
     order: 1,
     cambridge: true,
     peterborough: true,
   )
 
   Page.create!(
-    name: 'How Much Funding Is Available?',
+    name: 'How much funding can I receive?',
     body: '<p>If your apprentice is aged 16 to 18 at the start of their Apprenticeship, then you will be paid £2,000 if you meet the relevant terms and conditions. For those aged 19 to 24, the rate is £1,500.</p>',
     order: 2,
     norfolk: true,
@@ -26,24 +26,22 @@ task seed_pages: :environment do
 
   Page.create!(
     name: 'What do I need to do to claim?',
-    body: '<p>To claim, you need a valid email address. Please complete the online registration form and create a password as soon as possible after your apprentice starts their Apprenticeship. You will need to select the training provider you are working with from the drop down list.</p>
-    <p>Once you have created your password, you will be asked to review the details you have entered and check a box to make a declaration that this information is correct and true. Once you save this information, the grant money is allocated to you. Once the apprentice has been on their Apprenticeship for 10 weeks or more, the training provider should contact you to arrange a review. Please ask the provider for an electronic copy of this once it has been completed and log back into the site using your email address and password. You will then be asked to upload the review which should be signed by the apprentice, provider and yourself or your nominated employee as the employer. Once we have this, we will pay you your allocated grant by BACS.</p>',
+    body: '<p>After you have created your password, you will be asked to review the details you have entered and check a box to make a declaration that this information is correct and true. When you save this information, the grant money is allocated to you.</p>
+
+<p>Once the apprentice has been on their Apprenticeship for 10 weeks or more, the training provider should contact you to arrange a review. Please ask the provider for an electronic copy of this once it has been completed and log back into the site using your email address and password. You will then be asked to upload the review which should be signed by the apprentice, provider and yourself or your nominated employee as the employer.</p>
+
+<p>When this has been received we will pay you your allocated grant by BACS.
+</p>',
     order: 3,
     norfolk: true,
-  )
-
-  Page.create!(
-    name: 'What do I need to do to claim?',
-    body: '<p>Please complete the online registration form and create a password as soon as possible after your apprentice starts their Apprenticeship.  You will need to select the training provider you are working with from the drop down list.</p>
-    <p>Once you have created your password, you will be asked to review the details you have entered and check a box to make a declaration that this information is correct and true.  Once you save this information, the grant money is allocated to you.  Once the apprentice has been on their Apprenticeship for 10 weeks or more, the training provider should contact you to arrange a review.  Please ask the provider for an electronic copy of this once it has been completed and log back into the site using your email address and password.  You will then be asked to upload the review which should be signed by the apprentice, provider and yourself or your nominated employee as the employer.  Once we have this, we will pay you your allocated grant by BACS.</p>',
-    order: 3,
     cambridge: true,
     peterborough: true,
   )
 
+
   Page.create!(
-    name: 'I have already applied once, can I claim again?',
-    body: '<p>You may only make one claim for each individual apprentice who starts with you. You may apply for grants for up to 5 apprentices in your organisation over the course of the year however we will make checks with the provider for any subsequent application you use to assure ourselves that previous apprentices that you have claimed for are still on an Apprenticeship with you, or have completed their Apprenticeship before we allow you to claim a further grant. If you have not retained your previous apprentice and are requesting a further grant, this will be declined.</p>',
+    name: 'How many apprentices can I claim for?',
+    body: '<p>You may only make one claim for each individual apprentice who starts with you. You may apply for grants for up to 5 apprentices in your organisation over the course of the year</p><p>However, we will make checks with the provider for any subsequent application you use to assure ourselves that previous apprentices that you have claimed for are still on an Apprenticeship with you, or have completed their Apprenticeship before we allow you to claim a further grant. If you have not retained your previous apprentice and are requesting a further grant, this will be declined.</p>',
     order: 4,
     norfolk: true,
     cambridge: true,
@@ -52,14 +50,14 @@ task seed_pages: :environment do
 
   Page.create!(
       name: 'How quickly will I receive the money?',
-      body: '<p>Once you make your initial application, you need to wait for 10 weeks or more before uploading the first review. Once you upload the review document, you will receive your BACS payment within 28 days unless we inform you otherwise. Payment will be delayed if the review document is not signed by all parties, is incomplete in any way, does not demonstrate that the apprentice has been in learning for 10 weeks or longer or is in a format that our online system does not recognise. We may, at our discretion delay the payment whilst we make checks on the evidence submitted but we will notify you within 14 days if this is the case.</p>',
+      body: '<p>Once you make your initial application, you need to wait 10 weeks or more before uploading the first Evidence of Apprenticeship . Once you upload the review document, you will receive your BACS payment within 28 days unless we inform you otherwise. Payment may be declined if the review document is not signed by all parties, is incomplete in any way, does not demonstrate that the apprentice has been in learning for 10 weeks or longer or is in a format that our online system does not recognise. We may, at our discretion, delay the payment whilst we make checks on the evidence submitted but, we will notify you within 14 days if this is the case.</p>',
       order: 5,
       norfolk: true,
   )
 
   Page.create!(
       name: 'How quickly will I receive the money?',
-      body: '<p>Once you make your initial application, you need to wait for 10 weeks or more before uploading the first review.  Once you upload the review document, you will receive your BACS payment within 28 days of the evidence being verified unless we inform you otherwise.  Payment will be delayed if the review document is not signed by all parties, is incomplete in any way, does not demonstrate that the apprentice has been in learning for at least 10 weeks or is in a format that our online system does not recognise.  We may, at our discretion delay the payment whilst we make checks on the evidence submitted but we will notify you within 14 days if this is the case. </p>',
+      body: '<p>Once you make your initial application, you need to wait 10 weeks or more before uploading the first Evidence of Apprenticeship .  Once you upload the review document, you will receive your BACS payment within 28 days of the evidence being verified unless we inform you otherwise.  Payment will be delayed if the review document is not signed by all parties, is incomplete in any way, does not demonstrate that the apprentice has been in learning for at least 10 weeks or is in a format that our online system does not recognise.  We may, at our discretion, delay the payment whilst we make checks on the evidence submitted but, we will notify you within 14 days if this is the case. </p>',
       order: 6,
       cambridge: true,
       peterborough: true,
@@ -91,13 +89,13 @@ task seed_pages: :environment do
 
   Page.create!(
       name: 'Your system does not work on my computer, what do I do now?',
-      body: '<p>If you are having trouble getting the online system to work or you have limited access to ICT, please contact us on 0344 8008024 or email us at <a href="mailto:apprenticeships@norfolk.gov.uk">apprenticeships@norfolk.gov.uk</a> so that we can investigate and correct the issue.</p>',
+      body: '<p>If you are having trouble getting the online system to work or you have limited access to ICT, please contact us on 0344 8008024 or email us at <a href="mailto:apprenticeships@norfolk.gov.uk">apprenticeships@norfolk.gov.uk</a> so that we can investigate.</p>',
       order: 7,
       norfolk: true,
   )
   Page.create!(
       name: 'Your system does not work on my computer, what do I do now?',
-      body: '<p>If you are having trouble getting the online system to work or you have limited access to ICT, please contact us on  01733 708064 or via email to <a href="mailto:AGE@peterborough.gov.uk">AGE@peterborough.gov.uk</a> so that we can investigate and correct the issue. </p>',
+      body: '<p>If you are having trouble getting the online system to work or you have limited access to ICT, please contact us on  01733 708064 or via email to <a href="mailto:AGE@peterborough.gov.uk">AGE@peterborough.gov.uk</a> so that we can investigate. </p>',
       order: 7,
       cambridge: true,
       peterborough: true,

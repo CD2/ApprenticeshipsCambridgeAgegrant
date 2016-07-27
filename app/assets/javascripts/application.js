@@ -120,7 +120,18 @@ function generateSummary() {
   }
 
 
-  $('.date_field').datepicker();
+  $('.learner_dob').datepicker({
+      dateFormat: 'dd/mm/yy',
+      changeMonth: true,
+      changeYear: true
+  });
+
+    $('.start_date').datepicker({
+        dateFormat: 'dd/mm/yy',
+        minDate: '01/08/2016',
+        changeMonth: true,
+        changeYear: true
+    });
 
 });
 
