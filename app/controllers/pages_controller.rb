@@ -13,6 +13,12 @@ class PagesController < ApplicationController
     head :ok
   end
 
+  def home
+    if params[:url].present?
+      redirect_to root_url
+    end
+  end
+
   def show
     @page = site_pages.find_by(url_alias: params[:id])
   end
