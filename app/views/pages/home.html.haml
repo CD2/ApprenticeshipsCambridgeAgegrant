@@ -4,7 +4,12 @@
     %p#MemberLoginForm_LoginForm_error.message.bad
       - flash.each do |k, v|
         = v
-  %p New Anglia now has devolved responsibility for the AGE grant from central Government.
+  %p
+    - if norfolk_site?
+      New Anglia
+    - else
+      Peterborough and Cambridgeshire Local Authorities
+    now has devolved responsibility for the AGE grant from central Government.
   %p
     Please see the FAQs to the left for more information on eligibility in
     - if norfolk_site?
