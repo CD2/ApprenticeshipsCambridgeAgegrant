@@ -41,7 +41,7 @@ task seed_pages: :environment do
 
   Page.create!(
     name: 'How many apprentices can I claim for?',
-    body: '<p>You may only make one claim for each individual apprentice who starts with you. You may apply for grants for up to 5 apprentices in your organisation over the course of the year</p><p>However, we will make checks with the provider for any subsequent application you use to assure ourselves that previous apprentices that you have claimed for are still on an Apprenticeship with you, or have completed their Apprenticeship before we allow you to claim a further grant. If you have not retained your previous apprentice and are requesting a further grant, this will be declined.</p>',
+    body: '<p>You may only make one claim for each individual apprentice who starts with you. You may apply for grants for up to 5 apprentices in your organisation over the course of the year</p><p>However, we will make checks with the provider for any subsequent application you use to assure ourselves that previous apprentices that you have claimed for are still on an Apprenticeship with you, or have completed their Apprenticeship before we allow you to claim a further grant. If you have not retained your previous apprentice and are requesting a further grant, this may be declined.</p>',
     order: 4,
     norfolk: true,
     cambridge: true,
@@ -50,14 +50,14 @@ task seed_pages: :environment do
 
   Page.create!(
       name: 'How quickly will I receive the money?',
-      body: '<p>Once you make your initial application, you need to wait 10 weeks or more before uploading the first Evidence of Apprenticeship . Once you upload the review document, you will receive your BACS payment within 28 days unless we inform you otherwise. Payment may be declined if the review document is not signed by all parties, is incomplete in any way, does not demonstrate that the apprentice has been in learning for 10 weeks or longer or is in a format that our online system does not recognise. We may, at our discretion, delay the payment whilst we make checks on the evidence submitted but, we will notify you within 14 days if this is the case.</p>',
+      body: '<p>Once you make your initial application, you need to wait 10 weeks or more before uploading the first evidence of Apprenticeship . Once you upload the review document, you will receive your BACS payment within 28 days unless we inform you otherwise. Payment may be declined if the review document is not signed by all parties, is incomplete in any way, does not demonstrate that the apprentice has been in learning for 10 weeks or longer or is in a format that our online system does not recognise. We may, at our discretion, delay the payment whilst we make checks on the evidence submitted but we will notify you within 14 days if this is the case.</p>',
       order: 5,
       norfolk: true,
   )
 
   Page.create!(
       name: 'How quickly will I receive the money?',
-      body: '<p>Once you make your initial application, you need to wait 10 weeks or more before uploading the first Evidence of Apprenticeship .  Once you upload the review document, you will receive your BACS payment within 28 days of the evidence being verified unless we inform you otherwise.  Payment will be delayed if the review document is not signed by all parties, is incomplete in any way, does not demonstrate that the apprentice has been in learning for at least 10 weeks or is in a format that our online system does not recognise.  We may, at our discretion, delay the payment whilst we make checks on the evidence submitted but, we will notify you within 14 days if this is the case. </p>',
+      body: '<p>Once you make your initial application, you need to wait 10 weeks or more before uploading the first evidence of Apprenticeship .  Once you upload the review document, you will receive your BACS payment within 28 days of the evidence being verified unless we inform you otherwise.  Payment will be delayed if the review document is not signed by all parties, is incomplete in any way, does not demonstrate that the apprentice has been in learning for at least 10 weeks or is in a format that our online system does not recognise.  We may, at our discretion, delay the payment whilst we make checks on the evidence submitted but we will notify you within 14 days if this is the case. </p>',
       order: 6,
       cambridge: true,
       peterborough: true,
