@@ -3,7 +3,10 @@
   - if @grant_detail.review_submitted
     - @grant_detail.grant_review.documents.each do |doc|
       = link_to "Download `#{doc.document.file.filename}`", download_evidence_admin_grant_detail_path(@grant_detail, doc)
+  - unless norfolk_site?
+    = link_to "Download Pro Forma Invoice", '#'
   = link_to 'Delete', [:admin, @grant_detail], method: :delete, data: {confirm: 'Are you sure you want to delete this record?'}, class: 'delete'
+
 
 
 .typography
