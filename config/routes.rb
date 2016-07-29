@@ -29,7 +29,7 @@ Rails.application.routes.draw do
     resources :training_providers, except: [:show]
     resources :users, except: [:show]
     resources :grant_details, only: [:index, :show, :destroy] do
-      get 'download-evidence', as: :download_evidence, on: :member
+      get 'download-evidence/:gid', action: :download_evidence, as: :download_evidence, on: :member
     end
   end
 

@@ -1,7 +1,8 @@
 
 = content_for :actions do  
   - if @grant_detail.review_submitted
-    = link_to 'Download Evidence', download_evidence_admin_grant_detail_path
+    - @grant_detail.grant_review.documents.each do |doc|
+      = link_to "Download `#{doc.document.file.filename}`", download_evidence_admin_grant_detail_path(@grant_detail, doc)
   = link_to 'Delete', [:admin, @grant_detail], method: :delete, data: {confirm: 'Are you sure you want to delete this record?'}, class: 'delete'
 
 
@@ -61,7 +62,11 @@
         %td= @grant_detail.apprentice_start_date 
       %tr
         %th Training Provider
-        %td= @grant_detail.training_provider.name
+        %td
+          - if @grant_detail.training_provider.present?
+            = @grant_detail.training_provider.name
+          - else
+            Training Provider not listed
       %tr
         %th Bank Name 
         %td= @grant_detail.bank_name 

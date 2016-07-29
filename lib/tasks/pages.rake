@@ -26,7 +26,7 @@ task seed_pages: :environment do
 
   Page.create!(
     name: 'What do I need to do to claim?',
-    body: '<p>After you have created your password, you will be asked to review the details you have entered and check a box to make a declaration that this information is correct and true. When you save this information, the grant money is allocated to you.</p>
+    body: '<p>After you have created your password, you will be asked to review the details you have entered and tick a box to make a declaration that this information is correct and true. When you save this information, the grant money is allocated to you.</p>
 
 <p>Once the apprentice has been on their Apprenticeship for 10 weeks or more, the training provider should contact you to arrange a review. Please ask the provider for an electronic copy of this once it has been completed and log back into the site using your email address and password. You will then be asked to upload the review which should be signed by the apprentice, provider and yourself or your nominated employee as the employer.</p>
 

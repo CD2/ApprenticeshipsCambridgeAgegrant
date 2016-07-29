@@ -19,7 +19,9 @@ class Admin::GrantDetailsController < AdminController
   end
 
   def download_evidence
-    send_file @grant_detail.grant_review.file.path, filename: @grant_detail.grant_review.file.file.filename
+    file = @grant_detail.grant_review.documents.find(params[:gid]).document.file
+    filename = file.filename
+    send_file file.file, filename: filename
   end
 
 
