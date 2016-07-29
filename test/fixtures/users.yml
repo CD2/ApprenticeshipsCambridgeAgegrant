@@ -1,7 +1,7 @@
 non_admin:
   email: joe@blog.gs
   password_digest: <%= User.digest('pass123') %>
-  activated: false
+  activated: true
   admin: false
 
 admin:
