@@ -14,6 +14,7 @@ task seed: :environment do
 
 
   User.create!(name: 'CD2', email: 'web@cd2solutions.co.uk', password: 'apprentice', admin: true)
+
   User.create!(email: 'paul.wright@norfolk.gov.uk', password: 'apprentice', admin: true)
   User.create!(email: 'j.starling@norfolk.gov.uk', password: 'apprentice', admin: true)
   User.create!(email: 'Melinda.fargo@norfolk.gov.uk', password: 'apprentice', admin: true)

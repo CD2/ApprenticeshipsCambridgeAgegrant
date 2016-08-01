@@ -9,7 +9,7 @@ task seed_pages: :environment do
 
   Page.create!(
     name: 'Do I qualify?',
-    body: '<p>To qualify for this funding, your business must have had a 16 to 24 year old who started an Apprenticeship Framework on or after the 1 August 2016. The apprentice has to be employed in a branch of the business with a postcode in Peterborough or Cambridgeshire and the total number of employees in the business (including any subsidiary or parent companies) must be less than 250.</p>',
+    body: '<p>To qualify for this funding, your business must have had a 16 to 24 year old who started an Apprenticeship Framework on or after the 1 August 2016. The apprentice has to be employed in a branch of the business with a postcode in Cambridgeshire or Peterborough and the total number of employees in the business (including any subsidiary or parent companies) must be less than 250.</p>',
     order: 1,
     cambridge: true,
     peterborough: true,
@@ -115,8 +115,8 @@ task seed_pages: :environment do
       norfolk: true,
   )
   Page.create!(
-      name: 'My company is based outside Peterborough and Cambridgeshire. What should I do?',
-      body: '<p>If you do not employ an apprentice in a branch or premises within Peterborough or Cambridgeshire, then you are unable to claim a grant through our system.  You may however be eligible for the national AGE grant and information about this can be found <a href="https://www.gov.uk/government/collections/apprenticeship-grant-for-employers-of-16-to-24-year-olds">here</a>. Employers in Cambridgeshire or Peterborough can apply to the local scheme there through this link.</p>',
+      name: 'My company is based outside Cambridgeshire and Peterborough. What should I do?',
+      body: '<p>If you do not employ an apprentice in a branch or premises within Cambridgeshire or Peterborough, then you are unable to claim a grant through our system.  You may however be eligible for the national AGE grant and information about this can be found <a href="https://www.gov.uk/government/collections/apprenticeship-grant-for-employers-of-16-to-24-year-olds">here</a>. Employers in Cambridgeshire or Peterborough can apply to the local scheme there through this link.</p>',
       order: 9,
       cambridge: true,
       peterborough: true,
