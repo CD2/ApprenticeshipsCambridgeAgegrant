@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   has_one :grant_review, through: :grant_detail
 
 
-  def admin_users
+  def self.admin_users
     where(admin: true)
   end
 
