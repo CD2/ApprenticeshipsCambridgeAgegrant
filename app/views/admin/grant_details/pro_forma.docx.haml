@@ -7,37 +7,37 @@
 %table
   %tr
     %td Employer name
-    %td
+    %td= @grant_detail.user.fullname
   %tr
     %td Employer address
-    %td
+    %td= "#{@grant_detail.company_name}, #{@grant_detail.address_line_one}, #{@grant_detail.address_line_two}, #{@grant_detail.address_line_three}, #{@grant_detail.town_name}, #{@grant_detail.county}, #{@grant_detail.postcode}"
   %tr
     %td Contact name
-    %td
+    %td= @grant_detail.user.fullname
   %tr
     %td Contact phone number
-    %td
+    %td= @grant_detail.work_number
   %tr
     %td Contact email address
-    %td
+    %td= @grant_detail.user.email
   %tr
     %td Remittance email address (if different from above)
     %td
   %tr
     %td Apprentice name
-    %td
+    %td= @grant_detail.learner_name
   %tr
     %td Amount due
     %td{style: 'height: 100px'} £
   %tr
     %td Bank account name
-    %td
+    %td= @grant_detail.bank_name
   %tr
     %td Sort code
-    %td
+    %td= @grant_detail.sort_code
   %tr
     %td Account number
-    %td
+    %td= @grant_detail.account_number
   %tr
     %td Payment due date
     %td

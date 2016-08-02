@@ -24,6 +24,13 @@ class Admin::GrantDetailsController < AdminController
     send_file file.file, filename: filename
   end
 
+  def download_pro_forma_invoice
+    respond_to do |format|
+      format.html { redirect_to [:admin, @grant_detail] }
+      format.docx { render docx: 'pro_forma', filename: 'pro_forma.docx' }
+    end
+  end
+
 
 private
 

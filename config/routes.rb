@@ -31,6 +31,7 @@ Rails.application.routes.draw do
     resources :users, except: [:show]
     resources :grant_details, only: [:index, :show, :destroy] do
       get 'download-evidence/:gid', action: :download_evidence, as: :download_evidence, on: :member
+      get 'download-pro-forma', action: :download_pro_forma_invoice, on: :member
     end
   end
 

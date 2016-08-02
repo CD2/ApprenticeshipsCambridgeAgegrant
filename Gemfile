@@ -20,6 +20,8 @@ gem 'friendly_id'
 gem 'rails_12factor'
 gem 'faker'
 
+gem 'htmltoword'
+
 
 group :development, :test do
   gem 'byebug', platform: :mri
