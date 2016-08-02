@@ -3,14 +3,14 @@
     %td APPRENTICESHIP GRANT FOR EMPLOYERS
   %tr
     %td PAYMENT REQUEST
-
+%hr
 %table
   %tr
     %td Employer name
     %td= @grant_detail.user.fullname
   %tr
     %td Employer address
-    %td= "#{@grant_detail.company_name}, #{@grant_detail.address_line_one}, #{@grant_detail.address_line_two}, #{@grant_detail.address_line_three}, #{@grant_detail.town_name}, #{@grant_detail.county}, #{@grant_detail.postcode}"
+    %td= @grant_detail.full_address
   %tr
     %td Contact name
     %td= @grant_detail.user.fullname

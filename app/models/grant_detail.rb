@@ -18,6 +18,10 @@ class GrantDetail < ApplicationRecord
 
   belongs_to :training_provider
 
+  def full_address
+   [self.company_name, self.address_line_one, self.address_line_two, self.address_line_three, self.town_name, self.county, self.postcode].reject(&:blank?).join(',')
+  end
+
   def self.titles
     ["Mr", "Mrs", "Miss", "Ms", "Dr", "Prof", "Sir", "Dame", "Lord", "Lady"]
   end
