@@ -18,7 +18,7 @@
       .panel.current_panel
         %p Thank you. Please browse to the review document signed by the learner, training provider and employer on your system and click upload
 
-        %p Please check this box to confirm you have the learners consent to share this review
+
 
         - unless current_user.grant_details.any?
           %p You haven't submitted an application yet.
@@ -46,14 +46,16 @@
               .actions
                 = f.submit 'Delete Selected'
             - else
-              - unless f.object.documents.any?
-                .field
-                  = f.label :learners_consent, 'I have the learners concent.'
-                  = f.check_box :learners_consent
+
               .field
                 = f.label :new_files
                 = f.file_field :new_files, multiple: true
+              - unless f.object.documents.any?
+                .field
+                  = f.label :learners_consent, 'Please check this box to confirm you have the learners consent to share this review'
+                  = f.check_box :learners_consent
               .actions
                 = f.submit 'Upload'
                 - if f.object.documents.any?
                   = f.submit 'Delete Selected'
+          %hr

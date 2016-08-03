@@ -6,7 +6,7 @@
   - if @grant_detail.user && @grant_detail.user.errors.any?
     - @grant_detail.user.errors.full_messages.each do |m|
       %p#MemberLoginForm_LoginForm_error.message.bad
-        = m
+        = raw m
   .panel.current_panel
     %h3 Contact Details
     .field{data: {required: true, summary: 'Title'}}
@@ -188,10 +188,7 @@
         = f.label :password_confirmation, 'Retype Password'
         = f.password_field :password_confirmation
         = errors_for @grant_detail, :password_confirmation
-    
-      .field
-        = label_tag 'account_exists', 'I\'ve already applied once, and have an account.'
-        = check_box_tag 'account_exists'
+
 
       .actions
         = link_to '< Back', 'javascript: void 0;', data: {prev_panel: true}
