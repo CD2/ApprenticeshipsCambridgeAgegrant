@@ -1,43 +1,47 @@
 class GrantReviewsController < ApplicationController
 
   before_action :logged_in
-  before_action :not_uploaded
-  before_action :set_grant_detail
 
-
-  def new
-    @grant_review = @grant_detail.build_grant_review if @grant_detail
+  def edit
   end
 
-  def create
-    @grant_review = @grant_detail.build_grant_review grant_review_params
-    if @grant_review.save
-      params[:grant_review][:files].each do |file|
-        @grant_review.documents.create(document: file)
-      end
-      redirect_to complete_application_path
-    else
-      render :new
+  def update
+    @grant_detail = current_user.grant_details.find(params[:grant_review][:grant_detail_id])
+
+    if params[:grant_review][:learners_consent] == '0'
+      redirect_to [:edit, :grant_review]
+      flash[:error] = 'Please confirm you have to learners consent.'
+      return
     end
 
+    current_file_count = @grant_detail.grant_review.documents.count
+    if params[:grant_review][:new_files]
+      new_upload_count = params[:grant_review][:new_files].count
+    end
+    if params[:grant_review][:documents_attributes]
+      amount_to_delete = params[:grant_review][:documents_attributes].to_unsafe_h.select{|_, d| d[:_destroy] == '1'}.size
+    end
+    total_files_count = current_file_count + (new_upload_count || 0) - (amount_to_delete || 0)
+
+    if total_files_count > 5
+      flash[:error] = 'Sorry, you can only have 5 files per review.'
+    elsif @grant_detail.grant_review.update grant_review_params
+      redirect_to [:edit, :grant_review]
+      return
+    end
+    render :edit
   end
 
   private
 
-    def set_grant_detail
-      @grant_detail = current_user.grant_detail
-    end
 
     # Never trust parameters from the scary einternet, only allow the white list through.
     def grant_review_params
-      params.require(:grant_review).permit(files: [])
+      params.require(:grant_review).permit(:learners_consent, new_files: [], documents_attributes: [:id, :_destroy])
     end
 
     def logged_in
       redirect_to login_path if !signed_in?
     end
 
-    def not_uploaded
-      redirect_to complete_application_path if current_user.grant_detail && current_user.grant_detail.grant_review.present?
-    end
 end

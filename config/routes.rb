@@ -18,8 +18,10 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy', as: :logout
 
-  get '/i-have-already-applied-for-a-grant-and-need-to-upload-evidence-to-claim', to: 'grant_reviews#new', as: :new_grant_review
-  post '/i-have-already-applied-for-a-grant-and-need-to-upload-evidence-to-claim', to: 'grant_reviews#create', as: :grant_reviews
+
+  get '/i-have-already-applied-for-a-grant-and-need-to-upload-evidence-to-claim', to: 'grant_reviews#edit', as: :edit_grant_review
+  patch '/i-have-already-applied-for-a-grant-and-need-to-upload-evidence-to-claim', to: 'grant_reviews#update', as: :grant_review
+
 
   namespace :admin do
     root :to => redirect('/admin/grant_details')
@@ -27,7 +29,9 @@ Rails.application.routes.draw do
     post '/login', to: 'sessions#create'
     get '/logout', to: 'sessions#destroy', as: :logout
 
-    resources :training_providers, except: [:show]
+    resources :training_providers, except: [:show] do
+      resources :grant_details, only: :index
+    end
     resources :users, except: [:show]
     resources :grant_details, only: [:index, :show, :destroy] do
       get 'download-evidence/:gid', action: :download_evidence, as: :download_evidence, on: :member

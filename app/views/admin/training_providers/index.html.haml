@@ -9,12 +9,16 @@
       %tr
         %td Name
         %td Email
+        %td Applications
         %td{colspan: 2}
     %tbody
       - @training_providers.each do |training_provider|
         %tr
           %td= training_provider.name
           %td= training_provider.email
+          %td
+            - if training_provider.grant_details.any?
+              = link_to "Applicants (#{training_provider.grant_details.count})", [:admin, training_provider, :grant_details]
           %td= link_to 'Edit', edit_admin_training_provider_path(training_provider)
           %td= link_to 'Delete', [:admin, training_provider], :method => :delete, :data => { :confirm => 'Are you sure?' }
 

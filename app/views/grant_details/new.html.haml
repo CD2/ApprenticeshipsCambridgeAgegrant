@@ -7,15 +7,30 @@
 
     %h2
       %strong 1. Please complete the following details.
+
 .searchform    
-  %ul.searchform__steps
-    %li.searchform__step.searchform__step--current 1. Your details  
-    %li.searchform__step  2. Complete learner details
-    %li.searchform__step  3. Select training providers
-    %li.searchform__step  4. Signature
-    %li.searchform__step  5. Password
-    %li.searchform__step  6. Your Result
-  
   .typography
-    = render 'form'
+    - if signed_in? && current_user.grant_details.any?
+      %p
+        Welcome
+        = current_user.fullname
+        \.
+        %strong Not you?
+        = link_to 'Sign out', logout_path
+  - if signed_in? && current_user.grant_details.count >= 5
+    %p You have submitted 5
+  - else
+    %ul.searchform__steps
+      %li.searchform__step.searchform__step--current 1. Your details  
+      %li.searchform__step  2. Complete learner details
+      %li.searchform__step  3. Select training providers
+      %li.searchform__step  4. Signature
+      - if signed_in?
+        %li.searchform__step  5. Your Result
+      - else
+        %li.searchform__step  5. Password
+        %li.searchform__step  6. Your Result
+    
+    .typography
+      = render 'form'
 

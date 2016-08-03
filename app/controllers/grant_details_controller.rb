@@ -1,15 +1,24 @@
 class GrantDetailsController < ApplicationController
 
   def new
-    @grant_detail = GrantDetail.new
+    if signed_in? && current_user.grant_details.any?
+      @grant_detail = current_user.grant_details.first.dup
+      @grant_detail.assign_attributes learner_name: nil, learner_dob: nil, apprentice_start_date: nil, training_provider_id: nil, signature: nil
+    end
+    @grant_detail ||= GrantDetail.new
   end
 
   def create
-    @user = User.new(user_params)
-    @grant_detail = @user.build_grant_detail(grant_detail_params)
-    if @grant_detail.valid? && @user.valid?
+    if signed_in?
+      user = current_user
+      user.assign_attributes(user_params.except :password, :password_confirmation)
+    else
+      user = User.new(user_params)
+    end
+    @grant_detail = user.grant_details.build(grant_detail_params)
+    if @grant_detail.valid? && user.valid?
       @grant_detail.save!
-      @user.save!
+      user.save!
       redirect_to application_pending_path
     else
       render :new

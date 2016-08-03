@@ -8,7 +8,7 @@ class GrantDetail < ApplicationRecord
 
   validates :share_info_checkbox, :terms_conditions, :acceptance => true
 
-  has_one :grant_review
+  has_one :grant_review, dependent: :destroy
   belongs_to :user
 
   after_create :training_provider_not_listed_email
@@ -54,7 +54,7 @@ class GrantDetail < ApplicationRecord
   end
 
   def review_submitted
-    grant_review.present?
+    grant_review.documents.any?
   end
 
   require 'csv'
@@ -77,6 +77,18 @@ class GrantDetail < ApplicationRecord
 
   def training_provider= val
     super TrainingProvider.find(val) unless val.to_i == -1
+  end
+
+  def email
+    if self.user.present?
+      user.email
+    else
+      @email
+    end
+  end
+
+  def grant_review
+    super || create_grant_review
   end
 
   private

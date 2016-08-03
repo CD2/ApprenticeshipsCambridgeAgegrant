@@ -1,0 +1,59 @@
+= provide :breadcrumbs, 'Upload A Review'
+#pre_content
+  .typography
+    %h1 UPLOAD REVIEW
+    %p
+      Please complete the following steps below to register and complete an application for funding.
+      %br
+      For answers to any questions you may have, please see links to the left of the screen.
+    %h2
+      %strong 1. Please complete the following details.
+
+.searchform    
+  .typography
+    - if signed_in_as_admin?
+      %p Admins cannot upload grant reviews
+      = link_to 'Logout', logout_path
+    - else
+      .panel.current_panel
+        %p Thank you. Please browse to the review document signed by the learner, training provider and employer on your system and click upload
+
+        %p Please check this box to confirm you have the learners consent to share this review
+
+        - unless current_user.grant_details.any?
+          %p You haven't submitted an application yet.
+          = link_to 'Apply for an AGE grant', grant_details_path
+
+        - if flash.any?
+          - flash.each do |key, m|
+            %p#MemberLoginForm_LoginForm_error.message.bad
+              = m
+
+      - current_user.grant_details.each do |grant_detail|
+        = field_set_tag "Evidence for #{grant_detail.learner_name}" do
+          = form_for grant_detail.grant_review do |f|
+            = f.hidden_field :grant_detail_id
+            
+            = f.fields_for :documents do |doc_f|
+              - if doc_f.object.document.present?
+                = doc_f.hidden_field :id
+                = doc_f.object.document.file.filename
+                .field
+                  = doc_f.label :_destroy, 'Remove Evidence'
+                  = doc_f.check_box :_destroy
+            - if f.object.documents.count >= 5
+              %p You can only have upto 5 documents for you review.
+              .actions
+                = f.submit 'Delete Selected'
+            - else
+              - unless f.object.documents.any?
+                .field
+                  = f.label :learners_consent, 'I have the learners concent.'
+                  = f.check_box :learners_consent
+              .field
+                = f.label :new_files
+                = f.file_field :new_files, multiple: true
+              .actions
+                = f.submit 'Upload'
+                - if f.object.documents.any?
+                  = f.submit 'Delete Selected'

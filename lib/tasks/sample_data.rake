@@ -1,5 +1,7 @@
 task sample_data: :environment do
 
+  Rake::Task['seed_norfolk_training_providers'].invoke
+
   Faker::Config.locale = 'en'
 
   30.times do |i|

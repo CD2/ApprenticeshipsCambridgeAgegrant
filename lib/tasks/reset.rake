@@ -10,7 +10,7 @@ task seed: :environment do
   
   Rake::Task['db:migrate'].invoke
   Rake::Task['seed_pages'].invoke
-  #Rake::Task['sample_data'].invoke
+  # Rake::Task['sample_data'].invoke
 
 
   User.create!(name: 'CD2', email: 'web@cd2solutions.co.uk', password: 'apprentice', admin: true)

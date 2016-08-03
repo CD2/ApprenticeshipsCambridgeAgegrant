@@ -2,7 +2,10 @@
   = link_to 'Export CSV', url_for(format: 'csv')
   
 .typography
-  %h1 Grant Detail Applicants
+  - if @training_provider_name
+    %h1= "#{@training_provider_name} Applicants"
+  - else
+    %h1= "All Grant Detail Applicants"
 
   %table.index_table
     %thead
@@ -15,11 +18,11 @@
 
         %td{colspan: 1}
     %tbody
-      - GrantDetail.includes(:user).all.each do |grant_detail|
+      - @grant_details.each do |grant_detail|
         %tr
           %td= grant_detail.invoice_number
-          %td= grant_detail.user.forename
-          %td= grant_detail.user.surname
+          %td= grant_detail.forename
+          %td= grant_detail.surname
           %td= grant_detail.user.email
           %td= "#{time_ago_in_words(grant_detail.created_at.in_time_zone("London"))} ago"
           %td= link_to 'View Details', [:admin, grant_detail]

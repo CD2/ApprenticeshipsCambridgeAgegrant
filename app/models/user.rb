@@ -7,9 +7,8 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 6 }, allow_nil: true
   has_secure_password
 
-  has_one :grant_detail
-  has_one :grant_review, through: :grant_detail
-
+  has_many :grant_details
+  has_many :grant_reviews, through: :grant_details
 
   def self.admin_users
     where(admin: true)
@@ -81,11 +80,10 @@ class User < ActiveRecord::Base
     self.activation_digest = User.digest(activation_token)
   end
 
-  delegate :forename, to: :grant_detail
-  delegate :surname, to: :grant_detail
-
   def fullname
-    "#{forename} #{surname}"
+    if grant_details.any?
+      "#{grant_details.first.forename} #{grant_details.first.surname}"
+    end
   end
 
 

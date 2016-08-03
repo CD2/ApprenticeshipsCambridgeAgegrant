@@ -17,10 +17,10 @@
         %td= @grant_detail.title
       %tr
         %th Forename
-        %td= @grant_detail.user.forename
+        %td= @grant_detail.forename
       %tr
         %th Surname
-        %td= @grant_detail.user.surname
+        %td= @grant_detail.surname
       %tr
         %th Email
         %td= link_to @grant_detail.user.email, "mailto: #{@grant_detail.user.email}"

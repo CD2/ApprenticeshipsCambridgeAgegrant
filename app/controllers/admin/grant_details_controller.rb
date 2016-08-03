@@ -3,7 +3,12 @@ class Admin::GrantDetailsController < AdminController
   before_action :set_grant_detail, except: :index
 
   def index
-
+    if params[:training_provider_id]
+      @training_provider_name = TrainingProvider.find(params[:training_provider_id]).name
+      @grant_details = TrainingProvider.find(params[:training_provider_id]).grant_details
+    else
+      @grant_details = GrantDetail.includes(:user).all
+    end
     respond_to do |format|
       format.html
       format.csv { send_data GrantDetail.to_csv, filename: "grant-details-#{Date.today}.csv" }
