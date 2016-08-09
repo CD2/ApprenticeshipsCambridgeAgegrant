@@ -33,7 +33,7 @@ module ApplicationHelper
 
   def site_url
     unless norfolk_site?
-      'https://apprenticeship-norfolk.herokuapp.com'
+      'https://agegrant.apprenticeshipsnorfolk.org'
     else
       'https://apprenticeshipscambridgeshire.org'
     end
