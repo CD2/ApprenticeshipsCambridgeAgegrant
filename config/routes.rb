@@ -32,8 +32,10 @@ Rails.application.routes.draw do
     resources :training_providers, except: [:show] do
       resources :grant_details, only: :index
     end
+    get '/search', to: 'grant_details#search'
     resources :users, except: [:show]
     resources :grant_details, only: [:index, :show, :destroy] do
+      member { get 'send_no_training' }
       get 'download-evidence/:gid', action: :download_evidence, as: :download_evidence, on: :member
       get 'download-pro-forma', action: :download_pro_forma_invoice, on: :member
     end

@@ -5,9 +5,10 @@ class AdminMailer < ApplicationMailer
   #
   #   en.admin_mailer.no_training_provider.subject
   #
-  def no_training_provider grant_detail
+
+  def no_training_provider grant_detail, send_to
     @grant_detail = grant_detail
-    mail to: "to@example.org"
+    mail to: send_to
   end
 
   def send_reminder grant_detail, url

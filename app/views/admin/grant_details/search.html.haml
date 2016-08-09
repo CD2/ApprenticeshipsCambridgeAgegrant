@@ -1,0 +1,31 @@
+.typography
+  %h1 Search
+  = search_form_for @q, url: admin_search_path do |f|
+    = f.label :company_name_cont
+    = f.search_field :company_name_cont
+
+    = f.label :surname_cont
+    = f.search_field :surname_cont
+
+    = f.label :learner_name_cont
+    = f.search_field :learner_name_cont
+    = f.submit
+  %table.index_table
+    %thead
+      %tr
+        %td Ref
+        %td Forename
+        %td Surname
+        %td Email
+        %td Applied
+
+        %td{colspan: 1}
+    %tbody
+      - @grant_details.each do |grant_detail|
+        %tr
+          %td= grant_detail.invoice_number
+          %td= grant_detail.forename
+          %td= grant_detail.surname
+          %td= grant_detail.user.email
+          %td= "#{time_ago_in_words(grant_detail.created_at.in_time_zone("London"))} ago"
+          %td= link_to 'View Details', [:admin, grant_detail]

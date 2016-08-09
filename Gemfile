@@ -21,6 +21,7 @@ gem 'rails_12factor'
 gem 'faker'
 
 gem 'htmltoword'
+gem 'ransack', github: 'activerecord-hackery/ransack'
 
 
 group :development, :test do

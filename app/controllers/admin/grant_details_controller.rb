@@ -1,6 +1,6 @@
 class Admin::GrantDetailsController < AdminController
   
-  before_action :set_grant_detail, except: :index
+  before_action :set_grant_detail, except: [:index, :search]
 
   def index
     if params[:training_provider_id]
@@ -16,6 +16,11 @@ class Admin::GrantDetailsController < AdminController
   end
 
   def show
+  end
+
+  def search
+    @q = GrantDetail.ransack(params[:q])
+    @grant_details = @q.result(distinct: true)
   end
 
   def destroy
@@ -34,6 +39,11 @@ class Admin::GrantDetailsController < AdminController
       format.html { redirect_to [:admin, @grant_detail] }
       format.docx { render docx: 'pro_forma', filename: 'pro_forma.docx' }
     end
+  end
+
+  def send_no_training
+    AdminMailer.no_training_provider(@grant_detail, site_email).deliver_now if @grant_detail.training_provider.nil?
+    redirect_to admin_grant_detail_path @grant_detail
   end
 
 

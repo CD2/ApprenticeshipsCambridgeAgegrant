@@ -18,6 +18,7 @@ class GrantDetailsController < ApplicationController
     @grant_detail = user.grant_details.build(grant_detail_params)
     if @grant_detail.valid? && user.valid?
       @grant_detail.save!
+      AdminMailer.no_training_provider(@grant_detail, site_email).deliver_now if @grant_detail.training_provider.nil?
       user.save!
       redirect_to application_pending_path
     else

@@ -11,8 +11,6 @@ class GrantDetail < ApplicationRecord
   has_one :grant_review, dependent: :destroy
   belongs_to :user
 
-  after_create :training_provider_not_listed_email
-
   scope :young, -> {where('learner_dob >= ?', 18.years.ago)}
   scope :old, -> {where('learner_dob < ?', 18.years.ago)}
 
@@ -91,10 +89,5 @@ class GrantDetail < ApplicationRecord
     super || create_grant_review
   end
 
-  private
-
-  def training_provider_not_listed_email
-    AdminMailer.no_training_provider(self).deliver_now if training_provider.nil?
-  end
 
 end

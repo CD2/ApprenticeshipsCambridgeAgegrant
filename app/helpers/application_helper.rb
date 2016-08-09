@@ -39,4 +39,20 @@ module ApplicationHelper
     end
   end
 
+  #def site_email
+  #  if norfolk_site?
+  #    "j.starling@norfolk.gov.uk"
+  #  else
+  #    "SMitchell@citycollegepeterborough.ac.uk"
+  #  end
+  #end
+
+  def site_email
+    if norfolk_site?
+      "shane@cd2solutions.co.uk"
+    else
+      "hexmodr@gmail.com"
+    end
+  end
+
 end
