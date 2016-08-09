@@ -29,7 +29,7 @@ module ApplicationHelper
 
   def norfolk_site?
     ['lvh.me', 'apprenticeship-norfolk.herokuapp.com', 'agegrant.apprenticeshipsnorfolk.org'].include? request.host
-  end
+  end#
 
   def site_url
     unless norfolk_site?
@@ -39,20 +39,20 @@ module ApplicationHelper
     end
   end
 
-  #def site_email
-  #  if norfolk_site?
-  #    "j.starling@norfolk.gov.uk"
-  #  else
-  #    "SMitchell@citycollegepeterborough.ac.uk"
-  #  end
-  #end
-
   def site_email
     if norfolk_site?
-      "shane@cd2solutions.co.uk"
+      "j.starling@norfolk.gov.uk"
     else
-      "hexmodr@gmail.com"
+      "SMitchell@citycollegepeterborough.ac.uk"
     end
   end
+
+  #def site_email
+  #  if norfolk_site?
+  #    "shane@cd2solutions.co.uk"
+  #  else
+  #    "hexmodr@gmail.com"
+  #  end
+  #end
 
 end
