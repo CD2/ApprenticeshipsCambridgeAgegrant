@@ -47,7 +47,7 @@ class GrantDetailStuffTest < ActionDispatch::IntegrationTest
 
   test 'emails if no training provider' do
 
-   assert_difference 'ActionMailer::Base.deliveries.count', 1 do
+   assert_difference 'ActionMailer::Base.deliveries.count', 2 do
 
       gd_params = Hash[*JSON.load(grant_details(:grant_detail_50_years_old).to_json).map{ |k, v| [k.to_sym, v] }.flatten]
       user_params = Hash[*JSON.load(users(:non_admin).to_json).map{ |k, v| [k.to_sym, v] }.flatten]

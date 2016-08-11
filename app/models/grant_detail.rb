@@ -16,6 +16,8 @@ class GrantDetail < ApplicationRecord
 
   belongs_to :training_provider
 
+  after_create :send_confirmation_email
+
   def full_address
    [self.company_name, self.address_line_one, self.address_line_two, self.address_line_three, self.town_name, self.county, self.postcode].reject(&:blank?).join(',')
   end
@@ -88,6 +90,12 @@ class GrantDetail < ApplicationRecord
   def grant_review
     super || create_grant_review
   end
+
+  private
+
+    def send_confirmation_email
+      UserMailer.confirmation_email(self).deliver_now
+    end
 
 
 end
