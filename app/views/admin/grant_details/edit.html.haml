@@ -1,0 +1,13 @@
+.typography.admin_form
+  %h1= "Edit grant details #{@grant_detail.invoice_number}"
+
+  = form_for [:admin, @grant_detail] do |f|
+
+    .field
+      = f.label :apprentice_start_date, 'What date did the leaner start their Apprenticeship?'
+      = f.text_field :apprentice_start_date, class: 'date_field start_date'
+    .field
+      = f.label :training_provider
+      = f.select :training_provider, [['My training provider is not listed', -1]] + TrainingProvider.pluck(:name, :id), selected: f.object.training_provider&.id
+    .actions
+      = f.submit

@@ -25,4 +25,6 @@
           %td= grant_detail.surname
           %td= grant_detail.user.email
           %td= "#{time_ago_in_words(grant_detail.created_at.in_time_zone("London"))} ago"
-          %td= link_to 'View Details', [:admin, grant_detail]
+          %td
+            = link_to 'View Details', [:admin, grant_detail]
+            = link_to 'Edit', [:edit, :admin, grant_detail]

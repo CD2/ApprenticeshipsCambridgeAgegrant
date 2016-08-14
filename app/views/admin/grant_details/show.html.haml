@@ -5,6 +5,7 @@
       = link_to "Download `#{doc.document.file.filename}`", download_evidence_admin_grant_detail_path(@grant_detail, doc)
   - unless norfolk_site?
     = link_to "Download Pro Forma Invoice", download_pro_forma_admin_grant_detail_path(@grant_detail, format: 'docx')
+  = link_to 'Edit', [:edit, :admin, @grant_detail]
   = link_to 'Delete', [:admin, @grant_detail], method: :delete, data: {confirm: 'Are you sure you want to delete this record?'}, class: 'delete'
   = link_to 'Resend no training Provider email', send_no_training_admin_grant_detail_path(@grant_detail) if @grant_detail.training_provider.nil? && current_user.id == 1
 

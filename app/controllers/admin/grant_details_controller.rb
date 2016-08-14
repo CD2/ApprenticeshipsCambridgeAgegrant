@@ -46,10 +46,26 @@ class Admin::GrantDetailsController < AdminController
     redirect_to admin_grant_detail_path @grant_detail
   end
 
+  def edit
+  end
+
+  def update
+    if @grant_detail.update(grant_detail_params)
+      redirect_to admin_grant_detail_path(@grant_detail)
+    else
+      render :edit
+    end
+  end
+
 
 private
 
   def set_grant_detail
     @grant_detail = GrantDetail.find(params[:id])
   end
+
+  def grant_detail_params
+    params.require(:grant_detail).permit(:forename , :surname, :email, :employment_sector, :work_number, :mobile_number, :company_name, :address_line_one, :address_line_two, :learner_name, :learner_dob, :apprentice_start_date, :share_info_checkbox, :training_provider, :bank_name, :account_number, :sort_code, :signature, :title, :terms_conditions, :address_line_three, :town_name, :county, :postcode)
+  end
+
 end
