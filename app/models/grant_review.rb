@@ -10,6 +10,8 @@ class GrantReview < ApplicationRecord
   has_many :documents, autosave: true, dependent: :destroy
   accepts_nested_attributes_for :documents, allow_destroy: true, reject_if: :all_blank
 
+  delegate :apprentice_start_date, :training_provider,  :apprentice_start_date=, :training_provider=, to: :grant_detail
+
   def new_files= files
     (files || []).each do |file|
       next unless file

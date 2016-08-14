@@ -29,6 +29,17 @@ class GrantDetailsController < ApplicationController
   def show
   end
 
+  def update
+    @grant_detail = current_user.grant_details.find(params['grant_detail']['id'])
+    if @grant_detail.update(grant_detail_params)
+      flash[:success] = 'Grant Detail updated'
+      redirect_to edit_grant_review_url
+    else
+      @errors = @grant_detail.errors
+      render 'grant_reviews/edit'
+    end
+  end
+
   private
 
     def grant_detail_params

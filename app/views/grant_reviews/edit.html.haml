@@ -30,8 +30,26 @@
               = m
 
       - current_user.grant_details.each do |grant_detail|
+        = field_set_tag "Edit #{grant_detail.learner_name}" do
+          = form_for grant_detail, url: grant_details_path do |f|
+            = f.hidden_field :id
+
+            - if @errors
+              - @errors.full_messages.each do |m|
+                %p#MemberLoginForm_LoginForm_error.message.bad
+                  = m
+            .field{data: {required: true, summary: 'Start Date'}}
+              = f.label :apprentice_start_date, 'What date did the leaner start their Apprenticeship?'
+              = f.text_field :apprentice_start_date, class: 'date_field start_date'
+            .field
+              = f.label :training_provider
+              = f.select :training_provider, [['My training provider is not listed', -1]] + TrainingProvider.pluck(:name, :id), selected: f.object.training_provider&.id, prompt: '-- Select --'
+            .actions
+              = f.submit
+
         = field_set_tag "Evidence for #{grant_detail.learner_name}" do
           = form_for grant_detail.grant_review do |f|
+
             = f.hidden_field :grant_detail_id
             
             = f.fields_for :documents do |doc_f|
