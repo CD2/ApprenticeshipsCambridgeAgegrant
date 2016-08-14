@@ -34,5 +34,9 @@
     // p/c 120
     for 19 to 24 year olds.
   %p This scheme runs initially until 31 December 2016.
+  - unless norfolk_site?
+    %p
+      = link_to 'AGE factsheet for employers', 'http://localhost:3000/AGE%20factsheet%20for%20employers.pdf'
   .actions
     = link_to 'Apply Now', '/apply'
+    = link_to 'Log in', login_path
