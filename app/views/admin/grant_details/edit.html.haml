@@ -8,6 +8,6 @@
       = f.text_field :apprentice_start_date, class: 'date_field start_date'
     .field
       = f.label :training_provider
-      = f.select :training_provider, [['My training provider is not listed', -1]] + TrainingProvider.pluck(:name, :id), selected: f.object.training_provider&.id
+      = f.select :training_provider, [['My training provider is not listed', -1]] + TrainingProvider.pluck(:name, :id), selected: f.object.training_provider(:id)
     .actions
       = f.submit
