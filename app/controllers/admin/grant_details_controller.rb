@@ -57,6 +57,13 @@ class Admin::GrantDetailsController < AdminController
     end
   end
 
+  def approve
+    unless @grant_detail.approved?
+      @grant_detail.approve!
+    end
+    redirect_to [:admin, @grant_detail]
+  end
+
 
 private
 

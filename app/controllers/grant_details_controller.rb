@@ -20,6 +20,7 @@ class GrantDetailsController < ApplicationController
       @grant_detail.save!
       AdminMailer.no_training_provider(@grant_detail, site_email).deliver_now if @grant_detail.training_provider.nil?
       user.save!
+      log_in user unless signed_in?
       redirect_to application_pending_path
     else
       render :new

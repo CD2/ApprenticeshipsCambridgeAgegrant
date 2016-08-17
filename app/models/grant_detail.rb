@@ -91,10 +91,19 @@ class GrantDetail < ApplicationRecord
     super || create_grant_review
   end
 
+  def approve!
+    update(approved: true)
+    send_approval_email
+  end
+
   private
 
     def send_confirmation_email
       UserMailer.confirmation_email(self).deliver_now
+    end
+
+    def send_approval_email
+      AdminMailer.approve_application(self).deliver_now
     end
 
 

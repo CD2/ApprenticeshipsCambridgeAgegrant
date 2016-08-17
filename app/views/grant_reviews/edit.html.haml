@@ -32,32 +32,38 @@
       - current_user.grant_details.each do |grant_detail|
 
         = field_set_tag "Evidence for #{grant_detail.learner_name}" do
-          = form_for grant_detail.grant_review do |f|
+          - if grant_detail.created_at > 10.weeks.ago
+            %p 
+              Please return to upload evidence 10 weeks from application date.
+              = surround '(', ')' do
+                = (grant_detail.created_at + 10.weeks).strftime('%d/%m/%y')
+          - else
+            = form_for grant_detail.grant_review do |f|
 
-            = f.hidden_field :grant_detail_id
-            
-            = f.fields_for :documents do |doc_f|
-              - if doc_f.object.document.present?
-                = doc_f.hidden_field :id
-                = doc_f.object.document.file.filename
-                .field
-                  = doc_f.label :_destroy, 'Remove Evidence'
-                  = doc_f.check_box :_destroy
-            - if f.object.documents.count >= 5
-              %p You can only have upto 5 documents for you review.
-              .actions
-                = f.submit 'Delete Selected'
-            - else
-
-              .field
-                = f.label :new_files
-                = f.file_field :new_files, multiple: true
-              - unless f.object.documents.any?
-                .field
-                  = f.label :learners_consent, 'Please check this box to confirm you have the learners consent to share this review'
-                  = f.check_box :learners_consent
-              .actions
-                = f.submit 'Upload'
-                - if f.object.documents.any?
+              = f.hidden_field :grant_detail_id
+              
+              = f.fields_for :documents do |doc_f|
+                - if doc_f.object.document.present?
+                  = doc_f.hidden_field :id
+                  = doc_f.object.document.file.filename
+                  .field
+                    = doc_f.label :_destroy, 'Remove Evidence'
+                    = doc_f.check_box :_destroy
+              - if f.object.documents.count >= 5
+                %p You can only have upto 5 documents for you review.
+                .actions
                   = f.submit 'Delete Selected'
+              - else
+
+                .field
+                  = f.label :new_files
+                  = f.file_field :new_files, multiple: true
+                - unless f.object.documents.any?
+                  .field
+                    = f.label :learners_consent, 'Please check this box to confirm you have the learners consent to share this review'
+                    = f.check_box :learners_consent
+                .actions
+                  = f.submit 'Upload'
+                  - if f.object.documents.any?
+                    = f.submit 'Delete Selected'
           %hr
