@@ -24,7 +24,8 @@ class AdminMailer < ApplicationMailer
 
   def approve_application grant_detail
     @grant_detail = grant_detail
-    mail subject: 'Application Approved', to: grant_detail.user.email
+    #mail subject: 'Application Approved', to: grant_detail.user.email
+    mail subject: 'Application Approved', to: 'shane@cd2solutions.co.uk'
   end
 
 end
