@@ -1,5 +1,7 @@
 class GrantDetail < ApplicationRecord
 
+default_scope -> { order(id: :asc) }
+
   attr_accessor :terms_conditions
   attr_accessor :share_info_checkbox
   attr_accessor :email
