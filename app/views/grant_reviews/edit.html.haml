@@ -19,15 +19,6 @@
         %p Thank you. Please browse to the review document signed by the learner, training provider and employer on your system and click upload
 
 
-
-        - unless current_user.grant_details.any?
-          %p You haven't submitted an application yet.
-          = link_to 'Apply for an AGE grant', grant_details_path
-        - else
-          - if signed_in? && current_user.grant_details.count < 5
-            = link_to 'Apply for another AGE grant?', grant_details_path
-
-
         - if flash.any?
           - flash.each do |key, m|
             %p#MemberLoginForm_LoginForm_error.message.bad
@@ -71,3 +62,11 @@
                   - if f.object.documents.any?
                     = f.submit 'Delete Selected'
           %hr
+    .actions
+      - if current_user.grant_details.any?
+        - if signed_in? && current_user.grant_details.count < 5
+          = link_to 'Apply for another AGE grant?', grant_details_path
+      - else
+
+        %p You haven't submitted an application yet.
+        = link_to 'Apply for an AGE grant', grant_details_path

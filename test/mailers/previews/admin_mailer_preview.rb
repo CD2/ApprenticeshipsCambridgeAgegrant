@@ -17,4 +17,9 @@ class AdminMailerPreview < ActionMailer::Preview
     AdminMailer.no_review_15_weeks(@grant_detail)
   end
 
+  def notify_training_provider
+    @grant_detail = GrantDetail.first
+    AdminMailer.notify_training_provider(@grant_detail)
+  end
+
 end
