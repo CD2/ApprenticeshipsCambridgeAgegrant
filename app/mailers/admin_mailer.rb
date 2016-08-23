@@ -8,18 +8,18 @@ class AdminMailer < ApplicationMailer
 
   def no_training_provider grant_detail, send_to
     @grant_detail = grant_detail
-    mail to: send_to
+    mail subject: 'AGE Grant Application', to: send_to
   end
 
   def send_reminder grant_detail, url
     @grant_detail = grant_detail
     @url = url
-    mail to: grant_detail.user.email
+    mail subject: 'AGE Grant Application', to: grant_detail.user.email
   end
 
   def no_review_15_weeks grant_detail
     @grant_detail = grant_detail
-    mail to: grant_detail.user.email
+    mail subject: 'AGE Grant Review', to: grant_detail.user.email
   end
 
   def approve_application grant_detail
@@ -30,7 +30,7 @@ class AdminMailer < ApplicationMailer
 
   def notify_training_provider grant_detail
     @grant_detail = grant_detail
-    mail to: grant_detail.training_provider.email
+    mail subject: 'AGE Grant Application', to: grant_detail.training_provider.email
   end
 
 end
