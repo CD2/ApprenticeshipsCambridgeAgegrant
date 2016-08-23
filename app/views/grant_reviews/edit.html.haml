@@ -23,6 +23,10 @@
         - unless current_user.grant_details.any?
           %p You haven't submitted an application yet.
           = link_to 'Apply for an AGE grant', grant_details_path
+        - else
+          - if signed_in? && current_user.grant_details.count < 5
+            = link_to 'Apply for another AGE grant?', grant_details_path
+
 
         - if flash.any?
           - flash.each do |key, m|

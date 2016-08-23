@@ -19,6 +19,7 @@ default_scope -> { order(id: :asc) }
   belongs_to :training_provider
 
   after_create :send_confirmation_email
+  after_create :notify_training_provider
 
   def full_address
    [self.company_name, self.address_line_one, self.address_line_two, self.address_line_three, self.town_name, self.county, self.postcode].reject(&:blank?).join(',')
@@ -98,6 +99,12 @@ default_scope -> { order(id: :asc) }
     send_approval_email
   end
 
+  def notify_training_provider
+    if training_provider&.email.present?
+      AdminMailer.notify_training_provider(self).deliver_now
+    end
+  end
+  
   private
 
     def send_confirmation_email
@@ -107,6 +114,7 @@ default_scope -> { order(id: :asc) }
     def send_approval_email
       AdminMailer.approve_application(self).deliver_now
     end
+
 
 
 end

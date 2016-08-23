@@ -28,4 +28,9 @@ class AdminMailer < ApplicationMailer
     #mail subject: 'Application Approved', to: 'shane@cd2solutions.co.uk'
   end
 
+  def notify_training_provider grant_detail
+    @grant_detail = grant_detail
+    mail to: grant_detail.training_provider.email
+  end
+
 end
