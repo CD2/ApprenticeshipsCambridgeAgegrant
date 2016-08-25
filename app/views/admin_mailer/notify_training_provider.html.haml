@@ -1,6 +1,6 @@
 %p This is an automated message from the AGE grant website.
 %p
-  A company has applied for an AGE grant and listed #{@grant_detail.training_provider&.name} as the training provider. Applcation details:
+  A company has applied for an AGE grant and listed #{@grant_detail.training_provider&.name} as the training provider. Application details:
 
 
 %table{style: 'width: 100%; text-align: left'}
@@ -14,5 +14,11 @@
       Contact Name
     %td
       = @grant_detail.user&.fullname
+  %tr
+    %th
+      Learners Name
+    %td
+      = @grant_detail.learner_name
+
 
 %hr
