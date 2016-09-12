@@ -13,7 +13,7 @@ class ActiveSupport::TestCase
 
   def login user
     if intergration_test?
-      post login_path, params: {session: {email: user.email, password: 'pass123'}}
+      post admin_login_path, params: {session: {email: user.email, password: 'pass123'}}
     else
       session[:user_id] = user.id
     end

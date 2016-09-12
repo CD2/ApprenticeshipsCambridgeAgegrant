@@ -35,7 +35,7 @@ $(function(){
     var $panel = $('.current_panel').closest('.panel');
     var errors_found = false;
 
-    $('[data-required]', $panel).find('input[name], select').each(function(){
+    $('[data-required]', $panel).find('input[name], select, textarea').each(function(){
 
       if (this.value=='' || (this.type == 'checkbox' && !$(this).is(':checked'))) {
         $(this).closest('.field').addClass('field_with_errors')
@@ -92,7 +92,8 @@ function generateSummary() {
   $summary_table.empty();
   $('[data-summary]').each(function(){
     var key = $(this).data('summary')
-    var value = $(this).find('input,select').val()
+    var value = $(this).find('input,select,textarea').val()
+    if ($(this).find('input,select,textarea').is('select') && value=='-1') value = "My training provider is not listed"
     $row = $(summary_row_template);
     $('th', $row).html(key)
     $('td', $row).html(value)
@@ -146,4 +147,14 @@ $(function(){
       Cookies.set('cookie_policy_acceptance', 1);
     });
   }
+
+
+  $('[name=trade_supplier_type_select]').on('change', function(){
+    var text = $(this).find('option:selected').text();
+    if (text=='Other') {
+      $(this).closest('.field').next().show().find('input').val('')      
+    } else {
+      $(this).closest('.field').next().hide().find('input').val(text)
+    }
+  });
 });
