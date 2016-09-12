@@ -37,6 +37,7 @@ Rails.application.routes.draw do
     resources :grant_details, only: [:index, :show, :edit, :update, :destroy] do
       member do
         get 'send_no_training'
+        get 'notify_training_provider'
         get 'approve'
       end
       get 'download-evidence/:gid', action: :download_evidence, as: :download_evidence, on: :member

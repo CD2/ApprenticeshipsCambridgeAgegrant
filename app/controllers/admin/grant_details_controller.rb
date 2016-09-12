@@ -46,6 +46,11 @@ class Admin::GrantDetailsController < AdminController
     redirect_to admin_grant_detail_path @grant_detail
   end
 
+  def notify_training_provider
+    AdminMailer.notify_training_provider(@grant_detail).deliver_now
+    redirect_to admin_grant_detail_path @grant_detail
+  end
+
   def edit
   end
 
