@@ -101,10 +101,10 @@
     %p* Mandatory infomation
 
     .actions
-      = f.submit 'Next >'
+      = f.submit 'Next >', class: 'next_button'
 
 
-  .panel
+  .panel.current_panel
     .field{data: {required: true, summary: 'Learner Name'}}
       = f.label :learner_name
       = f.text_field :learner_name
@@ -131,10 +131,10 @@
       = errors_for @grant_detail, :training_provider
 
     .actions
-      = link_to '< Back', 'javascript: void 0;', data: {prev_panel: true}
-      = f.submit 'Next >'
+      = link_to '< Back', 'javascript: void 0;', data: {prev_panel: true}, class: 'back_button'
+      = f.submit 'Next >', class: 'next_button'
 
-  .panel
+  .panel.current_panel
 
     %p In order for us to process your payment, we need to know the details of the bank account you would like us to pay the money into.  Please provide this information below. 
     - if norfolk_site?
@@ -166,16 +166,16 @@
       .field
         = label_tag :trade_supplier_type_select, 'Trade Supplier Type'
         = select_tag :trade_supplier_type_select, options_for_select(['Company', 'Partnership', 'Sole Trader', 'Trust', 'Other']), include_blank: true
-      .field{style: 'display: none;', data: {required: true, summary: 'Trade Supplier Type'}}
-        = f.label :trade_supplier_type, 'Please Specify'
+      .field.trade_supplier_type{data: {required: true, summary: 'Trade Supplier Type'}}
+        = f.label :trade_supplier_type, 'Please Specify (if other)'
         = f.text_field :trade_supplier_type
         = errors_for @grant_detail, :trade_supplier_type
 
     .actions
-      = link_to '< Back', 'javascript: void 0;', data: {prev_panel: true}
-      = f.submit 'Next >'
+      = link_to '< Back', 'javascript: void 0;', data: {prev_panel: true}, class: 'back_button'
+      = f.submit 'Next >', class: 'next_button'
 
-  .panel
+  .panel.current_panel
     %p In order for this grant application to be successful, you are required to electronically sign the following declaration.
     .field{data: {required: true, summary: 'Signature'}}
       = f.label :signature
@@ -187,11 +187,11 @@
       = errors_for @grant_detail, :terms_conditions
 
     .actions
-      = link_to '< Back', 'javascript: void 0;', data: {prev_panel: true}
-      = f.submit 'Next >'
+      = link_to '< Back', 'javascript: void 0;', data: {prev_panel: true}, class: 'back_button'
+      = f.submit 'Next >', class: 'next_button'
 
   - unless signed_in?
-    .panel
+    .panel.current_panel
       %p In order to process your claim, you need to provide evidence after 10 weeks that the learner is still on an Apprenticeship.  To do this, you will need to log back into this system and upload a copy of the first review.  This will be provided for you by the training provider.  Your username will be your email address as provided. 
 
       %p Please create a password using at least one letter, number and upper case letter and enter this below.
@@ -208,10 +208,10 @@
 
 
       .actions
-        = link_to '< Back', 'javascript: void 0;', data: {prev_panel: true}
-        = f.submit 'Next >'
+        = link_to '< Back', 'javascript: void 0;', data: {prev_panel: true}, class: 'back_button'
+        = f.submit 'Next >', class: 'next_button'
 
-  .panel.summary_panel
+  .panel.current_panel.summary_panel
     #button
 
     %p Please review all your details entered below.  Once you are happy everything is correct, please click submit
@@ -219,7 +219,7 @@
 
 
     .actions
-      = link_to '< Back', 'javascript: void 0;', data: {prev_panel: true}
+      = link_to '< Back', 'javascript: void 0;', data: {prev_panel: true}, class: 'back_button'
       = f.submit 'Submit'
     .security_policy_link_plz
       = link_to 'Security Policy', security_path, target: '_blank'

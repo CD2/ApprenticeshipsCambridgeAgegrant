@@ -17,6 +17,11 @@
 
 $(function(){
 
+  $('.next_button, .back_button').show()
+  $('.trade_supplier_type').hide()
+  $('.current_panel:not(:first-of-type)').removeClass('.current_panel')
+
+
   formsubmitted = false;
 
   $('form.grant_form').on('submit', function(e){

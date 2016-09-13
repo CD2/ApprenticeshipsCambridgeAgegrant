@@ -79,6 +79,7 @@ default_scope -> { order(id: :asc) }
   end
 
   def training_provider= val
+    val = '-1' if val.blank?
     super TrainingProvider.find(val) unless val.to_i == -1
   end
 
