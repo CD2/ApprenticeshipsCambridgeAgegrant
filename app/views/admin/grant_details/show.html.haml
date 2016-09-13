@@ -83,12 +83,16 @@
       %tr
         %th Sort Code 
         %td= @grant_detail.sort_code
-      %tr
-        %th Bank/Building society address 
-        %td= simple_format @grant_detail.bank_address
-      %tr
-        %th Trade Supplier Type 
-        %td= @grant_detail.trade_supplier_type
+      - if norfolk_site?
+        %tr
+          %th Bank/Building society address
+          %td= simple_format @grant_detail.bank_address
+        %tr
+          %th Trade Supplier Type
+          %td= @grant_detail.trade_supplier_type
+        %tr
+          %th Account Name
+          %td= @grant_detail.account_name
       %tr
         %th Signature 
         %td= @grant_detail.signature 
