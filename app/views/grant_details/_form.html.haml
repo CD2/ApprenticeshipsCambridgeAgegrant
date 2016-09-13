@@ -137,8 +137,8 @@
   .panel
 
     %p In order for us to process your payment, we need to know the details of the bank account you would like us to pay the money into.  Please provide this information below. 
-
-    %p The payment will be processed by Norfolk County Council
+    - if norfolk_site?
+      %p The payment will be processed by Norfolk County Council
     .field{data: {required: true, summary: 'Bank Name'}}
       = f.label :bank_name, 'Name of bank or building society'
       = f.text_field :bank_name
@@ -159,13 +159,17 @@
         = f.label :bank_address, 'Bank/Building society address'
         = f.text_area :bank_address, rows: 5
         = errors_for @grant_detail, :bank_address
+      .field{data: {required: true, summary: 'Account Name'}}
+        = f.label :account_name, 'Account Name'
+        = f.text_field :account_name, rows: 5
+        = errors_for @grant_detail, :account_name
       .field
         = label_tag :trade_supplier_type_select, 'Trade Supplier Type'
         = select_tag :trade_supplier_type_select, options_for_select(['Company', 'Partnership', 'Sole Trader', 'Trust', 'Other']), include_blank: true
-      .field{data: {required: true, summary: 'Trade Supplier Type'}}
+      .field{style: 'display: none;', data: {required: true, summary: 'Trade Supplier Type'}}
         = f.label :trade_supplier_type, 'Please Specify'
         = f.text_field :trade_supplier_type
-        = errors_for @grant_detail, :bank_address
+        = errors_for @grant_detail, :trade_supplier_type
 
     .actions
       = link_to '< Back', 'javascript: void 0;', data: {prev_panel: true}

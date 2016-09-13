@@ -38,7 +38,7 @@ class GrantDetailsController < ApplicationController
         :work_number, :mobile_number, :company_name, :address_line_one, :address_line_two,
         :learner_name, :learner_dob, :apprentice_start_date, :share_info_checkbox, :training_provider,
         :bank_name, :bank_address, :trade_supplier_type, :account_number, :sort_code, :signature,
-        :title, :terms_conditions, :address_line_three, :town_name, :county, :postcode)
+        :title, :terms_conditions, :address_line_three, :town_name, :county, :postcode, :account_name)
     end
 
     def user_params

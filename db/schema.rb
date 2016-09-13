@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 20160912204335) do
     t.boolean  "approved",                 default: false
     t.text     "bank_address"
     t.string   "trade_supplier_type"
+    t.string   "account_name"
   end
 
   create_table "grant_reviews", force: :cascade do |t|
