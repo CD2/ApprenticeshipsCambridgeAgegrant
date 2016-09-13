@@ -51,6 +51,7 @@ default_scope -> { order(id: :asc) }
 
   enum title: titles
   enum employment_sector: employment_sector
+  enum trade_supplier_type_select: ['Company', 'Partnership', 'Sole Trader', 'Trust', 'Other'], _prefix: 'trade_'
 
   def less_than_18
     learner_dob.to_datetime > 18.years.ago
@@ -105,7 +106,27 @@ default_scope -> { order(id: :asc) }
       AdminMailer.notify_training_provider(self).deliver_now
     end
   end
+
+  def trade_supplier_type_select
+    @trade_supplier_type_select ||= begin
+      if ['Company', 'Partnership', 'Sole Trader', 'Trust'].include? self.trade_supplier_type
+        self.trade_supplier_type
+      else
+        'Other'
+      end
+    end
+  end
+
+  def trade_supplier_type_select= val
+    @trade_supplier_type_select = val
+  end
   
+  before_save do
+    if trade_supplier_type_select!='Other'
+      self.trade_supplier_type=trade_supplier_type_select
+    end
+  end
+
   private
 
     def send_confirmation_email

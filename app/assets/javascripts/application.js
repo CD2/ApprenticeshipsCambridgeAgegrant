@@ -17,9 +17,8 @@
 
 $(function(){
 
-  $('.next_button, .back_button').show()
-  $('.trade_supplier_type').hide()
-  $('.current_panel:not(:first-of-type)').removeClass('.current_panel')
+  $('.no_js_hidden').removeClass('no_js_hidden')
+  $('.current_panel:not(:first-of-type)').removeClass('current_panel')
 
 
   formsubmitted = false;
@@ -154,7 +153,7 @@ $(function(){
   }
 
 
-  $('[name=trade_supplier_type_select]').on('change', function(){
+  $('[data-trade-supplier-select]').on('change', function(){
     var text = $(this).find('option:selected').text();
     if (text=='Other') {
       $(this).closest('.field').next().show().find('input').val('')      
@@ -162,4 +161,16 @@ $(function(){
       $(this).closest('.field').next().hide().find('input').val(text)
     }
   });
+
+  (function(){
+    
+    txt = $('[data-trade-supplier-select]').find('option:selected').text();
+    if (txt=='Other') {
+      $(this).closest('.field').next().show()
+    } else {
+      $(this).closest('.field').next().hide()
+    }
+
+  })();
+
 });
