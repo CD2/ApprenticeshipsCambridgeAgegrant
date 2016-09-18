@@ -78,7 +78,7 @@ $(function(){
     if (errors_found == false) {
       $panel.removeClass('current_panel').next('.panel').addClass('current_panel');
       $('.current_panel').trigger('current_panel').find('input,select,textarea').first().trigger('focus')
-      
+
       var index = $('.panel').index($panel) + 1;
       $('.searchform__step').removeClass('searchform__step--current').eq(index).addClass('searchform__step--current');
     }
@@ -125,12 +125,6 @@ function generateSummary() {
   }
 
 
-  $('.learner_dob').datepicker({
-      dateFormat: 'dd/mm/yy',
-      changeMonth: true,
-      changeYear: true
-  });
-
     $('.start_date').datepicker({
         dateFormat: 'dd/mm/yy',
         minDate: '01/08/2016',
@@ -156,14 +150,14 @@ $(function(){
   $('[data-trade-supplier-select]').on('change', function(){
     var text = $(this).find('option:selected').text();
     if (text=='Other') {
-      $(this).closest('.field').next().show().find('input').val('')      
+      $(this).closest('.field').next().show().find('input').val('')
     } else {
       $(this).closest('.field').next().hide().find('input').val(text)
     }
   });
 
   (function(){
-    
+
     txt = $('[data-trade-supplier-select]').find('option:selected').text();
     if (txt=='Other') {
       $(this).closest('.field').next().show()

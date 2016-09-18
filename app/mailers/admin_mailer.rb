@@ -33,4 +33,9 @@ class AdminMailer < ApplicationMailer
     mail subject: 'AGE Grant Application', to: grant_detail.training_provider.email
   end
 
+  def grant_review_uploaded grant_detail
+    @grant_detail = grant_detail
+    mail subject: 'New Evidence Uploaded', to: 'test@test.com'
+  end
+
 end

@@ -10,16 +10,34 @@ default_scope -> { order(id: :asc) }
 
   validates :share_info_checkbox, :terms_conditions, :acceptance => true
 
+  validate :no_more_old_grants, if: :new_record?
+
   has_one :grant_review, dependent: :destroy
   belongs_to :user
 
-  scope :young, -> {where('learner_dob >= ?', 18.years.ago)}
-  scope :old, -> {where('learner_dob < ?', 18.years.ago)}
+  scope :young, -> {where('DATE(learner_dob) >= ?', 18.years.ago)}
+  scope :old, -> {where('DATE(learner_dob) < ?', 18.years.ago)}
 
   belongs_to :training_provider
 
   after_create :send_confirmation_email
   after_create :notify_training_provider
+
+  def no_more_old_grants
+    begin
+       Date.parse(learner_dob)
+      if learner_dob < 18.years.ago
+        remaining = if $norfolk_site
+          325 - GrantDetail.old.count
+        else
+          120 - GrantDetail.old.count
+        end
+        errors.add(:learner_dob, 'is invalid. All age grants for 18-24 year olds have gone.') if remaining < 1
+      end
+    rescue ArgumentError
+      errors.add(:learner_dob, 'is an invalid date format.')
+    end
+  end
 
   def full_address
    [self.company_name, self.address_line_one, self.address_line_two, self.address_line_three, self.town_name, self.county, self.postcode].reject(&:blank?).join(',')
@@ -120,7 +138,7 @@ default_scope -> { order(id: :asc) }
   def trade_supplier_type_select= val
     @trade_supplier_type_select = val
   end
-  
+
   before_save do
     if trade_supplier_type_select!='Other'
       self.trade_supplier_type=trade_supplier_type_select

@@ -3,9 +3,11 @@
   = csrf_meta_tags
   = stylesheet_link_tag    'application', media: 'all'
   = javascript_include_tag 'application'
+
+
 %body
-  
-  .viewport  
+
+  .viewport
     = render 'header'
     .main.main--hasborder
       = render 'sidebar'
@@ -14,5 +16,16 @@
           - if content_for? :breadcrumbs
             = breadcrumbs(yield :breadcrumbs)
           = yield
-    = render 'footer'    
-  
+    = render 'footer'
+
+
+
+
+
+  :javascript
+    $('.learner_dob').datepicker({
+    dateFormat: 'dd/mm/yy',
+    minDate: '#{$age_date_limit}',
+    changeMonth: true,
+    changeYear: true
+    });
