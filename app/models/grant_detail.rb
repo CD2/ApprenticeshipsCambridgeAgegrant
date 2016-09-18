@@ -57,6 +57,22 @@ default_scope -> { order(id: :asc) }
     learner_dob.to_datetime > 18.years.ago
   end
 
+  def self.young_count
+    x = 0
+    all.each do |g|
+      begin
+        x += 1 if g.learner_dob.to_datetime >= 18.years.ago
+      rescue
+      end 
+    end
+    return x
+  end
+
+  def self.old_count
+    all.count - young_count
+  end
+
+
   def review_submitted
     grant_review.documents.any?
   end
@@ -120,7 +136,7 @@ default_scope -> { order(id: :asc) }
   def trade_supplier_type_select= val
     @trade_supplier_type_select = val
   end
-  
+
   before_save do
     if trade_supplier_type_select!='Other'
       self.trade_supplier_type=trade_supplier_type_select
