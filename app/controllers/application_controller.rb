@@ -8,9 +8,9 @@ class ApplicationController < ActionController::Base
     $norfolk_site = norfolk_site?
 
     count = if norfolk_site?
-      325 - GrantDetail.old.count
+      325 - GrantDetail.old_count
     else
-      120 - GrantDetail.old.count
+      120 - GrantDetail.old_count
     end
 
     if count <=0

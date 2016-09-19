@@ -78,33 +78,30 @@ $(function(){
     if (errors_found == false) {
       $panel.removeClass('current_panel').next('.panel').addClass('current_panel');
       $('.current_panel').trigger('current_panel').find('input,select,textarea').first().trigger('focus')
-
+      generateSummary()
       var index = $('.panel').index($panel) + 1;
       $('.searchform__step').removeClass('searchform__step--current').eq(index).addClass('searchform__step--current');
     }
   };
 
 
+  var summary_row_template = '<tr><th></th><td></td></tr>';
 
-$('.summary_panel').on('current_panel', generateSummary);
+  window.generateSummary = function() {
+    $summary_table = $('table.summary_table');
+    console.log($summary_table)
+    $summary_table.empty();
+    $('[data-summary]').each(function(){
+      var key = $(this).data('summary')
+      var value = $(this).find('input,select,textarea').val()
+      if ($(this).find('input,select,textarea').is('select') && value=='-1') value = "My training provider is not listed"
+      $row = $(summary_row_template);
+      $('th', $row).html(key)
+      $('td', $row).html(value)
+      $summary_table.append($row)
 
-var summary_row_template = '<tr><th></th><td></td></tr>';
-
-function generateSummary() {
-  $summary_table = $('table.summary_table');
-  console.log($summary_table)
-  $summary_table.empty();
-  $('[data-summary]').each(function(){
-    var key = $(this).data('summary')
-    var value = $(this).find('input,select,textarea').val()
-    if ($(this).find('input,select,textarea').is('select') && value=='-1') value = "My training provider is not listed"
-    $row = $(summary_row_template);
-    $('th', $row).html(key)
-    $('td', $row).html(value)
-    $summary_table.append($row)
-
-  });
-}
+    });
+  }
 
   $('[data-prev-panel]').on('click', function(){
     $prev = $('.current_panel').prev('.panel')
@@ -125,12 +122,12 @@ function generateSummary() {
   }
 
 
-    $('.start_date').datepicker({
-        dateFormat: 'dd/mm/yy',
-        minDate: '01/08/2016',
-        changeMonth: true,
-        changeYear: true
-    });
+  $('.start_date').datepicker({
+      dateFormat: 'dd/mm/yy',
+      minDate: '01/08/2016',
+      changeMonth: true,
+      changeYear: true
+  });
 
 });
 
@@ -167,4 +164,14 @@ $(function(){
 
   })();
 
+});
+
+
+$(window).on('load', function(){
+  console.log("HI")
+  $('.summary_panel').on('current_panel', console.log)
+  $('.summary_panel').on('current_panel', function(){
+    console.log("HI")
+    window.generateSummary()
+  });
 });

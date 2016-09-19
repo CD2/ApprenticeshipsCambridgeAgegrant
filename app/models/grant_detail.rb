@@ -18,6 +18,10 @@ default_scope -> { order(id: :asc) }
   scope :young, -> {where('DATE(learner_dob) >= ?', 18.years.ago)}
   scope :old, -> {where('DATE(learner_dob) < ?', 18.years.ago)}
 
+
+  # scope :old, -> {where("to_date(learner_dob, 'DD/MM/YYYY') < ?", 18.years.ago)}
+
+
   belongs_to :training_provider
 
   after_create :send_confirmation_email
@@ -28,9 +32,9 @@ default_scope -> { order(id: :asc) }
        Date.parse(learner_dob)
       if learner_dob < 18.years.ago
         remaining = if $norfolk_site
-          325 - GrantDetail.old.count
+          325 - GrantDetail.old_count
         else
-          120 - GrantDetail.old.count
+          120 - GrantDetail.old_count
         end
         errors.add(:learner_dob, 'is invalid. All age grants for 18-24 year olds have gone.') if remaining < 1
       end
@@ -81,7 +85,7 @@ default_scope -> { order(id: :asc) }
       begin
         x += 1 if g.learner_dob.to_datetime >= 18.years.ago
       rescue
-      end 
+      end
     end
     return x
   end
