@@ -17,6 +17,7 @@
 
 $(function(){
 
+  $.rails.enableFormElements($($.rails.formSubmitSelector));
   $('.no_js_hidden').removeClass('no_js_hidden')
   $('.current_panel:not(:first-of-type)').removeClass('current_panel')
 
@@ -77,6 +78,7 @@ $(function(){
       $panel.removeClass('current_panel').next('.panel').addClass('current_panel');
       $('.current_panel').trigger('current_panel').find('input,select,textarea').first().trigger('focus')
       generateSummary()
+      $.rails.enableFormElements($($.rails.formSubmitSelector));
       var index = $('.panel').index($panel) + 1;
       $('.searchform__step').removeClass('searchform__step--current').eq(index).addClass('searchform__step--current');
     }
@@ -86,9 +88,7 @@ $(function(){
   var summary_row_template = '<tr><th></th><td></td></tr>';
 
   window.generateSummary = function() {
-    $.rails.enableFormElements($($.rails.formSubmitSelector));
     $summary_table = $('table.summary_table');
-    console.log($summary_table)
     $summary_table.empty();
     $('[data-summary]').each(function(){
       var key = $(this).data('summary')
@@ -167,10 +167,7 @@ $(function(){
 
 
 $(window).on('load', function(){
-  console.log("HI")
-  $('.summary_panel').on('current_panel', console.log)
   $('.summary_panel').on('current_panel', function(){
-    console.log("HI")
     window.generateSummary()
   });
 });
