@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get '/check_if_emails_need_to_go_out_to_people_who_registered_10_weeks_ago', to: 'pages#email_10_weeks_ago'
 
   get '/apply', to: 'grant_details#new'
+  get '/apply-sf', to: 'grant_details#new_single_form'
 
   get '/login', to: 'sessions#new', as: :login
   post '/login', to: 'sessions#create'

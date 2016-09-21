@@ -1,0 +1,252 @@
+= provide :breadcrumbs, 'Apply for an AGE grant'
+.pre-content
+  .typography
+    %h1 Apply For An Age Grant
+
+    %h2 Our simple 4 stage search process does not take long and will provide you with details of relevant Apprenticeship providers.
+    %p
+      You cannot apply for an AGE Grant until your chosen training provider has issued you with an Apprenticeship Agreement and start date for the Apprenticeship. To search for a training provider click
+      = link_to 'here', 'https://www.apprenticeshipsnorfolk.org/employ-an-apprentice/search-for-an-apprentice/'
+
+    %h2
+      %strong 1. Please complete the following details.
+
+.searchform
+  .typography
+    - if signed_in? && current_user.grant_details.any?
+      %p
+        Welcome
+        = current_user.fullname
+        \.
+        %strong Not you?
+        = link_to 'Sign out', logout_path
+  - if signed_in? && current_user.grant_details.count >= 5
+    %p You have submitted 5
+  - else
+
+    .typography
+      = form_for @grant_detail, html: {class: 'sf_grant_form'} do |f|
+        - if @grant_detail.errors.any?
+          - @grant_detail.errors.full_messages.each do |m|
+            %p#MemberLoginForm_LoginForm_error.message.bad
+              = m
+        - if @grant_detail.user && @grant_detail.user.errors.any?
+          - @grant_detail.user.errors.full_messages.each do |m|
+            %p#MemberLoginForm_LoginForm_error.message.bad
+              = raw m
+        .sf-panel
+          %h3 Contact Details
+          .field{data: {required: true, summary: 'Title'}}
+            = f.label :title
+            = f.select :title, GrantDetail.titles.map{|k, v| [k.humanize , k]}, prompt: '-- Select --'
+            = errors_for @grant_detail, :title
+
+          .field{data: {required: true, summary: 'Forename'}}
+            = f.label :forename
+            = f.text_field :forename
+            = errors_for @grant_detail, :forename
+
+          .field{data: {required: true, summary: 'Surname'}}
+            = f.label :surname
+            = f.text_field :surname
+            = errors_for @grant_detail, :surname
+
+          .field{data: {required: true, summary: 'Email'}}
+            = f.label :email
+            = f.email_field :email
+            = errors_for @grant_detail, :email
+
+          .field{data: {required: true, summary: 'Work Number'}}
+            = f.label :work_number
+            = f.telephone_field :work_number
+            = errors_for @grant_detail, :work_number
+            - if norfolk_site?
+              %p e.g. 01603 123456
+            - else
+              %p 01733 123456
+
+          .field{data: {summary: 'Mobile Number'}}
+            = f.label :mobile_number
+            = f.telephone_field :mobile_number
+            = errors_for @grant_detail, :number_number
+            - if norfolk_site?
+              %p e.g. 01603 123456
+            - else
+              %p 01733 123456
+
+          .field{data: {required: true, summary: 'Employment Sector'}}
+            = f.label :employment_sector
+            = f.select :employment_sector, GrantDetail.employment_sectors.map{|k, v| [k , k]}, prompt: '-- Select --'
+            = errors_for @grant_detail, :employment_sector
+
+          %h3 Company Details
+
+          .field{data: {required: true, summary: 'Company Name'}}
+            = f.label :company_name
+            = f.text_field :company_name
+            = errors_for @grant_detail, :company_name
+
+          .field{data: {required: true, summary: 'Address One'}}
+            = f.label :address_line_one, 'Address Line 1'
+            = f.text_field :address_line_one
+            = errors_for @grant_detail, :address_line_one
+            - if norfolk_site?
+              %p e.g. 12 Norfolk Road
+            - else
+              %p e.g. 12 Peterborough Road
+
+          .field
+            = f.label :address_line_two, 'Address Line 2'
+            = f.text_field :address_line_two
+            = errors_for @grant_detail, :address_line_two
+
+          .field
+            = f.label :address_line_three, 'Address Line 3'
+            = f.text_field :address_line_three
+            = errors_for @grant_detail, :address_line_three
+
+          .field{data: {required: true, summary: 'Town'}}
+            = f.label :town_name, 'Town/City Name'
+            = f.text_field :town_name
+            = errors_for @grant_detail, :town_name
+            - if norfolk_site?
+              %p e.g. Norwich
+            - else
+              %p e.g. Peterborough
+
+          .field
+            = f.label :county, 'County'
+            = f.text_field :county
+            = errors_for @grant_detail, :county
+
+          .field{data: {required: true, summary: 'Postcode'}}
+            = f.label :postcode, 'Postcode'
+            = f.text_field :postcode
+            = errors_for @grant_detail, :postcode
+
+
+          %p* Mandatory infomation
+
+          .actions
+
+
+
+        .sf-panel
+          .field{data: {required: true, summary: 'Learner Name'}}
+            = f.label :learner_name
+            = f.text_field :learner_name
+            = errors_for @grant_detail, :learner_name
+
+          .field{data: {required: true, summary: 'Learner DOB'}}
+            = f.label :learner_dob, 'Learner Date of Birth dd/mm/yyyy'
+            = f.text_field :learner_dob, class: 'date_field learner_dob'
+            = errors_for @grant_detail, :learner_dob
+
+          .field{data: {required: true, summary: 'Start Date'}}
+            = f.label :apprentice_start_date, 'What date did the leaner start their Apprenticeship?'
+            = f.text_field :apprentice_start_date, class: 'date_field start_date'
+            = errors_for @grant_detail, :apprentice_start_date
+
+          .field{data: {required: true}}
+            = f.label :share_info_checkbox, 'Please tick here to confirm that you have discussed this application with the learner and you have gained their consent to share the information above with us. '
+            = f.check_box :share_info_checkbox
+            = errors_for @grant_detail, :share_info_checkbox
+
+          .field{data: {required: true, summary: 'Training Provider'}}
+            = f.label :training_provider
+            = f.select :training_provider, [['My training provider is not listed', -1]] + TrainingProvider.pluck(:name, :id), prompt: '-- Select --'
+            = errors_for @grant_detail, :training_provider
+
+          .actions
+
+
+
+        .sf-panel
+
+          %p In order for us to process your payment, we need to know the details of the bank account you would like us to pay the money into.  Please provide this information below.
+          - if norfolk_site?
+            %p The payment will be processed by Norfolk County Council
+          .field{data: {required: true, summary: 'Bank Name'}}
+            = f.label :bank_name, 'Name of bank or building society'
+            = f.text_field :bank_name
+            = errors_for @grant_detail, :bank_name
+
+          .field{data: {required: true, summary: 'Account Provider'}}
+            = f.label :account_number
+            = f.text_field :account_number
+            = errors_for @grant_detail, :account_number
+
+          .field{data: {required: true, summary: 'Sort Code'}}
+            = f.label :sort_code
+            = f.text_field :sort_code
+            = errors_for @grant_detail, :sort_code
+
+          - if norfolk_site?
+            .field{data: {required: true, summary: 'Bank/Building society address'}}
+              = f.label :bank_address, 'Bank/Building society address'
+              = f.text_area :bank_address, rows: 5
+              = errors_for @grant_detail, :bank_address
+            .field{data: {required: true, summary: 'Account Name'}}
+              = f.label :account_name, 'Account Name'
+              = f.text_field :account_name, rows: 5
+              = errors_for @grant_detail, :account_name
+            .field{data: {trade_supplier_select: true}}
+              = f.label :trade_supplier_type_select, 'Trade Supplier Type'
+              = f.select :trade_supplier_type_select, GrantDetail.trade_supplier_type_selects.map{|k, v| [k.humanize , k]}, selected: f.object.trade_supplier_type_select, include_blank: true
+            .field.trade_supplier_type{data: {required: true, summary: 'Trade Supplier Type'}}
+              = f.label :trade_supplier_type, 'Please Specify (if other)'
+              = f.text_field :trade_supplier_type
+              = errors_for @grant_detail, :trade_supplier_type
+
+          .actions
+
+
+
+        .sf-panel
+          %p In order for this grant application to be successful, you are required to electronically sign the following declaration.
+          .field{data: {required: true, summary: 'Signature'}}
+            = f.label :signature
+            = f.text_field :signature
+            = errors_for @grant_detail, :signature
+          .field{data: {required: true}}
+            = f.label :terms_conditions, 'I declare that my organisation is eligible to receive this grant based on the criteria specified'
+            = f.check_box :terms_conditions
+            = errors_for @grant_detail, :terms_conditions
+
+          .actions
+
+
+
+        - unless signed_in?
+          .sf-panel
+            %p In order to process your claim, you need to provide evidence after 10 weeks that the learner is still on an Apprenticeship.  To do this, you will need to log back into this system and upload a copy of the first review.  This will be provided for you by the training provider.  Your username will be your email address as provided.
+
+            %p Please create a password using at least one letter, number and upper case letter and enter this below.
+
+            .field{data: {required: true, min_length: 6}}
+              = f.label :password, 'Password'
+              = f.password_field :password
+              = errors_for @grant_detail, :password
+
+            .field
+              = f.label :password_confirmation, 'Retype Password'
+              = f.password_field :password_confirmation
+              = errors_for @grant_detail, :password_confirmation
+
+
+            .actions
+
+
+
+        .sf-panel.summary_panel
+          #button
+
+          %p Please review all your details entered below.  Once you are happy everything is correct, please click submit
+          %table.summary_table
+
+
+          .actions
+
+            = f.submit 'Submit'
+          .security_policy_link_plz
+            = link_to 'Security Policy', security_path, target: '_blank'
