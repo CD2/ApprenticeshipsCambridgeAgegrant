@@ -8,6 +8,14 @@ class GrantDetailsController < ApplicationController
     @grant_detail ||= GrantDetail.new
   end
 
+  def new_single_form
+    if signed_in? && current_user.grant_details.any?
+      @grant_detail = current_user.grant_details.first.dup
+      @grant_detail.assign_attributes learner_name: nil, learner_dob: nil, apprentice_start_date: nil, training_provider_id: nil, signature: nil
+    end
+    @grant_detail ||= GrantDetail.new
+  end
+
   def create
     if params[:grant_detail][:trade_supplier_type].blank?
       params[:grant_detail][:trade_supplier_type] = params[:trade_supplier_type_select]
