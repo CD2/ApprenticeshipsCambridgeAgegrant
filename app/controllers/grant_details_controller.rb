@@ -34,7 +34,7 @@ class GrantDetailsController < ApplicationController
       log_in user unless signed_in?
       redirect_to application_pending_path
     else
-      render :new
+      render :new_single_form
     end
   end
 
