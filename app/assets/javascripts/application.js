@@ -44,7 +44,6 @@ $(function(){
       if (this.value=='' || (this.type == 'checkbox' && !$(this).is(':checked'))) {
         $(this).closest('.field').addClass('field_with_errors')
         errors_found = true;
-        console.error(this)
       } else {
        $(this).closest('.field').removeClass('field_with_errors')
           .find('span.has_errors').removeClass('has_errors')
@@ -64,7 +63,6 @@ $(function(){
     $pass_conf = $('input[type=password]#grant_detail_password_confirmation', $panel);
 
     if ($pass.length>0) {
-      console.log($pass.val(), $pass_conf.val())
       if ($pass.val() != $pass_conf.val()) {
         errors_found = true
         $pass_conf.closest('.field').addClass('field_with_errors')
@@ -88,6 +86,7 @@ $(function(){
   var summary_row_template = '<tr><th></th><td></td></tr>';
 
   window.generateSummary = function() {
+    $.rails.enableFormElements($($.rails.formSubmitSelector));
     $summary_table = $('table.summary_table');
     console.log($summary_table)
     $summary_table.empty();
