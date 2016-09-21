@@ -16,7 +16,8 @@
 //= require_tree .
 
 $(function(){
-
+  
+  $.rails.enableFormElements($($.rails.formSubmitSelector));
   $('.no_js_hidden').removeClass('no_js_hidden')
   $('.current_panel:not(:first-of-type)').removeClass('current_panel')
 
@@ -86,7 +87,6 @@ $(function(){
   var summary_row_template = '<tr><th></th><td></td></tr>';
 
   window.generateSummary = function() {
-    $.rails.enableFormElements($($.rails.formSubmitSelector));
     $summary_table = $('table.summary_table');
     console.log($summary_table)
     $summary_table.empty();
