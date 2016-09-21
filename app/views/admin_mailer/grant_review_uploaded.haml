@@ -1,13 +1,21 @@
 %p This is an automated message from the AGE Grant Application website.
 %p The following company has uploaded evidence.
 %hr
-%p
-  Ref:
-  = @grant_detail.invoice_number
-  %br
-  Company Name:
-  = @grant_detail.company_name
-  %br
-  Contact Email:
-  = @grant_detail.user.email
+
+%table{style: 'width: 100%; text-align: left'}
+  %tr
+    %th
+      Ref:
+    %td
+      = @grant_detail.invoice_number
+  %tr
+    %th
+      Company Name:
+    %td
+      = @grant_detail.company_name
+  %tr
+    %th
+      Contact Email:
+    %td
+      = @grant_detail.user.email
 %hr
