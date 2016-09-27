@@ -32,7 +32,7 @@ default_scope -> { order(id: :asc) }
        Date.parse(learner_dob)
       if learner_dob < 18.years.ago
         remaining = if $norfolk_site
-          325 - GrantDetail.old_count
+          345 - GrantDetail.old_count
         else
           120 - GrantDetail.old_count
         end
