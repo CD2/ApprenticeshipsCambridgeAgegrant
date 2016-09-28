@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
     end
 
     if count <=0
-      $age_date_limit = (18.years.ago+1.day).strftime('%d/%m/%Y')
+      $age_date_limit = (19.years.ago+1.day).strftime('%d/%m/%Y')
     else
       $age_date_limit = 24.years.ago.strftime('%d/%m/%Y')
     end

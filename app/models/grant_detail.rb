@@ -15,11 +15,11 @@ default_scope -> { order(id: :asc) }
   has_one :grant_review, dependent: :destroy
   belongs_to :user
 
-  scope :young, -> {where('DATE(learner_dob) >= ?', 18.years.ago)}
-  scope :old, -> {where('DATE(learner_dob) < ?', 18.years.ago)}
+  scope :young, -> {where('DATE(learner_dob) >= ?', 19.years.ago)}
+  scope :old, -> {where('DATE(learner_dob) < ?', 19.years.ago)}
 
 
-  # scope :old, -> {where("to_date(learner_dob, 'DD/MM/YYYY') < ?", 18.years.ago)}
+  # scope :old, -> {where("to_date(learner_dob, 'DD/MM/YYYY') < ?", 19.years.ago)}
 
 
   belongs_to :training_provider
@@ -30,7 +30,7 @@ default_scope -> { order(id: :asc) }
   def no_more_old_grants
     begin
        Date.parse(learner_dob)
-      if learner_dob < 18.years.ago
+      if learner_dob < 19.years.ago
         remaining = if $norfolk_site
           345 - GrantDetail.old_count
         else
@@ -76,14 +76,14 @@ default_scope -> { order(id: :asc) }
   enum trade_supplier_type_select: ['Company', 'Partnership', 'Sole Trader', 'Trust', 'Other'], _prefix: 'trade_'
 
   def less_than_18
-    learner_dob.to_datetime > 18.years.ago
+    learner_dob.to_datetime > 19.years.ago
   end
 
   def self.young_count
     x = 0
     all.each do |g|
       begin
-        x += 1 if g.learner_dob.to_datetime >= 18.years.ago
+        x += 1 if g.learner_dob.to_datetime >= 19.years.ago
       rescue
       end
     end
