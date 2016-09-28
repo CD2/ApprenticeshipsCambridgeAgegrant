@@ -83,16 +83,16 @@ default_scope -> { order(id: :asc) }
     x = 0
     all.each do |g|
       begin
-        x += 1 if g.learner_dob.to_datetime >= 19.years.ago
+        x += 1 if ((g.apprentice_start_date.to_datetime - g.learner_dob.to_datetime) < 19.years)
       rescue
       end
     end
-    # return x
-    GrantDetail.young.count
+    return x
+    #GrantDetail.young.count
   end
 
   def self.old_count
-    all.count - GrantDetail.young.count
+    all.count - GrantDetail.young_count
   end
 
 
