@@ -15,8 +15,8 @@ default_scope -> { order(id: :asc) }
   has_one :grant_review, dependent: :destroy
   belongs_to :user
 
-  scope :young, -> {where('DATE(learner_dob) >= ?', 19.years.ago)}
-  scope :old, -> {where('DATE(learner_dob) < ?', 19.years.ago)}
+  scope :young, -> {where('DATE(apprentice_start_date) - DATE(learner_dob) < ?', 6940)}
+  scope :old, -> {where('DATE(apprentice_start_date) - DATE(learner_dob) >= ?', 6940)}
 
 
   # scope :old, -> {where("to_date(learner_dob, 'DD/MM/YYYY') < ?", 19.years.ago)}
@@ -30,7 +30,7 @@ default_scope -> { order(id: :asc) }
   def no_more_old_grants
     begin
        Date.parse(learner_dob)
-      if learner_dob < 19.years.ago
+      if apprentice_start_date.to_datetime - learner_dob.to_datetime < 19.years
         remaining = if $norfolk_site
           345 - GrantDetail.old_count
         else
@@ -87,11 +87,12 @@ default_scope -> { order(id: :asc) }
       rescue
       end
     end
-    return x
+    # return x
+    GrantDetail.young.count
   end
 
   def self.old_count
-    all.count - young_count
+    all.count - GrantDetail.young.count
   end
 
 
