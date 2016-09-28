@@ -85,6 +85,7 @@ default_scope -> { order(id: :asc) }
       begin
         x += 1 if ((g.apprentice_start_date.to_datetime - g.learner_dob.to_datetime) < 6940)
       rescue
+        puts g.id
       end
     end
     return x
