@@ -83,7 +83,7 @@ default_scope -> { order(id: :asc) }
     x = 0
     all.each do |g|
       begin
-        x += 1 if ((g.apprentice_start_date.to_datetime - g.learner_dob.to_datetime) < 19.years)
+        x += 1 if ((g.apprentice_start_date.to_datetime - g.learner_dob.to_datetime) < 6940)
       rescue
       end
     end
