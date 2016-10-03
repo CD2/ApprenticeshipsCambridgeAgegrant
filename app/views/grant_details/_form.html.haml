@@ -39,8 +39,8 @@
         %p 01733 123456
 
     .field{data: {summary: 'Mobile Number'}}
-      = f.label :mobile_number 
-      = f.telephone_field :mobile_number 
+      = f.label :mobile_number
+      = f.telephone_field :mobile_number
       = errors_for @grant_detail, :number_number
       - if norfolk_site?
         %p e.g. 01603 123456
@@ -112,12 +112,12 @@
 
     .field{data: {required: true, summary: 'Learner DOB'}}
       = f.label :learner_dob, 'Learner Date of Birth dd/mm/yyyy'
-      = f.text_field :learner_dob, class: 'date_field learner_dob'
+      = f.text_field :learner_dob, class: 'date_field learner_dob', readonly: true
       = errors_for @grant_detail, :learner_dob
 
     .field{data: {required: true, summary: 'Start Date'}}
-      = f.label :apprentice_start_date, 'What date did the leaner start their Apprenticeship?'
-      = f.text_field :apprentice_start_date, class: 'date_field start_date'
+      = f.label :apprentice_start_date, 'What date did the learner start their Apprenticeship?'
+      = f.text_field :apprentice_start_date, class: 'date_field start_date', readonly: true
       = errors_for @grant_detail, :apprentice_start_date
 
     .field{data: {required: true}}
@@ -136,7 +136,7 @@
 
   .panel.current_panel
 
-    %p In order for us to process your payment, we need to know the details of the bank account you would like us to pay the money into.  Please provide this information below. 
+    %p In order for us to process your payment, we need to know the details of the bank account you would like us to pay the money into.  Please provide this information below.
     - if norfolk_site?
       %p The payment will be processed by Norfolk County Council
     .field{data: {required: true, summary: 'Bank Name'}}
@@ -192,7 +192,7 @@
 
   - unless signed_in?
     .panel.current_panel
-      %p In order to process your claim, you need to provide evidence after 10 weeks that the learner is still on an Apprenticeship.  To do this, you will need to log back into this system and upload a copy of the first review.  This will be provided for you by the training provider.  Your username will be your email address as provided. 
+      %p In order to process your claim, you need to provide evidence after 10 weeks that the learner is still on an Apprenticeship.  To do this, you will need to log back into this system and upload a copy of the first review.  This will be provided for you by the training provider.  Your username will be your email address as provided.
 
       %p Please create a password using at least one letter, number and upper case letter and enter this below.
 
