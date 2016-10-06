@@ -1,5 +1,5 @@
 class Admin::GrantDetailsController < AdminController
-  
+
   before_action :set_grant_detail, except: [:index, :search]
 
   def index
@@ -77,7 +77,7 @@ private
   end
 
   def grant_detail_params
-    params.require(:grant_detail).permit(:forename , :surname, :email, :employment_sector, :work_number, :mobile_number, :company_name, :address_line_one, :address_line_two, :learner_name, :learner_dob, :apprentice_start_date, :share_info_checkbox, :training_provider, :bank_name, :account_number, :sort_code, :signature, :title, :terms_conditions, :address_line_three, :town_name, :county, :postcode)
+    params.require(:grant_detail).permit(:notes, :forename , :surname, :email, :employment_sector, :work_number, :mobile_number, :company_name, :address_line_one, :address_line_two, :learner_name, :learner_dob, :apprentice_start_date, :share_info_checkbox, :training_provider, :bank_name, :account_number, :sort_code, :signature, :title, :terms_conditions, :address_line_three, :town_name, :county, :postcode)
   end
 
 end

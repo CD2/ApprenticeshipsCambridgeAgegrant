@@ -1,5 +1,5 @@
 
-= content_for :actions do  
+= content_for :actions do
   - if @grant_detail.review_submitted
     - @grant_detail.grant_review.documents.each do |doc|
       = link_to "Download `#{doc.document.file.filename}`", download_evidence_admin_grant_detail_path(@grant_detail, doc)
@@ -10,6 +10,7 @@
   = link_to 'Delete', [:admin, @grant_detail], method: :delete, data: {confirm: 'Are you sure you want to delete this record?'}, class: 'delete'
   = link_to 'Resend no training Provider email', send_no_training_admin_grant_detail_path(@grant_detail) if @grant_detail.training_provider.nil? && current_user.id == 1
   = link_to 'Notify Training Provider', notify_training_provider_admin_grant_detail_path(@grant_detail) if current_user.id == 1
+
 
 
 
@@ -32,41 +33,41 @@
   = field_set_tag 'Grant Details' do
     %table.show_table
       %tr
-        %th Work Number 
-        %td= @grant_detail.work_number 
+        %th Work Number
+        %td= @grant_detail.work_number
       %tr
-        %th Mobile Number 
-        %td= @grant_detail.mobile_number 
+        %th Mobile Number
+        %td= @grant_detail.mobile_number
       %tr
-        %th Company Name 
-        %td= @grant_detail.company_name 
+        %th Company Name
+        %td= @grant_detail.company_name
       %tr
-        %th Address Line One 
-        %td= @grant_detail.address_line_one 
+        %th Address Line One
+        %td= @grant_detail.address_line_one
       %tr
-        %th Address Line Two 
-        %td= @grant_detail.address_line_two 
+        %th Address Line Two
+        %td= @grant_detail.address_line_two
       %tr
-        %th Address Line Three 
-        %td= @grant_detail.address_line_three 
+        %th Address Line Three
+        %td= @grant_detail.address_line_three
       %tr
-        %th Town Name 
-        %td= @grant_detail.town_name 
+        %th Town Name
+        %td= @grant_detail.town_name
       %tr
-        %th County 
-        %td= @grant_detail.county 
+        %th County
+        %td= @grant_detail.county
       %tr
-        %th Postcode 
-        %td= @grant_detail.postcode 
+        %th Postcode
+        %td= @grant_detail.postcode
       %tr
-        %th Learner Name 
-        %td= @grant_detail.learner_name 
+        %th Learner Name
+        %td= @grant_detail.learner_name
       %tr
-        %th Learner Dob 
-        %td= @grant_detail.learner_dob 
+        %th Learner Dob
+        %td= @grant_detail.learner_dob
       %tr
-        %th Apprentice Start Date 
-        %td= @grant_detail.apprentice_start_date 
+        %th Apprentice Start Date
+        %td= @grant_detail.apprentice_start_date
       %tr
         %th Training Provider
         %td
@@ -75,13 +76,13 @@
           - else
             Training Provider not listed
       %tr
-        %th Bank Name 
-        %td= @grant_detail.bank_name 
+        %th Bank Name
+        %td= @grant_detail.bank_name
       %tr
-        %th Account Number 
-        %td= @grant_detail.account_number 
+        %th Account Number
+        %td= @grant_detail.account_number
       %tr
-        %th Sort Code 
+        %th Sort Code
         %td= @grant_detail.sort_code
       - if norfolk_site?
         %tr
@@ -94,11 +95,18 @@
           %th Account Name
           %td= @grant_detail.account_name
       %tr
-        %th Signature 
-        %td= @grant_detail.signature 
+        %th Signature
+        %td= @grant_detail.signature
       %tr
         %th Review Given
         %td= @grant_detail.review_submitted ? 'Yes'.html_safe : 'No'
       %tr
         %th Submitted On
         %td= @grant_detail.created_at.in_time_zone("London")
+  .searchform
+    = form_for [:admin, @grant_detail] do |f|
+      .field
+        = f.label :notes
+        = f.text_area :notes
+      .actions
+        = f.submit 'Save Notes'
