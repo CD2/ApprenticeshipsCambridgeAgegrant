@@ -17,6 +17,12 @@ class AdminMailer < ApplicationMailer
     mail subject: 'AGE Grant Application', to: grant_detail.user.email
   end
 
+  def send_tp_reminder grant_detail, url
+    @grant_detail = grant_detail
+    @url = url
+    mail subject: 'AGE Grant Application', to: grant_detail.training_provider.email
+  end
+
   def no_review_15_weeks grant_detail
     @grant_detail = grant_detail
     mail subject: 'AGE Grant Review', to: grant_detail.user.email

@@ -32,7 +32,7 @@ module ApplicationHelper
   end#
 
   def site_url
-    unless norfolk_site?
+    if norfolk_site?
       'https://agegrant.apprenticeshipsnorfolk.org'
     else
       'https://apprenticeshipscambridgeshire.org'

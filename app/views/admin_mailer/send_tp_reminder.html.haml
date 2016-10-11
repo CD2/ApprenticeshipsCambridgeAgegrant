@@ -1,0 +1,25 @@
+%p This is an automated message from the AGE grant website.
+%p
+  It has been 10 weeks since #{@grant_detail.company_name} applied for an AGE grant. They should now log back in to upload a copy of their learner's review document.
+
+
+%table{style: 'width: 100%; text-align: left'}
+  %tr
+    %th
+      Company
+    %td
+      = @grant_detail.company_name
+  %tr
+    %th
+      Contact Name
+    %td
+      = @grant_detail.user&.fullname
+  %tr
+    %th
+      Learner's DOB
+    %td
+      = @grant_detail.learner_dob
+
+
+
+%hr
