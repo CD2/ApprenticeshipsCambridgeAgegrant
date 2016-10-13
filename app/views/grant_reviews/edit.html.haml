@@ -9,7 +9,7 @@
     %h2
       %strong 1. Please complete the following details.
 
-.searchform    
+.searchform
   .typography
     - if signed_in_as_admin?
       %p Admins cannot upload grant reviews
@@ -27,16 +27,16 @@
       - current_user.grant_details.each do |grant_detail|
 
         = field_set_tag "Evidence for #{grant_detail.learner_name}" do
-          - if grant_detail.created_at > 10.weeks.ago
-            %p 
-              Please return to upload evidence 10 weeks from application date.
+          - if grant_detail.apprentice_start_date.to_datetime > 10.weeks.ago
+            %p
+              Please return to upload evidence 10 weeks from your apprentice's start date.
               = surround '(', ')' do
-                = (grant_detail.created_at + 10.weeks).strftime('%d/%m/%y')
+                = (grant_detail.apprentice_start_date.to_datetime + 10.weeks).strftime('%d/%m/%y')
           - else
             = form_for grant_detail.grant_review do |f|
 
               = f.hidden_field :grant_detail_id
-              
+
               = f.fields_for :documents do |doc_f|
                 - if doc_f.object.document.present?
                   = doc_f.hidden_field :id

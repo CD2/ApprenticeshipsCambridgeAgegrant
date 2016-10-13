@@ -62,7 +62,7 @@ grant_detail_9_weeks_ago:
   postcode: postcode
   learner_name: learner_name
   learner_dob: <%= 20.years.ago.to_s(:db) %>
-  apprentice_start_date: <%= Date.today %>
+  apprentice_start_date: <%= 9.weeks.ago.to_s(:db) %>
   training_provider_id: 1
   bank_name: bank_name
   account_number: account_number
@@ -87,7 +87,7 @@ grant_detail_10_weeks_ago:
   postcode: postcode
   learner_name: learner_name
   learner_dob: <%= 20.years.ago.to_s(:db) %>
-  apprentice_start_date: <%= Date.today %>
+  apprentice_start_date: <%= 10.weeks.ago.to_s(:db) %>
   training_provider_id: 1
   bank_name: bank_name
   account_number: account_number
