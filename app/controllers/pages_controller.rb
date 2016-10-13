@@ -24,11 +24,11 @@ class PagesController < ApplicationController
           gd.update(reminder_email_sent: true)
         end
       end
-      GrantDetail.where("DATE(apprentice_start_date) <= :week AND no_review_15_weeks_email = false", {:week => 15.weeks.ago}).each_with_index do |gd, i|
-        next if gd.review_submitted
-        AdminMailer.no_review_15_weeks(gd).deliver_now
-        gd.update(no_review_15_weeks_email: true)
-      end
+      # GrantDetail.where("DATE(apprentice_start_date) <= :week AND no_review_15_weeks_email = false", {:week => 15.weeks.ago}).each_with_index do |gd, i|
+      #   next if gd.review_submitted
+      #   AdminMailer.no_review_15_weeks(gd).deliver_now
+      #   gd.update(no_review_15_weeks_email: true)
+      # end
     rescue
     end
   end
