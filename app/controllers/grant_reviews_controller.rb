@@ -8,10 +8,6 @@ class GrantReviewsController < ApplicationController
   def update
     @grant_detail = current_user.grant_details.find(params[:grant_review][:grant_detail_id])
 
-    unless @grant_detail.grant_review.documents.any?
-      AdminMailer.grant_review_uploaded(@grant_detail, site_email).deliver_now
-    end
-
     if params[:grant_review][:learners_consent] == '0'
       redirect_to [:edit, :grant_review]
       flash[:error] = 'Please confirm you have to learners consent.'
@@ -30,6 +26,7 @@ class GrantReviewsController < ApplicationController
     if total_files_count > 5
       flash[:error] = 'Sorry, you can only have 5 files per review.'
     elsif @grant_detail.grant_review.update grant_review_params
+      AdminMailer.grant_review_uploaded(@grant_detail, site_email).deliver_now
       redirect_to [:edit, :grant_review]
       return
     end
