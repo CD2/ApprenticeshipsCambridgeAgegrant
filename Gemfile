@@ -14,6 +14,7 @@ gem 'jquery-ui-rails'
 
 gem 'carrierwave'
 gem 'haml-rails'
+gem 'fog'
 
 gem 'bcrypt'
 gem 'friendly_id'
