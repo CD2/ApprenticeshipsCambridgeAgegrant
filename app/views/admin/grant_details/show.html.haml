@@ -2,8 +2,14 @@
 = content_for :actions do
   - if @grant_detail.review_submitted
     - @grant_detail.grant_review.documents.each do |doc|
+      - uri = URI(doc.document.url)
+      - request = Net::HTTP.new uri.host
+      - response = request.request_head uri.path
+      - if response.code.to_i == 200
+        = link_to 'Download', doc.document.url
+        
       -#= link_to "Download `#{doc.document.file.filename}`", download_evidence_admin_grant_detail_path(@grant_detail, doc)
-      -#= link_to 'Download', doc.document.url
+
   - unless norfolk_site?
     = link_to "Download Pro Forma Invoice", download_pro_forma_admin_grant_detail_path(@grant_detail, format: 'docx')
   = link_to 'Pre-approve', [:approve, :admin, @grant_detail], data: {confirm: 'This will send an email notifying the applicant of approval subject to upload'} unless !norfolk_site? || @grant_detail.approved?
