@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
   has_many :grant_details
   has_many :grant_reviews, through: :grant_details
 
+  has_one :state_declaration
+
   def self.admin_users
     where(admin: true)
   end
@@ -85,6 +87,5 @@ class User < ActiveRecord::Base
       "#{grant_details.first.forename} #{grant_details.first.surname}"
     end
   end
-
 
 end

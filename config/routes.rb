@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   get '/security', to: 'pages#security'
   resource :grant_details, only: [:new, :create], path: 'age-grant', path_names: {new: '/'}
+  resource :state_declarations, only: [:create]
 
   resources :sessions, only: [:new, :create, :destroy]
   resources :password_resets, only: [:new, :create, :edit, :update]
