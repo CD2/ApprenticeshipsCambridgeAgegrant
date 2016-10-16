@@ -28,7 +28,7 @@ module ApplicationHelper
   end
 
   def norfolk_site?
-    ['lvh.me', 'apprenticeship-norfolk.herokuapp.com', 'agegrant.apprenticeshipsnorfolk.org'].include? request.host
+    ['lvh.me', 'apprenticeship-norfolk.herokuapp.com', 'agegrant.apprenticeshipsnorfolk.org', 'apprentice-test.herokuapp.com'].include? request.host
   end#
 
   def site_url
