@@ -116,8 +116,8 @@
       %tr
         %th State Aid to declare?
         %td
-          - if @grant_detail.user.state_declaration
-            = @grant_detail.user.state_declaration.declaration
+          - if @grant_detail.state_declaration
+            = @grant_detail.state_declaration.declaration
           - else
             Form not complete
   .searchform

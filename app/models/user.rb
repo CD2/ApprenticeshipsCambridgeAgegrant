@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   has_many :grant_details
   has_many :grant_reviews, through: :grant_details
 
-  has_one :state_declaration
+  has_many :state_declarations
 
   def self.admin_users
     where(admin: true)

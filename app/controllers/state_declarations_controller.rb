@@ -4,7 +4,7 @@ class StateDeclarationsController < ApplicationController
 
 
   def create
-    @dec = current_user.build_state_declaration(state_declaration_params)
+    @dec = current_user.state_declarations.new(state_declaration_params)
     if @dec.save
       redirect_to edit_grant_review_path
     else
@@ -17,7 +17,7 @@ class StateDeclarationsController < ApplicationController
 
     # Never trust parameters from the scary einternet, only allow the white list through.
     def state_declaration_params
-      params.require(:state_declaration).permit(:declaration)
+      params.require(:state_declaration).permit(:declaration, :grant_detail_id)
     end
 
     def logged_in

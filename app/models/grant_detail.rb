@@ -14,6 +14,7 @@ default_scope -> { order(id: :asc) }
 
   has_one :grant_review, dependent: :destroy
   belongs_to :user
+  has_one :state_declaration
 
   scope :young, -> {where('DATE(apprentice_start_date) - DATE(learner_dob) < ?', 6940)}
   scope :old, -> {where('DATE(apprentice_start_date) - DATE(learner_dob) >= ?', 6940)}
