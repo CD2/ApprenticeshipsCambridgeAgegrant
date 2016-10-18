@@ -27,6 +27,7 @@ class GrantReviewsController < ApplicationController
       flash[:error] = 'Sorry, you can only have 5 files per review.'
     elsif @grant_detail.grant_review.update grant_review_params
       AdminMailer.grant_review_uploaded(@grant_detail, site_email).deliver_now
+      #AdminMailer.grant_review_uploaded_for_p(@grant_detail).deliver_now
       redirect_to [:edit, :grant_review]
       return
     end

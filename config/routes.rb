@@ -41,6 +41,7 @@ Rails.application.routes.draw do
         get 'send_no_training'
         get 'notify_training_provider'
         get 'approve'
+        get 'prompt_for_declaration'
       end
       get 'download-evidence/:gid', action: :download_evidence, as: :download_evidence, on: :member
       get 'download-pro-forma', action: :download_pro_forma_invoice, on: :member

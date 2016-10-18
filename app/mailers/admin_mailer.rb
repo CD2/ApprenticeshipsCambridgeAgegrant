@@ -44,4 +44,14 @@ class AdminMailer < ApplicationMailer
     mail subject: 'New Evidence Uploaded', to: send_to
   end
 
+  def grant_review_uploaded_for_p grant_detail
+    @grant_detail = grant_detail
+    mail subject: 'AGE Grant Application Uploaded', to: grant_detail.user.email
+  end
+
+  def prompt_for_declaration grant_detail
+    @grant_detail = grant_detail
+    mail subject: 'AGE Grant Application', to: grant_detail.user.email
+  end
+
 end

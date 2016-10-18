@@ -51,6 +51,11 @@ class Admin::GrantDetailsController < AdminController
     redirect_to admin_grant_detail_path @grant_detail
   end
 
+  def prompt_for_declaration
+    AdminMailer.prompt_for_declaration(@grant_detail).deliver_now
+    redirect_to admin_grant_detail_path @grant_detail
+  end
+
   def edit
   end
 
