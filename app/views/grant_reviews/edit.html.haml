@@ -34,54 +34,35 @@
               = surround '(', ')' do
                 = (grant_detail.apprentice_start_date.to_datetime + 10.weeks).strftime('%d/%m/%y')
           - else
-            - if grant_detail.state_declaration
-              = form_for grant_detail.grant_review do |f|
 
-                = f.hidden_field :grant_detail_id
+            = form_for grant_detail.grant_review do |f|
 
-                = f.fields_for :documents do |doc_f|
-                  - if doc_f.object.document.present?
-                    = doc_f.hidden_field :id
-                    = doc_f.object.document.file.filename
-                    .field
-                      = doc_f.label :_destroy, 'Remove Evidence'
-                      = doc_f.check_box :_destroy
-                - if f.object.documents.count >= 5
-                  %p You can only have upto 5 documents for you review.
-                  .actions
-                    = f.submit 'Delete Selected'
-                - else
+              = f.hidden_field :grant_detail_id
 
+              = f.fields_for :documents do |doc_f|
+                - if doc_f.object.document.present?
+                  = doc_f.hidden_field :id
+                  = doc_f.object.document.file.filename
                   .field
-                    = f.label :new_files
-                    = f.file_field :new_files, multiple: true
-                  - unless f.object.documents.any?
-                    .field
-                      = f.label :learners_consent, 'Please check this box to confirm you have the learners consent to share this review'
-                      = f.check_box :learners_consent
-                  .actions
-                    = f.submit 'Upload'
-                    - if f.object.documents.any?
-                      = f.submit 'Delete Selected'
-            - else
-              %p State Aid is any advantage granted by public authorities through state resources on a selective basis to any organisation that could potentially distort competition and trade in the European Union (EU). State aid rules can (among other things) apply to grants or loans. The Apprenticeship Grant for Employers supports employers with the costs associated with employing an Apprentice in Norfolk or Suffolk aged 16-24 and therefore has to be accounted for under EU State Aid rules and regulations.
-              %p The approved EU mechanism for providing State Aid called the De Minimis Regulation or exemption. This allows small amounts of aid to be provided (currently less than €200,000) to a single organisation over a rolling period of 3 fiscal years (government financial year ends).
-              %p
-                Please tick the relevant box to declare any State Aid your organisation has received. If you have aid to declare we will contact you to confirm next steps for the payment process.
-                %span.bold Please be aware that if you have applied for multiple AGE grants you will have State Aid to declare.
-              = form_for current_user.state_declarations.build do |f|
-                .field.narrow_field
-                  = f.label :declaration_no do
-                    = f.radio_button :declaration, 'no', value: 'no'
-                    %span I have no State Aid to declare
-                .field.narrow_field
-                  = f.label :declaration_yes do
-                    = f.radio_button :declaration, 'yes', value: 'yes'
-                    %span I have State Aid to declare
+                    = doc_f.label :_destroy, 'Remove Evidence'
+                    = doc_f.check_box :_destroy
+              - if f.object.documents.count >= 5
+                %p You can only have upto 5 documents for you review.
                 .actions
-                  = f.hidden_field :grant_detail_id, value: grant_detail.id
-                  = f.submit 'Submit'
+                  = f.submit 'Delete Selected'
+              - else
 
+                .field
+                  = f.label :new_files
+                  = f.file_field :new_files, multiple: true
+                - unless f.object.documents.any?
+                  .field
+                    = f.label :learners_consent, 'Please check this box to confirm you have the learners consent to share this review'
+                    = f.check_box :learners_consent
+                .actions
+                  = f.submit 'Upload'
+                  - if f.object.documents.any?
+                    = f.submit 'Delete Selected'
           %hr
       .actions
         - if current_user.grant_details.any?

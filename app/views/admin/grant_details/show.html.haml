@@ -3,11 +3,7 @@
   - if @grant_detail.review_submitted
     - @grant_detail.grant_review.documents.each do |doc|
       - begin
-        - uri = URI(doc.document.url)
-        - request = Net::HTTP.new uri.host
-        - response = request.request_head uri.path
-        - if response.code.to_i == 200
-          = link_to 'Download', doc.document.url
+        = link_to 'Download', doc.document.url
       - rescue
       -#= link_to "Download `#{doc.document.file.filename}`", download_evidence_admin_grant_detail_path(@grant_detail, doc)
 
@@ -112,15 +108,7 @@
       %tr
         %th Submitted On
         %td= @grant_detail.created_at.in_time_zone("London")
-  = field_set_tag 'State Aid' do
-    %table.show_table
-      %tr
-        %th State Aid to declare?
-        %td
-          - if @grant_detail.state_declaration
-            = @grant_detail.state_declaration.declaration
-          - else
-            Form not complete
+
   .searchform
     = form_for [:admin, @grant_detail] do |f|
       .field
