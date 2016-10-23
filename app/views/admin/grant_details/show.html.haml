@@ -104,7 +104,15 @@
         %td= @grant_detail.signature
       %tr
         %th Review Given
-        %td= @grant_detail.review_submitted ? 'Yes'.html_safe : 'No'
+        %td
+          - if @grant_detail.review_submitted
+            Yes -
+            - @grant_detail.grant_review.documents.each_with_index do |doc, i|
+              - begin
+                = link_to "Download Document #{i+1}", doc.document.url
+              - rescue
+          - else
+            No
       %tr
         %th Submitted On
         %td= @grant_detail.created_at.in_time_zone("London")
