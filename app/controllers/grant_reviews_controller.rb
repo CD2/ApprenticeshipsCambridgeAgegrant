@@ -6,13 +6,13 @@ class GrantReviewsController < ApplicationController
   end
 
   def update
+
+    @grant_detail = current_user.grant_details.find(params[:grant_review][:grant_detail_id])
     if @grant_detail.review_submitted
       @send_mail = false
     else
       @send_mail = true
     end
-    @grant_detail = current_user.grant_details.find(params[:grant_review][:grant_detail_id])
-
     if params[:grant_review][:learners_consent] == '0'
       redirect_to [:edit, :grant_review]
       flash[:error] = 'Please confirm you have to learners consent.'
