@@ -27,14 +27,17 @@ class GrantReviewsController < ApplicationController
       amount_to_delete = params[:grant_review][:documents_attributes].to_unsafe_h.select{|_, d| d[:_destroy] == '1'}.size
     end
     total_files_count = current_file_count + (new_upload_count || 0) - (amount_to_delete || 0)
-
-    if total_files_count > 5
-      flash[:error] = 'Sorry, you can only have 5 files per review.'
-    elsif @grant_detail.grant_review.update grant_review_params
-      AdminMailer.grant_review_uploaded(@grant_detail, site_email).deliver_now if @send_mail
-      #AdminMailer.grant_review_uploaded_for_p(@grant_detail).deliver_now
-      redirect_to [:edit, :grant_review]
-      return
+    if new_upload_count
+      if total_files_count > 5
+        flash[:error] = 'Sorry, you can only have 5 files per review.'
+      elsif @grant_detail.grant_review.update grant_review_params
+        AdminMailer.grant_review_uploaded(@grant_detail, site_email).deliver_now if @send_mail
+        #AdminMailer.grant_review_uploaded_for_p(@grant_detail).deliver_now
+        redirect_to [:edit, :grant_review]
+        return
+      end
+    else
+      flash.now[:error] = 'No files selected.'
     end
     render :edit
   end
