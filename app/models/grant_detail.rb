@@ -117,7 +117,7 @@ default_scope -> { order(id: :asc) }
   end
 
   def invoice_number
-    "AGE#{id.to_s.rjust(4, padstr='0')}"
+    self.id < 243 ? "AGE#{id.to_s.rjust(4, padstr='0')}" : "AGE#{(id - 33).to_s.rjust(4, padstr='0')}"
   end
 
   def training_provider= val
