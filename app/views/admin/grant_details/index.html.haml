@@ -28,3 +28,15 @@
           %td
             = link_to 'View Details', [:admin, grant_detail]
             = link_to 'Edit', [:edit, :admin, grant_detail]
+
+- if current_user.id == 1
+  - GrantDetail.all.each do |gd|
+    - if gd.review_submitted
+      - if gd.grant_review.documents.count > 1
+        .asdasd
+          ID:
+          = gd.id
+          %ul
+            - gd.grant_review.documents.each do |doc|
+              %li= doc.id
+          §§§§§§§§

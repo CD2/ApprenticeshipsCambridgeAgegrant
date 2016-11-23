@@ -179,5 +179,4 @@ default_scope -> { order(id: :asc) }
     end
 
 
-
 end

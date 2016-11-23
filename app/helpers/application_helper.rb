@@ -20,31 +20,19 @@ module ApplicationHelper
   end
 
   def site_pages
-    if norfolk_site?
-      Page.norfolk
-    else
       Page.cambridge
-    end
   end
 
   def norfolk_site?
-    ['lvh.me', 'apprenticeship-norfolk.herokuapp.com', 'agegrant.apprenticeshipsnorfolk.org', 'apprentice-test.herokuapp.com'].include? request.host
+    false
   end#
 
   def site_url
-    if norfolk_site?
-      'https://agegrant.apprenticeshipsnorfolk.org'
-    else
       'https://apprenticeshipscambridgeshire.org'
-    end
   end
 
   def site_email
-    if norfolk_site?
-      "j.starling@norfolk.gov.uk"
-    else
       "SMitchell@citycollegepeterborough.ac.uk"
-    end
   end
 
   #def site_email

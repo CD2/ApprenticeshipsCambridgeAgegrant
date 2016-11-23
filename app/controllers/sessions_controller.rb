@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
       if params[:location] == 'apply'
         redirect_to new_grant_details_path
       else
-        redirect_to edit_grant_review_path
+        redirect_to grant_reviews_path
       end
     else
       flash.now[:error] = 'Invalid email/password combination'

@@ -5,6 +5,8 @@ class GrantReview < ApplicationRecord
 
   attr_accessor :learners_consent
 
+  validates_acceptance_of :learners_consent
+
 
   belongs_to :grant_detail
   has_many :documents, autosave: true, dependent: :destroy

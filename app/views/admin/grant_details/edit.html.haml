@@ -5,7 +5,7 @@
 
     .field
       = f.label :apprentice_start_date, 'What date did the leaner start their Apprenticeship?'
-      = f.text_field :apprentice_start_date, class: 'date_field start_date', value: f.object.apprentice_start_date.to_datetime.strftime('%d/%m/%y')
+      = f.text_field :apprentice_start_date, class: 'date_field start_date', value: f.object.apprentice_start_date.to_datetime.strftime('%d/%m/%Y')
     .field
       = f.label :training_provider
       = f.select :training_provider, [['My training provider is not listed', -1]] + TrainingProvider.pluck(:name, :id), selected: f.object.try(:training_provider).try(:id)

@@ -21,8 +21,7 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#destroy', as: :logout
 
 
-  get '/i-have-already-applied-for-a-grant-and-need-to-upload-evidence-to-claim', to: 'grant_reviews#edit', as: :edit_grant_review
-  patch '/i-have-already-applied-for-a-grant-and-need-to-upload-evidence-to-claim', to: 'grant_reviews#update', as: :grant_review
+  resources :grant_reviews, path: 'i-have-already-applied-for-a-grant-and-need-to-upload-evidence-to-claim'
 
 
   namespace :admin do
