@@ -44,9 +44,9 @@ class GrantReviewsController < ApplicationController
     if @review.update(grant_review_params)
       if @detail.review_submitted
         flash[:notice] = "Thank you for uploading your documents"
-        unless @detail.document_email_sent
+        # unless @detail.document_email_sent
           AdminMailer.grant_review_uploaded_for_p(@detail).deliver_now
-        end
+        # end
         AdminMailer.grant_review_uploaded(@detail, site_email).deliver_now
       else
         flash[:error] = 'No documents selected'
