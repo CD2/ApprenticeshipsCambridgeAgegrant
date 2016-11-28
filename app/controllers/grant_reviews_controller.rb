@@ -48,7 +48,6 @@ class GrantReviewsController < ApplicationController
           AdminMailer.grant_review_uploaded_for_p(@detail).deliver_now
         end
         AdminMailer.grant_review_uploaded(@detail, site_email).deliver_now
-        @detail.update_attribute(:document_email_sent, true)
       else
         flash[:error] = 'No documents selected'
       end
