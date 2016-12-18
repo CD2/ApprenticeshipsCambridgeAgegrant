@@ -63,7 +63,7 @@ class GrantReviewsController < ApplicationController
 
     # Never trust parameters from the scary einternet, only allow the white list through.
     def grant_review_params
-      params.require(:grant_review).permit(:learners_consent, new_files: [], documents_attributes: [:id, :_destroy])
+      params.require(:grant_review).permit(:learners_consent, new_files: [], documents_attributes: [:id])
     end
 
     def logged_in
