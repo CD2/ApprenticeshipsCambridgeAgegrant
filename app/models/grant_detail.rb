@@ -44,6 +44,18 @@ default_scope -> { order(id: :asc) }
     end
   end
 
+def no_more_young_grants
+  begin
+    Date.parse(learner_dob)
+    if (apprentice_start_date.to_datetime - learner_dob.to_datetime) < 6940
+      errors.add(:learner_dob, 'is invalid. All age grants for 16-18 year olds have gone.')
+    end
+
+  rescue ArgumentError
+    errors.add(:learner_dob, 'is an invalid date format.')
+  end
+end
+
   def full_address
    [self.company_name, self.address_line_one, self.address_line_two, self.address_line_three, self.town_name, self.county, self.postcode].reject(&:blank?).join(',')
   end
