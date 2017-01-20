@@ -11,6 +11,7 @@ default_scope -> { order(id: :asc) }
   validates :share_info_checkbox, :terms_conditions, :acceptance => true
 
   validate :no_more_old_grants, if: :new_record?
+  validate :no_more_young_grants, if: :new_record?
 
   has_one :grant_review, dependent: :destroy
   belongs_to :user
@@ -35,7 +36,7 @@ default_scope -> { order(id: :asc) }
         remaining = if $norfolk_site
           345 - GrantDetail.old_count
         else
-          120 - GrantDetail.old_count
+          116 - GrantDetail.old_count
         end
         errors.add(:learner_dob, 'is invalid. All age grants for 18-24 year olds have gone.') if remaining < 1
       end

@@ -20,13 +20,14 @@
   %p Grants are on a first come first served basis and availability depends upon the age of the apprentice.
 
   %p
-    Currently we have 0
+    Currently we have
+    %span.count_down 0
     // p/c 247
     grants available for 16 to 18 year olds and
     - if norfolk_site?
       %span.count_down.old= 345 - GrantDetail.old_count
     - else
-      %span.count_down.old= 120 - GrantDetail.old_count
+      %span.count_down.old= 116 - GrantDetail.old_count
     // p/c 120
     for 19 to 24 year olds.
   - unless norfolk_site?
