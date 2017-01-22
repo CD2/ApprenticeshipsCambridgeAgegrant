@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="92fafb36-1092-41d1-a693-d9fc5afca5ab" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/grant_detail.rb" afterPath="$PROJECT_DIR$/app/models/grant_detail.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/pages/home.html.haml" afterPath="$PROJECT_DIR$/app/views/pages/home.html.haml" />
     </list>
     <ignored path="apprenticeships_norfolk.iws" />
@@ -50,11 +49,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="home.html.haml" pinned="false" current-in-tab="false">
+      <file leaf-file-name="home.html.haml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/pages/home.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="23" column="25" lean-forward="false" selection-start-line="23" selection-start-column="22" selection-end-line="23" selection-end-column="25" />
+            <state relative-caret-position="390">
+              <caret line="29" column="51" lean-forward="false" selection-start-line="29" selection-start-column="51" selection-end-line="29" selection-end-column="51" />
               <folding />
             </state>
           </provider>
@@ -110,11 +109,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="grant_detail.rb" pinned="false" current-in-tab="true">
+      <file leaf-file-name="grant_detail.rb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/models/grant_detail.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="44" column="7" lean-forward="true" selection-start-line="44" selection-start-column="7" selection-end-line="44" selection-end-column="7" />
+            <state relative-caret-position="120">
+              <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -195,8 +194,8 @@
         <option value="$PROJECT_DIR$/app/views/admin/grant_details/index.html.haml" />
         <option value="$PROJECT_DIR$/app/views/grant_reviews/index.html.haml" />
         <option value="$PROJECT_DIR$/app/controllers/grant_reviews_controller.rb" />
-        <option value="$PROJECT_DIR$/app/views/pages/home.html.haml" />
         <option value="$PROJECT_DIR$/app/models/grant_detail.rb" />
+        <option value="$PROJECT_DIR$/app/views/pages/home.html.haml" />
       </list>
     </option>
   </component>
@@ -571,12 +570,12 @@
       <workItem from="1484840412241" duration="24000" />
       <workItem from="1484858715735" duration="496000" />
       <workItem from="1484911432579" duration="361000" />
-      <workItem from="1485108571050" duration="413000" />
+      <workItem from="1485108571050" duration="529000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="107770000" />
+    <option name="totallyTimeSpent" value="107886000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1932" y="23" width="1920" height="1009" extended-state="0" />
@@ -976,18 +975,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/pages/home.html.haml">
+    <entry file="file://$PROJECT_DIR$/app/models/grant_detail.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="23" column="25" lean-forward="false" selection-start-line="23" selection-start-column="22" selection-end-line="23" selection-end-column="25" />
+        <state relative-caret-position="120">
+          <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/grant_detail.rb">
+    <entry file="file://$PROJECT_DIR$/app/views/pages/home.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="44" column="7" lean-forward="true" selection-start-line="44" selection-start-column="7" selection-end-line="44" selection-end-column="7" />
+        <state relative-caret-position="390">
+          <caret line="29" column="51" lean-forward="false" selection-start-line="29" selection-start-column="51" selection-end-line="29" selection-end-column="51" />
           <folding />
         </state>
       </provider>
