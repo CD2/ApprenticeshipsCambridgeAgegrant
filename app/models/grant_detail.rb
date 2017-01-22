@@ -32,12 +32,8 @@ default_scope -> { order(id: :asc) }
   def no_more_old_grants
     begin
        Date.parse(learner_dob)
-      if apprentice_start_date.to_datetime - learner_dob.to_datetime < 19.years
-        remaining = if $norfolk_site
-          345 - GrantDetail.old_count
-        else
-          116 - GrantDetail.old_count
-        end
+      if apprentice_start_date.to_datetime - learner_dob.to_datetime < 6940
+        remaining = 148 - GrantDetail.old_count
         errors.add(:learner_dob, 'is invalid. All age grants for 18-24 year olds have gone.') if remaining < 1
       end
     rescue ArgumentError
@@ -48,7 +44,8 @@ default_scope -> { order(id: :asc) }
 def no_more_young_grants
   begin
     Date.parse(learner_dob)
-    if (apprentice_start_date.to_datetime - learner_dob.to_datetime) < 6940
+    if apprentice_start_date.to_datetime - learner_dob.to_datetime > 6940
+      remaining = 311 - GrantDetail.old_count
       errors.add(:learner_dob, 'is invalid. All age grants for 16-18 year olds have gone.')
     end
 

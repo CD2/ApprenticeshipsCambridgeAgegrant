@@ -21,13 +21,10 @@
 
   %p
     Currently we have
-    %span.count_down 0
+    %span.count_down= 311 - GrantDetail.young_count
     // p/c 247
     grants available for 16 to 18 year olds and
-    - if norfolk_site?
-      %span.count_down.old= 345 - GrantDetail.old_count
-    - else
-      %span.count_down.old= 116 - GrantDetail.old_count
+    %span.count_down.old= 148 - GrantDetail.old_count
     // p/c 120
     for 19 to 24 year olds.
   - unless norfolk_site?
