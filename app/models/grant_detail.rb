@@ -30,28 +30,28 @@ default_scope -> { order(id: :asc) }
   after_create :notify_training_provider
 
   def no_more_old_grants
-    begin
-       Date.parse(learner_dob)
-      if apprentice_start_date.to_datetime - learner_dob.to_datetime < 6940
-        remaining = 148 - GrantDetail.old_count
-        errors.add(:learner_dob, 'is invalid. All age grants for 18-24 year olds have gone.') if remaining < 1
-      end
-    rescue ArgumentError
-      errors.add(:learner_dob, 'is an invalid date format.')
-    end
+    # begin
+    #    Date.parse(learner_dob)
+    #   if apprentice_start_date.to_datetime - learner_dob.to_datetime < 6940
+    #     remaining = 148 - GrantDetail.old_count
+    #     errors.add(:learner_dob, 'is invalid. All age grants for 18-24 year olds have gone.') if remaining < 1
+    #   end
+    # rescue ArgumentError
+    #   errors.add(:learner_dob, 'is an invalid date format.')
+    # end
   end
 
 def no_more_young_grants
-  begin
-    Date.parse(learner_dob)
-    if apprentice_start_date.to_datetime - learner_dob.to_datetime > 6940
-      remaining = 311 - GrantDetail.old_count
-      errors.add(:learner_dob, 'is invalid. All age grants for 16-18 year olds have gone.')
-    end
-
-  rescue ArgumentError
-    errors.add(:learner_dob, 'is an invalid date format.')
-  end
+  # begin
+  #   Date.parse(learner_dob)
+  #   if apprentice_start_date.to_datetime - learner_dob.to_datetime > 6940
+  #     remaining = 311 - GrantDetail.old_count
+  #     errors.add(:learner_dob, 'is invalid. All age grants for 16-18 year olds have gone.')
+  #   end
+  #
+  # rescue ArgumentError
+  #   errors.add(:learner_dob, 'is an invalid date format.')
+  # end
 end
 
   def full_address
