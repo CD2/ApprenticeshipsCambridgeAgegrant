@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
     count = 120 - GrantDetail.old_count
 
     if count <=0
-      $age_date_limit = (19.years.ago+1.day).strftime('%d/%m/%Y')
+      $age_date_limit = (25.years.ago+1.day).strftime('%d/%m/%Y')
     else
       $age_date_limit = (25.years.ago+1.day).strftime('%d/%m/%Y')
     end
