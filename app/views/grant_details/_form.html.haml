@@ -177,6 +177,8 @@
 
   .panel.current_panel
     %p In order for this grant application to be successful, you are required to electronically sign the following declaration.
+    %p
+      %b I declare that the apprentice has not been recruited on an apprenticeship standard and I am not claiming any other incentive payments.
     .field{data: {required: true, summary: 'Signature'}}
       = f.label :signature
       = f.text_field :signature
