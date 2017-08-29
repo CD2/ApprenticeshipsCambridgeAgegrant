@@ -32,7 +32,7 @@ module ApplicationHelper
   end
 
   def site_email
-      "SMitchell@citycollegepeterborough.ac.uk"
+      "jgoddard@citycollegepeterborough.ac.uk"
   end
 
   #def site_email
