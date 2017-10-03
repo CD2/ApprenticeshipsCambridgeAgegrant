@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   before_action do
     $norfolk_site = norfolk_site?
 
-    count = 120 - GrantDetail.old_count
+    count = GrantDetail::OLD_LIMIT - GrantDetail.old_count
 
     if count <=0
       $age_date_limit = (25.years.ago+1.day).strftime('%d/%m/%Y')

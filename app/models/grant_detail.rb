@@ -29,24 +29,31 @@ default_scope -> { order(id: :asc) }
   after_create :send_confirmation_email
   after_create :notify_training_provider
 
-  def no_more_old_grants
-    # begin
-    #    Date.parse(learner_dob)
-    #   if apprentice_start_date.to_datetime - learner_dob.to_datetime < 6940
-    #     remaining = 148 - GrantDetail.old_count
-    #     errors.add(:learner_dob, 'is invalid. All age grants for 18-24 year olds have gone.') if remaining < 1
-    #   end
-    # rescue ArgumentError
-    #   errors.add(:learner_dob, 'is an invalid date format.')
-    # end
+  # 373 Young grants for 2016/17, 375 for 2017/18
+  YOUNG_LIMIT = 748
+
+  # 181 Old grants for 2016/17 (4 not used), 200 for 2017/18
+  OLD_LIMIT = 377
+
+  def self.old_remaining
+    OLD_LIMIT - GrantDetail.old_count
   end
 
-def no_more_young_grants
-    Date.parse(learner_dob)
-    if apprentice_start_date.to_datetime - learner_dob.to_datetime < 6940
-      errors.add(:learner_dob, 'is invalid. All age grants for 16-18 year olds have gone.')
+  def self.young_remaining
+    YOUNG_LIMIT - GrantDetail.young_count
+  end
+
+  def no_more_old_grants
+    begin
+       Date.parse(learner_dob)
+      if apprentice_start_date.to_datetime - learner_dob.to_datetime < 6940
+        remaining = GrantDetail.old_remaining
+        errors.add(:learner_dob, 'is invalid. All age grants for 18-24 year olds have gone.') if remaining < 1
+      end
+    rescue ArgumentError
+      errors.add(:learner_dob, 'is an invalid date format.')
     end
-end
+  end
 
   def full_address
    [self.company_name, self.address_line_one, self.address_line_two, self.address_line_three, self.town_name, self.county, self.postcode].reject(&:blank?).join(',')
