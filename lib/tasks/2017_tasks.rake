@@ -61,4 +61,19 @@ namespace :update2017 do
       body: '<p>Unfortunately, the national AGE scheme has now closed and therefore you are only eligible if you are within Cambridgeshire and Peterborough. However, you may still be eligible for incentive payments that are payable through your training provider. Please speak to them for further information.</p>'
     )
   end
+
+  task fix_pages2: :environment do
+    page = Page.find_by(
+      name: 'Do I qualify?',
+      body: '<p>To qualify for this funding, your business must have had a 16 to 24 year old who started an Apprenticeship Framework on or after the 1 August 2018. The apprentice has to be employed in a branch of the business with a postcode in Cambridgeshire or Peterborough and the total number of employees in the business (including any subsidiary or parent companies) must be less than 250.</p>',
+      order: 1,
+      cambridge: true,
+      peterborough: true,
+    )
+
+
+    page.update!(
+      body: '<p>To qualify for this funding, your business must have had a 16 to 24 year old who started an Apprenticeship Framework on or after the 1 August 2017. The apprentice has to be employed in a branch of the business within the Cambridgeshire and Peterborough Combined Authority area and the total number of employees in the business (including any subsidiary or parent companies) must be less than 250.</p>',
+    )
+  end
 end
