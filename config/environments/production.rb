@@ -75,6 +75,13 @@ Rails.application.configure do
 
   }
 
+  Rails.application.config.middleware.use ExceptionNotification::Rack,
+                                          email: {
+                                              email_prefix: '[AGEGRANT CAMB] ',
+                                              sender_address: %("notifier" <errors@apprenticeshipscambridgeshire.org>),
+                                              exception_recipients: %w[support@cd2solutions.co.uk web@cd2solutions.co.uk sam@cd2solutions.co.uk]
+                                          }
+
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
   config.i18n.fallbacks = true
