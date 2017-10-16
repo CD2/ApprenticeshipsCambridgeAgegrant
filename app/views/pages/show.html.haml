@@ -1,5 +1,5 @@
-= provide :breadcrumbs, @page.name
+= provide :breadcrumbs, @page&.name
 
 .typography
-  %h1= @page.name
-  = raw @page.body
+  %h1= @page&.name
+  = raw @page&.body
