@@ -21,6 +21,7 @@ gem 'friendly_id'
 
 gem 'rails_12factor'
 gem 'faker'
+gem 'exception_notification'
 
 gem 'htmltoword'
 gem 'ransack', github: 'activerecord-hackery/ransack'

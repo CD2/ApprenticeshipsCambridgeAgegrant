@@ -10,8 +10,6 @@ default_scope -> { order(id: :asc) }
 
   validates :share_info_checkbox, :terms_conditions, :acceptance => true
 
-  validate :no_more_old_grants, if: :new_record?
-  validate :no_more_young_grants, if: :new_record?
 
   has_one :grant_review, dependent: :destroy
   belongs_to :user
@@ -41,18 +39,6 @@ default_scope -> { order(id: :asc) }
 
   def self.young_remaining
     YOUNG_LIMIT - GrantDetail.young_count
-  end
-
-  def no_more_old_grants
-    begin
-       Date.parse(learner_dob)
-      if apprentice_start_date.to_datetime - learner_dob.to_datetime < 6940
-        remaining = GrantDetail.old_remaining
-        errors.add(:learner_dob, 'is invalid. All age grants for 18-24 year olds have gone.') if remaining < 1
-      end
-    rescue ArgumentError
-      errors.add(:learner_dob, 'is an invalid date format.')
-    end
   end
 
   def full_address
